@@ -238,13 +238,14 @@ h1 span {
     text-decoration: none;
     border: none;
     cursor: pointer;
-    box-shadow: 0 4px 15px rgba(0, 130, 251, 0.2);
+    box-shadow: 0 4px 15px rgba(0, 130, 251, 0.25);
     transition: all 0.3s ease;
+    text-align: center;
 }
 
 .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0, 130, 251, 0.35);
+    box-shadow: 0 6px 20px rgba(0, 130, 251, 0.4);
     filter: brightness(1.05);
 }
 
@@ -260,6 +261,7 @@ h1 span {
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+    text-align: center;
 }
 
 .btn-secondary:hover {
@@ -524,7 +526,246 @@ h1 span {
     gap: 10px;
 }
 
-/* Revenue Calculator Widget Card */
+/* Tabbed Layout Styles (Multi-page tabs) */
+.tabs-container {
+    background: var(--white);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: var(--glass-shadow);
+    margin-top: 40px;
+    width: 100%;
+}
+
+.tab-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    border-bottom: 1px solid var(--glass-border);
+    padding-bottom: 16px;
+    margin-bottom: 36px;
+    flex-wrap: wrap;
+}
+
+.tab-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-gray);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    padding: 10px 24px;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+    border-radius: 6px;
+}
+
+.tab-btn:hover {
+    color: var(--navy);
+    background: #f1f5f9;
+}
+
+.tab-btn.active {
+    color: #fff;
+    background: var(--primary-blue);
+    box-shadow: 0 4px 10px rgba(0, 130, 251, 0.2);
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+    animation: tabFadeIn 0.5s ease-out forwards;
+}
+
+@keyframes tabFadeIn {
+    0% { opacity: 0; transform: translateY(12px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+.tab-layout-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.tab-visual-box {
+    background: var(--cream);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 280px;
+    position: relative;
+    overflow: hidden;
+}
+
+.tab-visual-box::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle at center, rgba(0, 130, 251, 0.04) 0%, transparent 70%);
+}
+
+.tab-visual-placeholder {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--text-gray);
+    letter-spacing: 1px;
+    text-align: center;
+    z-index: 1;
+}
+
+.tab-visual-icon {
+    width: 64px;
+    height: 64px;
+    color: var(--primary-blue);
+    background: var(--white);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px;
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+}
+
+.tab-info-list {
+    margin: 24px 0 36px;
+    list-style: none;
+}
+
+.tab-info-list li {
+    font-size: 14.5px;
+    color: var(--text-gray);
+    margin-bottom: 12px;
+    padding-left: 24px;
+    position: relative;
+}
+
+.tab-info-list li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--primary-blue);
+    font-weight: 800;
+}
+
+/* Sub-page layouts */
+.subpage-container {
+    padding-top: 140px;
+    min-height: 80vh;
+}
+
+.subpage-header {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 40px;
+}
+
+.back-home-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    color: var(--text-gray);
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 30px;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.back-home-link:hover {
+    color: var(--navy);
+    transform: translateX(-4px);
+}
+
+/* Questionnaires & Forms */
+.form-card {
+    background: var(--white);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    padding: 50px;
+    box-shadow: var(--glass-shadow);
+    width: 100%;
+    max-width: 680px;
+    margin: 0 auto;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+.form-grid .full-width {
+    grid-column: span 2;
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-field label {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--navy);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.form-input, .form-select, .form-textarea {
+    background: var(--cream);
+    border: 1px solid var(--glass-border);
+    padding: 12px 16px;
+    border-radius: 8px;
+    color: var(--navy);
+    font-family: inherit;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.3s, background-color 0.3s;
+}
+
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+    border-color: var(--primary-blue);
+    background: var(--white);
+}
+
+.form-textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.btn-form-submit {
+    background: var(--primary-blue);
+    color: #fff;
+    font-weight: 700;
+    font-size: 14px;
+    border: none;
+    padding: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 4px 15px rgba(0, 130, 251, 0.25);
+    width: 100%;
+}
+
+.btn-form-submit:hover {
+    box-shadow: 0 6px 20px rgba(0, 130, 251, 0.4);
+    transform: translateY(-1px);
+}
+
+/* Revenue Calculator Page Styles */
 .calc-section {
     display: flex;
     justify-content: center;
@@ -677,11 +918,6 @@ input[type="range"]::-webkit-slider-thumb:hover {
     text-align: left;
     display: none;
     animation: slideDownFade 0.4s ease-out forwards;
-}
-
-@keyframes slideDownFade {
-    0% { opacity: 0; transform: translateY(-10px); }
-    100% { opacity: 1; transform: translateY(0); }
 }
 
 .booking-title {
@@ -883,132 +1119,6 @@ footer {
     font-family: 'JetBrains Mono', monospace;
 }
 
-/* Investor Portal Modal */
-.modal-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(7, 17, 45, 0.6);
-    backdrop-filter: blur(8px);
-    z-index: 1000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease;
-}
-
-.modal-overlay.open {
-    opacity: 1;
-    pointer-events: auto;
-}
-
-.modal-content {
-    background: var(--white);
-    border: 1px solid var(--glass-border);
-    border-radius: 16px;
-    padding: 40px;
-    width: 100%;
-    max-width: 480px;
-    box-shadow: 0 30px 60px rgba(7, 17, 45, 0.1);
-    text-align: center;
-    transform: scale(0.95);
-    transition: transform 0.3s ease;
-    color: var(--navy);
-}
-
-.modal-overlay.open .modal-content {
-    transform: scale(1);
-}
-
-.modal-header {
-    margin-bottom: 24px;
-}
-
-.modal-lock-icon {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background: rgba(0, 130, 251, 0.08);
-    color: var(--primary-blue);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 16px;
-    border: 1px solid rgba(0, 130, 251, 0.15);
-}
-
-.modal-title {
-    font-size: 20px;
-    font-weight: 800;
-    margin-bottom: 12px;
-}
-
-.modal-desc {
-    color: var(--text-gray);
-    font-size: 14px;
-    line-height: 1.6;
-}
-
-.modal-form {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-}
-
-.modal-input {
-    background: #f8fafc;
-    border: 1px solid var(--glass-border);
-    padding: 12px 16px;
-    border-radius: 8px;
-    color: var(--navy);
-    font-size: 14px;
-    outline: none;
-    text-align: center;
-    transition: border-color 0.3s;
-}
-
-.modal-input:focus {
-    border-color: var(--primary-blue);
-}
-
-.modal-submit {
-    background: var(--primary-blue);
-    color: #fff;
-    font-weight: 700;
-    border: none;
-    padding: 12px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 14px;
-    transition: all 0.3s;
-}
-
-.modal-submit:hover {
-    box-shadow: 0 4px 12px rgba(0, 130, 251, 0.2);
-}
-
-.modal-close {
-    background: transparent;
-    color: var(--text-gray);
-    border: none;
-    cursor: pointer;
-    font-size: 12px;
-    margin-top: 16px;
-    transition: color 0.3s;
-}
-
-.modal-close:hover {
-    color: var(--navy);
-}
-
-.modal-msg {
-    font-size: 12px;
-    margin-top: 12px;
-    font-family: 'JetBrains Mono', monospace;
-    display: none;
-}
-
 /* Responsiveness */
 @media (max-width: 992px) {
     .hero-section {
@@ -1033,6 +1143,11 @@ footer {
     .footer-container {
         grid-template-columns: 1fr 1fr;
     }
+    
+    .tab-layout-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
 }
 
 @media (max-width: 576px) {
@@ -1055,6 +1170,18 @@ footer {
     }
     
     .booking-field.full-width {
+        grid-column: span 1;
+    }
+    
+    .form-card {
+        padding: 30px 20px;
+    }
+    
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .form-grid .full-width {
         grid-column: span 1;
     }
 }
