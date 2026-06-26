@@ -14,19 +14,19 @@
     <!-- Ambient Glowing Background Assets -->
     <div class="ambient-glow-1"></div>
     <div class="ambient-glow-2"></div>
-    <div class="ambient-glow-3"></div>
 
     <!-- Navigation Header -->
     <header>
         <div class="nav-container">
-            <div class="logo">
-                SOMA<span>_CONCEPTS</span>
-            </div>
+            <a href="#" class="logo-container">
+                <img src="logo.jpg" class="logo-img" alt="Soma Concepts Logo">
+                <div class="logo-text">SOMA<span>_CONCEPTS</span></div>
+            </a>
             <nav>
-                <a href="#hub">Proprietary SaaS</a>
-                <a href="#hub">B2B Enterprise Architecture</a>
-                <a href="#hub">Case Studies</a>
-                <a href="#showcase">Company Insights</a>
+                <a href="#ecosystem">Proprietary SaaS</a>
+                <a href="#ecosystem">B2B Enterprise Wing</a>
+                <a href="#showcase">Our Stack</a>
+                <a href="javascript:void(0)" onclick="openInvestorPortal()">Investor Relations</a>
             </nav>
             <button class="btn-request" onclick="scrollToCalculator()">Request Blueprint</button>
         </div>
@@ -36,11 +36,11 @@
     <section class="hero-section">
         <div class="hero-content">
             <div class="overheadline">ARCHITECTING AFRICA'S PREMIER PURPOSE-DRIVEN DIGITAL ECOSYSTEMS</div>
-            <h1>We build the <span>digital infrastructure</span> that lets your business scale on autopilot.</h1>
-            <p class="subheadline">Soma Concepts merges advanced full-stack software engineering with data-driven performance marketing. We design, code, and automate end-to-end ecosystems so you can capture markets without operational friction.</p>
+            <h1>We merge <span>advanced software engineering</span> with data-driven advertising to build digital ecosystems that let businesses thrive on autopilot.</h1>
+            <p class="subheadline">We design, code, and automate end-to-end operational software and marketing funnels so your enterprise can scale seamlessly and capture markets without operational friction.</p>
             <div class="hero-ctas">
-                <button class="btn-primary" onclick="scrollToCalculator()">Apply for a Custom Blueprint</button>
-                <a href="#hub" class="btn-secondary">Explore Our SaaS Labs</a>
+                <button class="btn-primary" onclick="scrollToCalculator()">Apply for a Custom Digital Ecosystem Blueprint</button>
+                <a href="#ecosystem" class="btn-secondary">Explore Our SaaS Labs</a>
             </div>
         </div>
 
@@ -48,7 +48,7 @@
         <div class="pipeline-container">
             <div class="pipeline-title">
                 <div class="pipeline-dot"></div>
-                <span>LIVE SYSTEM DATA FLOW PIPELINE</span>
+                <span>LIVE TRAFFIC PIPELINE WIDGET</span>
             </div>
             
             <div class="pipeline-nodes">
@@ -59,108 +59,144 @@
                 <!-- Node 1 -->
                 <div class="pipeline-node" id="node-1">
                     <div class="pipeline-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
                     </div>
                     <div class="node-info">
-                        <div class="node-name">Meta Ad Click</div>
-                        <div class="node-status" id="status-1">TRIG_INIT</div>
+                        <div class="node-name">Meta / Google Ad Click</div>
+                        <div class="node-status" id="status-1">TRAFFIC_INBOUND</div>
                     </div>
                 </div>
 
                 <!-- Node 2 -->
                 <div class="pipeline-node" id="node-2">
                     <div class="pipeline-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
                     </div>
                     <div class="node-info">
                         <div class="node-name">Next.js Frontend</div>
-                        <div class="node-status" id="status-2">PENDING_REQUEST</div>
+                        <div class="node-status" id="status-2">EDGE_RENDER_OK</div>
                     </div>
                 </div>
 
                 <!-- Node 3 -->
                 <div class="pipeline-node" id="node-3">
                     <div class="pipeline-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
                     </div>
                     <div class="node-info">
-                        <div class="node-name">FastAPI Router</div>
-                        <div class="node-status" id="status-3">ROUTING_METRICS</div>
+                        <div class="node-name">FastAPI Backend API</div>
+                        <div class="node-status" id="status-3">ASYNC_PROCESS</div>
                     </div>
                 </div>
 
                 <!-- Node 4 -->
                 <div class="pipeline-node" id="node-4">
                     <div class="pipeline-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="m9 12 2 2 4-4"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="m9 12 2 2 4-4"/></svg>
                     </div>
                     <div class="node-info">
-                        <div class="node-name">Supabase DB Sync</div>
-                        <div class="node-status" id="status-4">AWAIT_DB_SYNC</div>
+                        <div class="node-name">Supabase / PostgreSQL</div>
+                        <div class="node-status" id="status-4">DATA_STORED_SUCCESS</div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Section 2: Core Ecosystem Hub -->
-    <section id="hub">
-        <div class="hub-header">
-            <h2 class="section-title-tech">Dual-Engine <span>Innovation</span></h2>
-            <div class="section-subtitle">We mitigate platform risk and maximize cash flow by balancing industry-defining proprietary SaaS platforms with high-ticket enterprise architecture engineering.</div>
+    <!-- Section 2: Our Ecosystem -->
+    <section id="ecosystem">
+        <div class="ecosystem-header">
+            <h2 class="category-title" style="border-bottom:none; margin-bottom: 10px;">Our <span>Ecosystem</span></h2>
+            <p style="color:var(--text-gray); font-size:15px;">Balancing high-growth proprietary solutions with premium tailored client systems.</p>
         </div>
 
-        <div class="hub-grid">
-            <!-- Card 1 -->
-            <div class="glass-card">
-                <div class="card-top">
-                    <div class="card-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        <!-- Segment 1: Proprietary SaaS Labs -->
+        <div class="ecosystem-category">
+            <h3 class="category-title">1. Proprietary <span>SaaS Labs</span></h3>
+            <div class="ecosystem-grid">
+                <!-- Card 1 -->
+                <div class="glass-card">
+                    <div class="card-top">
+                        <div class="card-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                        </div>
+                        <h4 class="card-product">Smart Writer</h4>
+                        <div class="card-tagline">AI EdTech Platform</div>
+                        <p class="card-desc">The first and only AI-powered academic writing guide engineered specifically for African university students completing mandatory project reports. Calibrated directly to local institutional structures and referencing norms.</p>
                     </div>
-                    <h3 class="card-product">Smart Writer</h3>
-                    <div class="card-tagline">Context-Aware Academic AI</div>
-                    <p class="card-desc">The first and only AI-powered academic writing guide engineered specifically for African university students completing mandatory project reports. Calibrated directly to local institutional structures and referencing norms.</p>
+                    <a href="#" class="card-link">Launch Platform <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
                 </div>
-                <a href="#" class="card-link">Launch Platform <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
-            </div>
 
-            <!-- Card 2 -->
-            <div class="glass-card">
-                <div class="card-top">
-                    <div class="card-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                <!-- Card 2 -->
+                <div class="glass-card">
+                    <div class="card-top">
+                        <div class="card-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                        </div>
+                        <h4 class="card-product">Solak</h4>
+                        <div class="card-tagline">Community Tech</div>
+                        <p class="card-desc">A comprehensive digital platform that modernizes class management and information sharing across sub-Saharan Africa. Eliminating the chaos and data loss of legacy social media chat threads.</p>
                     </div>
-                    <h3 class="card-product">Solak</h3>
-                    <div class="card-tagline">Academic Cohort Architecture</div>
-                    <p class="card-desc">A comprehensive digital platform that modernizes class management and information sharing across sub-Saharan Africa. Eliminating the chaos and data loss of legacy social media chat threads.</p>
+                    <a href="#" class="card-link">View Deployment <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
                 </div>
-                <a href="#" class="card-link">View Deployment <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
-            </div>
 
-            <!-- Card 3 -->
-            <div class="glass-card">
-                <div class="card-top">
-                    <div class="card-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                <!-- Card 3 -->
+                <div class="glass-card">
+                    <div class="card-top">
+                        <div class="card-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                        </div>
+                        <h4 class="card-product">FaithNow</h4>
+                        <div class="card-tagline">Structured E-Learning</div>
+                        <p class="card-desc">Nigeria's premier structured online Christian education school. Delivering a progressive, three-tier curriculum combining rigid LMS academic design with deep cultural relevance.</p>
                     </div>
-                    <h3 class="card-product">FaithNow</h3>
-                    <div class="card-tagline">Structured Digital Discipleship</div>
-                    <p class="card-desc">Nigeria's premier structured online Christian education school. Delivering a progressive, three-tier curriculum combining rigid LMS academic design with deep cultural relevance.</p>
+                    <a href="#" class="card-link">Explore School <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
                 </div>
-                <a href="#" class="card-link">Explore School <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
             </div>
+        </div>
 
-            <!-- Card 4 -->
-            <div class="glass-card">
-                <div class="card-top">
-                    <div class="card-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="8" x="2" y="2" rx="2" ry="2"/><rect width="20" height="8" x="2" y="14" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+        <!-- Segment 2: B2B Enterprise Wing -->
+        <div class="ecosystem-category">
+            <h3 class="category-title">2. B2B <span>Enterprise Wing</span></h3>
+            <div class="ecosystem-grid">
+                <!-- Card 1 -->
+                <div class="glass-card">
+                    <div class="card-top">
+                        <div class="card-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="8" x="2" y="2" rx="2" ry="2"/><rect width="20" height="8" x="2" y="14" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+                        </div>
+                        <h4 class="card-product">Custom Software Architecture</h4>
+                        <div class="card-tagline">Tailored Systems Development</div>
+                        <p class="card-desc">Bespoke operational backends, logistics tracking networks, and core integrations built on robust FastAPI routers and PostgreSQL datastores for enterprise scalability.</p>
                     </div>
-                    <h3 class="card-product">B2B Digital Services</h3>
-                    <div class="card-tagline">Custom Infrastructure & Growth</div>
-                    <p class="card-desc">Bespoke software development and data-driven digital advertising funnels built exclusively for high-ticket SMEs and corporate sectors like Real Estate and Logistics.</p>
+                    <a href="javascript:void(0)" onclick="scrollToCalculator()" class="card-link">Partner With Us <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
                 </div>
-                <a href="#" class="card-link">Partner With Us <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+
+                <!-- Card 2 -->
+                <div class="glass-card">
+                    <div class="card-top">
+                        <div class="card-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                        </div>
+                        <h4 class="card-product">Data-Driven Ad Infrastructure</h4>
+                        <div class="card-tagline">Attribution & Optimization</div>
+                        <p class="card-desc">Automated marketing pixels, server-side events routers, and high-performance landing page deployments engineered for low bounce rates and maximum client conversion.</p>
+                    </div>
+                    <a href="javascript:void(0)" onclick="scrollToCalculator()" class="card-link">Optimize Campaigns <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="glass-card">
+                    <div class="card-top">
+                        <div class="card-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+                        </div>
+                        <h4 class="card-product">Automated Growth Funnels</h4>
+                        <div class="card-tagline">Integrated Client Acquisition</div>
+                        <p class="card-desc">Complete lifecycle automation connecting CRM systems, SMS alerts, calendar schedulers, and autoresponders to eliminate lead friction and save administrative overhead.</p>
+                    </div>
+                    <a href="javascript:void(0)" onclick="scrollToCalculator()" class="card-link">Request Demo <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+                </div>
             </div>
         </div>
     </section>
@@ -197,7 +233,44 @@
                 <div class="calc-output-val" id="leakage-output">₦318,450 / Month</div>
             </div>
 
-            <button class="calc-btn" onclick="requestBlueprint()">Plug the Leak: Request an Automation Blueprint</button>
+            <button class="calc-btn" id="leak-btn" onclick="revealBookingWidget()">Plug the Leak: Request an Automation Blueprint</button>
+
+            <!-- Embedded Simulated Booking Widget -->
+            <div class="booking-widget" id="booking-widget">
+                <h3 class="booking-title">Schedule Your System Audit Strategy Session</h3>
+                <p class="booking-subtitle">Select your details below to book a direct consultation with a Soma Concepts automation architect.</p>
+                <form class="booking-form" onsubmit="handleBooking(event)">
+                    <div class="booking-field">
+                        <label for="book-name">Contact Person</label>
+                        <input type="text" id="book-name" class="booking-input" required placeholder="e.g. John Doe">
+                    </div>
+                    <div class="booking-field">
+                        <label for="book-email">Corporate Email</label>
+                        <input type="email" id="book-email" class="booking-input" required placeholder="e.g. name@company.com">
+                    </div>
+                    <div class="booking-field">
+                        <label for="book-industry">Industry Sector</label>
+                        <select id="book-industry" class="booking-select" required>
+                            <option value="">Select Industry</option>
+                            <option value="Real Estate">Real Estate</option>
+                            <option value="Logistics">Logistics & Supply Chain</option>
+                            <option value="Fintech / SaaS">Fintech & SaaS</option>
+                            <option value="Other">Other SMEs</option>
+                        </select>
+                    </div>
+                    <div class="booking-field">
+                        <label for="book-time">Preferred Session Slot</label>
+                        <select id="book-time" class="booking-select" required>
+                            <option value="">Select Date/Time</option>
+                            <option value="Mon 10:00 AM">Monday • 10:00 AM WAT</option>
+                            <option value="Tue 02:00 PM">Tuesday • 02:00 PM WAT</option>
+                            <option value="Wed 11:30 AM">Wednesday • 11:30 AM WAT</option>
+                            <option value="Thu 04:00 PM">Thursday • 04:00 PM WAT</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn-book-submit booking-field full-width">Finalize Consultation Booking ↗</button>
+                </form>
+            </div>
         </div>
     </section>
 
@@ -216,7 +289,7 @@
                 <div class="stack-item">•</div>
                 <div class="stack-item">OpenAI API Architecture</div>
                 <div class="stack-item">•</div>
-                <!-- Duplicate for seamless looping -->
+                <!-- Duplicate for marquee loop -->
                 <div class="stack-item">Next.js (React)</div>
                 <div class="stack-item">•</div>
                 <div class="stack-item">Python (FastAPI)</div>
@@ -235,23 +308,23 @@
     <footer>
         <div class="footer-container">
             <div class="footer-col">
-                <h4>SOMA CONCEPTS</h4>
+                <img src="logo.jpg" class="footer-logo-img" alt="Soma Concepts Logo">
                 <p>Soma Concepts Global Digital Solutions Limited — Building Africa's Premier Digital Ecosystems.</p>
             </div>
             <div class="footer-col">
                 <h4>Products</h4>
                 <ul>
-                    <li><a href="#hub">Smart Writer</a></li>
-                    <li><a href="#hub">Solak</a></li>
-                    <li><a href="#hub">FaithNow</a></li>
+                    <li><a href="#ecosystem">Smart Writer</a></li>
+                    <li><a href="#ecosystem">Solak</a></li>
+                    <li><a href="#ecosystem">FaithNow</a></li>
                 </ul>
             </div>
             <div class="footer-col">
                 <h4>Enterprise</h4>
                 <ul>
-                    <li><a href="#hub">Custom Architectures</a></li>
-                    <li><a href="#hub">Advertising Optimization</a></li>
-                    <li><a href="#hub">Systems Consulting</a></li>
+                    <li><a href="#ecosystem">Custom Architectures</a></li>
+                    <li><a href="#ecosystem">Advertising Optimization</a></li>
+                    <li><a href="#ecosystem">Systems Consulting</a></li>
                 </ul>
             </div>
             <div class="footer-col">
@@ -271,22 +344,22 @@
         </div>
     </footer>
 
-    <!-- Password Protected Gateway Modal -->
+    <!-- Investor Portal Modal (Strict Passcode Verification) -->
     <div class="modal-overlay" id="portal-modal">
         <div class="modal-content">
             <div class="modal-header">
                 <div class="modal-lock-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
                 </div>
-                <h3 class="modal-title">Secure Portal Access</h3>
-                <p class="modal-desc">Enter password for Soma Concepts investor data room.</p>
+                <h3 class="modal-title">Investor Relations Gateway</h3>
+                <p class="modal-desc">To access our Q3 2026 Seed Round Data Room and Strategic Business Plan, please request secure credential access from the executive board.</p>
             </div>
             <div class="modal-form">
                 <input type="password" class="modal-input" id="portal-passcode" placeholder="Enter Secure Passcode">
-                <button class="modal-submit" onclick="submitPasscode()">Authenticate</button>
+                <button class="modal-submit" onclick="submitPasscode()">Request Decryption</button>
             </div>
             <div class="modal-msg" id="portal-msg"></div>
-            <button class="modal-close" onclick="closeInvestorPortal()">Close Connection</button>
+            <button class="modal-close" onclick="closeInvestorPortal()">Close Gate</button>
         </div>
     </div>
 
@@ -334,18 +407,36 @@
             return '₦' + amount.toLocaleString('en-NG');
         }
 
-        // Mock requesting blueprint action
-        function requestBlueprint() {
-            alert('Your request for a custom system automation blueprint has been initialized. A Soma Concepts systems consultant will contact you via WhatsApp shortly.');
+        // Reveal Lead Form booking widget
+        function revealBookingWidget() {
+            const widget = document.getElementById('booking-widget');
+            widget.style.display = 'block';
+            widget.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            
+            const btn = document.getElementById('leak-btn');
+            btn.style.display = 'none';
         }
 
-        // Live Data Pipeline Animation Sequence
+        function handleBooking(event) {
+            event.preventDefault();
+            const name = document.getElementById('book-name').value;
+            const timeSlot = document.getElementById('book-time').value;
+            
+            alert(`Thank you, ${name}! Your strategic automation session is tentatively scheduled for: ${timeSlot}. A calendar link and Zoom details have been dispatched to your email.`);
+            
+            // Reset state
+            document.getElementById('booking-widget').style.display = 'none';
+            document.getElementById('leak-btn').style.display = 'inline-block';
+            event.target.reset();
+        }
+
+        // Live Data Pipeline Animation Sequence (Light Glass style)
         let activeNode = 1;
         const pipelineStatusTexts = {
-            1: ['TRIG_INIT', 'USER_CLICKED_META_AD', 'IP_RESOLVING', 'GEO_LOC_NG_ABUJA'],
-            2: ['PENDING_REQUEST', 'NEXTJS_EDGE_MIDDLEWARE', 'RESOLVING_DYNAMIC_PROPS', 'PARSING_HEADERS'],
-            3: ['ROUTING_METRICS', 'FASTAPI_ASYNC_WORKER', 'BODY_VALIDATION_OK', 'ROUTING_TO_CONTROLLER'],
-            4: ['AWAIT_DB_SYNC', 'SUPABASE_CLIENT_HANDSHAKE', 'POSTGRES_INSERT_OK', 'SYS_STATE_SYNC_COMPLETE']
+            1: ['TRAFFIC_INBOUND', 'GOOGLE_AD_LEAD_INIT', 'PARSING_REFERRER', 'META_ROUTER_PING'],
+            2: ['EDGE_RENDER_OK', 'NEXTJS_HYDRATE_SUCCESS', 'RENDERING_HERO_VARS', 'EDGE_MIDDLEWARE_AUTH'],
+            3: ['ASYNC_PROCESS', 'FASTAPI_CONTROLLER_CALL', 'REQUEST_VALID_200', 'POST_OBJECT_PARSED'],
+            4: ['DATA_STORED_SUCCESS', 'SUPABASE_PG_CONNECT', 'TRANS_COMMIT_COMPLETE', 'SYS_STATE_SYNCED']
         };
 
         function cyclePipeline() {
@@ -359,7 +450,7 @@
             const statusEl = document.getElementById(`status-${activeNode}`);
             if (statusEl) {
                 statusEl.innerText = 'STATUS: OK ✓';
-                statusEl.style.color = '#8b5cf6'; // Accent Purple
+                statusEl.style.color = '#10b981'; // Mint Green Success
             }
 
             // Move to next node
@@ -383,11 +474,10 @@
             if (next) next.classList.add('active');
             const nextStatus = document.getElementById(`status-${activeNode}`);
             if (nextStatus) {
-                // Randomly rotate inside text options for active node
                 const options = pipelineStatusTexts[activeNode];
                 const randomText = options[Math.floor(Math.random() * options.length)];
                 nextStatus.innerText = randomText;
-                nextStatus.style.color = '#06b6d4'; // Tech Cyan
+                nextStatus.style.color = '#0082fb'; // Primary Blue Active
             }
         }
 
@@ -417,14 +507,14 @@
             msg.style.display = 'block';
             
             if (passcode.toUpperCase() === 'SOMA2026') {
-                msg.innerText = 'ACCESS GRANTED. DECRYPTING DATA ROOM...';
-                msg.style.color = '#06b6d4';
+                msg.innerText = 'CREDENTIALS VERIFIED. REDIRECTING TO SEED DATA ROOM...';
+                msg.style.color = '#0082fb';
                 setTimeout(() => {
-                    alert('Authenticated successfully! Redirecting to secure data room.');
+                    alert('Decrypted successfully! Welcome to the Soma Concepts Strategic Business Plan Data Room.');
                     closeInvestorPortal();
                 }, 1200);
             } else {
-                msg.innerText = 'INVALID SECURITY CODE. ACCESS DENIED.';
+                msg.innerText = 'DECRYPTION KEY INVALID. SECURE PROTOCOL DENIED.';
                 msg.style.color = '#ef4444';
             }
         }
