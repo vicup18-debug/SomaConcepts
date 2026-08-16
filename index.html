@@ -48,7 +48,7 @@
         <div class="pipeline-container">
             <div class="pipeline-title">
                 <div class="pipeline-dot"></div>
-                <span>LIVE TRAFFIC PIPELINE WIDGET</span>
+                <span>SYSTEM ARCHITECTURE</span>
             </div>
             
             <div class="pipeline-nodes">
@@ -74,7 +74,7 @@
                     </div>
                     <div class="node-info">
                         <div class="node-name">Next.js Frontend</div>
-                        <div class="node-status" id="status-2">EDGE_RENDER_OK</div>
+                        <div class="node-status" id="status-2">EDGE_RENDER</div>
                     </div>
                 </div>
 
@@ -96,7 +96,7 @@
                     </div>
                     <div class="node-info">
                         <div class="node-name">Supabase / PostgreSQL</div>
-                        <div class="node-status" id="status-4">DATA_STORED_SUCCESS</div>
+                        <div class="node-status" id="status-4">DATA_STORED</div>
                     </div>
                 </div>
             </div>
@@ -271,7 +271,8 @@
             </div>
         </div>
         <div class="footer-bottom-bar">
-            <p>© 2026 Soma Concepts Limited. Strictly Confidential. Registered Private Limited Company (RC: CAC).</p>
+            <p>© 2026 Soma Concepts Limited. Registered Private Limited Company (RC9218326).</p>
+            <p style="margin-top: 10px; font-size: 13px;">Contact: <a href="mailto:hr@somaconcepts.com.ng" style="color:var(--tech-cyan); text-decoration:none;">hr@somaconcepts.com.ng</a> | <a href="mailto:Somaconcepts1@gmail.com" style="color:var(--tech-cyan); text-decoration:none;">Somaconcepts1@gmail.com</a></p>
         </div>
     </footer>
 
@@ -281,9 +282,9 @@
         let activeNode = 1;
         const pipelineStatusTexts = {
             1: ['TRAFFIC_INBOUND', 'GOOGLE_AD_LEAD_INIT', 'PARSING_REFERRER', 'META_ROUTER_PING'],
-            2: ['EDGE_RENDER_OK', 'NEXTJS_HYDRATE_SUCCESS', 'RENDERING_HERO_VARS', 'EDGE_MIDDLEWARE_AUTH'],
-            3: ['ASYNC_PROCESS', 'FASTAPI_CONTROLLER_CALL', 'REQUEST_VALID_200', 'POST_OBJECT_PARSED'],
-            4: ['DATA_STORED_SUCCESS', 'SUPABASE_PG_CONNECT', 'TRANS_COMMIT_COMPLETE', 'SYS_STATE_SYNCED']
+            2: ['EDGE_RENDER', 'NEXTJS_HYDRATE', 'RENDERING_HERO_VARS', 'EDGE_MIDDLEWARE_AUTH'],
+            3: ['ASYNC_PROCESS', 'FASTAPI_CONTROLLER_CALL', 'REQUEST_VALID', 'POST_OBJECT_PARSED'],
+            4: ['DATA_STORED', 'SUPABASE_PG_CONNECT', 'TRANS_COMMIT_COMPLETE', 'SYS_STATE_SYNCED']
         };
 
         function cyclePipeline() {
@@ -295,7 +296,7 @@
             
             const statusEl = document.getElementById(`status-${activeNode}`);
             if (statusEl) {
-                statusEl.innerText = 'STATUS: OK ✓';
+                statusEl.innerText = 'STATUS: ACTIVE';
                 statusEl.style.color = '#10b981';
             }
 
