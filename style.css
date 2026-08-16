@@ -1150,7 +1150,39 @@ footer {
     }
 }
 
+@media (max-width: 768px) {
+    nav {
+        display: none;
+    }
+    .logo-text {
+        font-size: 15px;
+    }
+    .btn-request {
+        padding: 8px 12px;
+        font-size: 11px;
+    }
+    h1 {
+        font-size: 32px;
+    }
+    .hero-ctas {
+        flex-direction: column;
+        width: 100%;
+        gap: 15px;
+    }
+    .hero-ctas a {
+        width: 100%;
+        text-align: center;
+        padding: 12px 20px;
+    }
+}
+
 @media (max-width: 576px) {
+    h1 {
+        font-size: 26px;
+    }
+    .subheadline {
+        font-size: 14px;
+    }
     .footer-container {
         grid-template-columns: 1fr;
         gap: 40px;
