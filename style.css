@@ -208,6 +208,25 @@ nav a:hover {
     box-shadow: 0 30px 60px rgba(28, 78, 216, 0.15);
     transition: transform 0.5s ease;
 }
+
+@keyframes float1 {
+    0% { transform: rotateY(-15deg) translateZ(-50px) translateY(0); }
+    50% { transform: rotateY(-15deg) translateZ(-50px) translateY(-20px); }
+    100% { transform: rotateY(-15deg) translateZ(-50px) translateY(0); }
+}
+
+@keyframes float2 {
+    0% { transform: rotateY(-5deg) translateZ(50px) translateY(0); }
+    50% { transform: rotateY(-5deg) translateZ(50px) translateY(15px); }
+    100% { transform: rotateY(-5deg) translateZ(50px) translateY(0); }
+}
+
+@keyframes float3 {
+    0% { transform: rotateY(10deg) translateZ(100px) translateY(0); }
+    50% { transform: rotateY(10deg) translateZ(100px) translateY(-10px); }
+    100% { transform: rotateY(10deg) translateZ(100px) translateY(0); }
+}
+
 .graphic-card-1 {
     width: 320px;
     height: 420px;
@@ -221,6 +240,7 @@ nav a:hover {
     justify-content: center;
     padding: 40px;
     color: white;
+    animation: float1 6s ease-in-out infinite;
 }
 .graphic-card-1 h3 {
     font-size: 32px;
@@ -237,6 +257,7 @@ nav a:hover {
     padding: 24px;
     border: 1px solid rgba(255,255,255,0.4);
     backdrop-filter: blur(10px);
+    animation: float2 5s ease-in-out infinite 1s;
 }
 .graphic-card-3 {
     width: 180px;
@@ -249,10 +270,13 @@ nav a:hover {
     padding: 24px;
     color: white;
     border-radius: 20px;
+    animation: float3 7s ease-in-out infinite 0.5s;
 }
-.hero-graphic:hover .graphic-card-1 { transform: rotateY(-10deg) translateZ(-30px); }
-.hero-graphic:hover .graphic-card-2 { transform: rotateY(0deg) translateZ(70px); }
-.hero-graphic:hover .graphic-card-3 { transform: rotateY(15deg) translateZ(120px); }
+
+/* Hover overrides */
+.hero-graphic:hover .graphic-card-1 { transform: rotateY(-10deg) translateZ(-30px); animation-play-state: paused; }
+.hero-graphic:hover .graphic-card-2 { transform: rotateY(0deg) translateZ(70px); animation-play-state: paused; }
+.hero-graphic:hover .graphic-card-3 { transform: rotateY(15deg) translateZ(120px); animation-play-state: paused; }
 
 /* Section Base */
 section {
