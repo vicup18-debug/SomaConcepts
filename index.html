@@ -11,232 +11,124 @@
 
 <body>
 
-    <!-- Ambient Glowing Background Assets -->
-    <div class="ambient-glow-1"></div>
-    <div class="ambient-glow-2"></div>
-
     <!-- Navigation Header -->
     <header>
         <div class="nav-container">
             <a href="index.html" class="logo-container">
-                <img src="logo.jpg" class="logo-img" alt="Soma Concepts Logo">
-                <div class="logo-text">SOMA<span>_CONCEPTS</span></div>
+                <img src="logo.jpg" class="logo-img" alt="Soma Concepts Logo" style="border-radius: 4px;">
+                <div class="logo-text">SOMA<span class="text-blue">_CONCEPTS</span></div>
             </a>
             <nav>
                 <a href="saas-labs.html">Proprietary SaaS</a>
-                <a href="b2b-enterprise.html">B2B Enterprise Wing</a>
-                <a href="#showcase">Our Stack</a>
-                <a href="investors.html">Investor Relations</a>
+                <a href="b2b-enterprise.html">B2B Enterprise</a>
+                <a href="investors.html">Investors</a>
             </nav>
-            <a href="blueprint.html" class="btn-request">Request Blueprint</a>
+            <a href="blueprint.html" class="btn-primary btn-header">Request Blueprint <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
         </div>
     </header>
 
-    <!-- Section 1: Hero Component -->
+    <!-- Hero Section -->
     <section class="hero-section">
         <div class="hero-content">
-            <div class="overheadline">ARCHITECTING AFRICA'S PREMIER PURPOSE-DRIVEN DIGITAL ECOSYSTEMS</div>
-            <h1>We merge <span>advanced software engineering</span> with data-driven advertising to build digital ecosystems that let businesses thrive on autopilot.</h1>
-            <p class="subheadline">We design, code, and automate end-to-end operational software and marketing funnels so your enterprise can scale seamlessly and capture markets without operational friction.</p>
-            <div class="hero-ctas">
-                <a href="blueprint.html" class="btn-primary">Apply for a Custom Digital Ecosystem Blueprint</a>
-                <a href="saas-labs.html" class="btn-secondary">Explore Our SaaS Labs</a>
-            </div>
-        </div>
-
-        <!-- Right Column Interactive Graphic -->
-        <div class="pipeline-container">
-            <div class="pipeline-title">
-                <div class="pipeline-dot"></div>
-                <span>SYSTEM ARCHITECTURE</span>
-            </div>
+            <span class="tag-label">Creative Digital Ecosystems</span>
+            <h1>We design ecosystems that <span class="text-blue">Inspire & Convert</span></h1>
+            <p>We blend advanced software engineering with data-driven advertising to build digital ecosystems that let businesses thrive on autopilot.</p>
             
-            <div class="pipeline-nodes">
-                <!-- Connector Line -->
-                <div class="pipeline-connector"></div>
-                <div class="pipeline-flow-light" id="flow-light"></div>
+            <div class="hero-ctas">
+                <a href="blueprint.html" class="btn-primary">Apply for Blueprint <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+                <a href="saas-labs.html" class="btn-secondary">Explore Our Labs <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg></a>
+            </div>
 
-                <!-- Node 1 -->
-                <div class="pipeline-node" id="node-1">
-                    <div class="pipeline-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-                    </div>
-                    <div class="node-info">
-                        <div class="node-name">Meta / Google Ad Click</div>
-                        <div class="node-status" id="status-1">TRAFFIC_INBOUND</div>
-                    </div>
+            <!-- Stats Bar -->
+            <div class="stats-bar">
+                <div class="stat-item">
+                    <span class="stat-num">20+</span>
+                    <span class="stat-label">Clients Served</span>
                 </div>
+                <div class="stat-item">
+                    <span class="stat-num">7</span>
+                    <span class="stat-label">Proprietary Products</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-num">23</span>
+                    <span class="stat-label">Team Members</span>
+                </div>
+            </div>
+        </div>
 
-                <!-- Node 2 -->
-                <div class="pipeline-node" id="node-2">
-                    <div class="pipeline-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-                    </div>
-                    <div class="node-info">
-                        <div class="node-name">Next.js Frontend</div>
-                        <div class="node-status" id="status-2">EDGE_RENDER</div>
-                    </div>
-                </div>
-
-                <!-- Node 3 -->
-                <div class="pipeline-node" id="node-3">
-                    <div class="pipeline-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
-                    </div>
-                    <div class="node-info">
-                        <div class="node-name">FastAPI Backend API</div>
-                        <div class="node-status" id="status-3">ASYNC_PROCESS</div>
-                    </div>
-                </div>
-
-                <!-- Node 4 -->
-                <div class="pipeline-node" id="node-4">
-                    <div class="pipeline-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="m9 12 2 2 4-4"/></svg>
-                    </div>
-                    <div class="node-info">
-                        <div class="node-name">Supabase / PostgreSQL</div>
-                        <div class="node-status" id="status-4">DATA_STORED</div>
-                    </div>
-                </div>
+        <!-- 3D Overlapping Graphic -->
+        <div class="hero-graphic">
+            <div class="graphic-card graphic-card-1">
+                <h3>Digital Ecosystems That Drive Results</h3>
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="white" stroke="none"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="#1C4ED8"/></svg>
+            </div>
+            <div class="graphic-card graphic-card-2">
+                <div style="width: 100%; height: 8px; background: #E2E8F0; border-radius: 4px; margin-bottom: 12px;"></div>
+                <div style="width: 70%; height: 8px; background: #E2E8F0; border-radius: 4px; margin-bottom: 24px;"></div>
+                <div style="width: 100%; height: 120px; background: #F8FAFC; border-radius: 12px; border: 1px solid #E2E8F0;"></div>
+            </div>
+            <div class="graphic-card graphic-card-3">
+                <div style="font-size: 12px; color: #94A3B8; margin-bottom: 8px;">01</div>
+                <h4 style="margin-bottom: 8px; font-size: 18px;">Strategy</h4>
+                <p style="font-size: 12px; color: #cbd5e1;">Research, Audience Analysis & Custom Funnels</p>
             </div>
         </div>
     </section>
 
-    <!-- Section 2: Our Ecosystem -->
+    <!-- Bento Box Ecosystem Section -->
     <section id="ecosystem">
-        <div class="ecosystem-header">
-            <h2 class="category-title" style="border-bottom:none; margin-bottom: 10px;">Our <span>Ecosystem</span></h2>
-            <p style="color:var(--text-gray); font-size:15px;">Balancing high-growth proprietary solutions with premium B2B client architectures.</p>
+        <div class="section-header">
+            <span class="tag-label">Our Selected Work</span>
+            <h2>Building Digital Products & Brands <span class="text-blue">People Love</span></h2>
         </div>
 
-        <!-- Segment 1: Proprietary SaaS Labs -->
-        <div class="ecosystem-category">
-            <h3 class="category-title">1. Proprietary <span>SaaS Labs</span></h3>
-            <div class="ecosystem-grid">
-                <!-- Card 1 -->
-                <div class="glass-card">
-                    <div class="card-top">
-                        <div class="card-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-                        </div>
-                        <h4 class="card-product">Smart Writer</h4>
-                        <div class="card-tagline">AI EdTech Platform</div>
-                        <p class="card-desc">The first and only AI-powered academic writing guide engineered specifically for African university students completing mandatory project reports. Calibrated directly to local institutional structures and referencing norms.</p>
-                    </div>
-                    <a href="saas-labs.html#smart-writer" class="card-link">Launch Platform <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        <div class="bento-grid">
+            
+            <!-- Bento Card 1: Tall Blue -->
+            <a href="saas-labs.html#smart-writer" class="bento-card tall blue">
+                <div class="bento-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
                 </div>
+                <h3>Smart Writer</h3>
+                <p>The premier AI-powered academic writing guide engineered specifically for African university students.</p>
+            </a>
 
-                <!-- Card 2 -->
-                <div class="glass-card">
-                    <div class="card-top">
-                        <div class="card-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-                        </div>
-                        <h4 class="card-product">Solak</h4>
-                        <div class="card-tagline">Community Tech</div>
-                        <p class="card-desc">A comprehensive digital platform that modernizes class management and information sharing across sub-Saharan Africa. Eliminating the chaos and data loss of legacy social media chat threads.</p>
-                    </div>
-                    <a href="saas-labs.html#solak" class="card-link">View Deployment <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+            <!-- Bento Card 2: Standard -->
+            <a href="saas-labs.html#solak" class="bento-card">
+                <div class="bento-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
                 </div>
+                <h3>Solak Tech</h3>
+                <p>Digital platform modernizing class management and information sharing across sub-Saharan Africa.</p>
+            </a>
 
-                <!-- Card 3 -->
-                <div class="glass-card">
-                    <div class="card-top">
-                        <div class="card-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
-                        </div>
-                        <h4 class="card-product">FaithNow</h4>
-                        <div class="card-tagline">Structured E-Learning</div>
-                        <p class="card-desc">Nigeria's premier structured online Christian education school. Delivering a progressive, three-tier curriculum combining rigid LMS academic design with deep cultural relevance.</p>
-                    </div>
-                    <a href="saas-labs.html#faithnow" class="card-link">Explore School <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+            <!-- Bento Card 3: Standard Dark -->
+            <a href="saas-labs.html#faithnow" class="bento-card dark">
+                <div class="bento-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
                 </div>
-            </div>
-        </div>
+                <h3>FaithNow</h3>
+                <p>Structured e-learning delivering progressive Christian education combined with rigid LMS architecture.</p>
+            </a>
 
-        <!-- Segment 2: B2B Enterprise Wing -->
-        <div class="ecosystem-category">
-            <h3 class="category-title">2. B2B <span>Enterprise Wing</span></h3>
-            <div class="ecosystem-grid">
-                <!-- Card 1 -->
-                <div class="glass-card">
-                    <div class="card-top">
-                        <div class="card-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="8" x="2" y="2" rx="2" ry="2"/><rect width="20" height="8" x="2" y="14" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
-                        </div>
-                        <h4 class="card-product">Custom Software Architecture</h4>
-                        <div class="card-tagline">Tailored Systems Development</div>
-                        <p class="card-desc">Bespoke operational backends, logistics tracking networks, and core integrations built on robust FastAPI routers and PostgreSQL datastores for enterprise scalability.</p>
-                    </div>
-                    <a href="b2b-enterprise.html#custom-software" class="card-link">Partner With Us <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+            <!-- Bento Card 4: Wide -->
+            <a href="b2b-enterprise.html#custom-software" class="bento-card wide">
+                <div class="bento-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="8" x="2" y="2" rx="2" ry="2"/><rect width="20" height="8" x="2" y="14" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
                 </div>
+                <h3>Enterprise Custom Architectures</h3>
+                <p>Bespoke operational backends, logistics tracking networks, and core integrations built on robust FastAPI routers and PostgreSQL datastores.</p>
+            </a>
 
-                <!-- Card 2 -->
-                <div class="glass-card">
-                    <div class="card-top">
-                        <div class="card-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-                        </div>
-                        <h4 class="card-product">Data-Driven Ad Infrastructure</h4>
-                        <div class="card-tagline">Attribution & Optimization</div>
-                        <p class="card-desc">Automated marketing pixels, server-side events routers, and high-performance landing page deployments engineered for low bounce rates and maximum client conversion.</p>
-                    </div>
-                    <a href="b2b-enterprise.html#ad-infrastructure" class="card-link">Optimize Campaigns <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+            <!-- Bento Card 5: Standard -->
+            <a href="b2b-enterprise.html#growth-funnels" class="bento-card">
+                <div class="bento-icon" style="background: rgba(37, 99, 235, 0.1);">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
                 </div>
+                <h3>Growth Funnels</h3>
+                <p>Automated lifecycle funnels connecting CRM, SMS, and autoresponders.</p>
+            </a>
 
-                <!-- Card 3 -->
-                <div class="glass-card">
-                    <div class="card-top">
-                        <div class="card-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
-                        </div>
-                        <h4 class="card-product">Automated Growth Funnels</h4>
-                        <div class="card-tagline">Integrated Client Acquisition</div>
-                        <p class="card-desc">Complete lifecycle automation connecting CRM systems, SMS alerts, calendar schedulers, and autoresponders to eliminate lead friction and save administrative overhead.</p>
-                    </div>
-                    <a href="b2b-enterprise.html#growth-funnels" class="card-link">Request Demo <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section 3: Revenue Leakage Calculator Teaser -->
-    <section id="calculator" class="calc-section" style="padding-bottom: 80px;">
-        <div class="calc-card">
-            <h2 class="calc-title">Is your manual operational infrastructure costing you revenue?</h2>
-            <p class="calc-subtitle">Determine your system revenue leakage in less than 30 seconds using our interactive calculation model.</p>
-            <a href="calculator.html" class="btn-primary" style="display:inline-block;">Open Revenue Leakage Calculator ↗</a>
-        </div>
-    </section>
-
-    <!-- Section 4: Technical Stack Showcase -->
-    <section id="showcase" class="stack-section">
-        <h4 class="stack-title">ENGINEERED FOR LOW-LATENCY, HIGH-VOLUME RESILIENCE</h4>
-        <div class="stack-marquee">
-            <div class="stack-track">
-                <div class="stack-item">Next.js (React)</div>
-                <div class="stack-item">•</div>
-                <div class="stack-item">Python (FastAPI)</div>
-                <div class="stack-item">•</div>
-                <div class="stack-item">Supabase (PostgreSQL)</div>
-                <div class="stack-item">•</div>
-                <div class="stack-item">AWS Cloud Infrastructure</div>
-                <div class="stack-item">•</div>
-                <div class="stack-item">OpenAI API Architecture</div>
-                <div class="stack-item">•</div>
-                <!-- Duplicate for marquee loop -->
-                <div class="stack-item">Next.js (React)</div>
-                <div class="stack-item">•</div>
-                <div class="stack-item">Python (FastAPI)</div>
-                <div class="stack-item">•</div>
-                <div class="stack-item">Supabase (PostgreSQL)</div>
-                <div class="stack-item">•</div>
-                <div class="stack-item">AWS Cloud Infrastructure</div>
-                <div class="stack-item">•</div>
-                <div class="stack-item">OpenAI API Architecture</div>
-                <div class="stack-item">•</div>
-            </div>
         </div>
     </section>
 
@@ -244,8 +136,8 @@
     <footer>
         <div class="footer-container">
             <div class="footer-col">
-                <img src="logo.jpg" class="footer-logo-img" alt="Soma Concepts Logo">
-                <p>Soma Concepts Global Digital Solutions Limited — Building Africa's Premier Digital Ecosystems.</p>
+                <h4 style="font-size: 20px; font-weight: 800; color: #1C4ED8;">SOMA_CONCEPTS</h4>
+                <p style="color: #64748B; font-size: 14px;">Building Africa's Premier Digital Ecosystems. We design experiences that inspire and convert.</p>
             </div>
             <div class="footer-col">
                 <h4>Products</h4>
@@ -258,76 +150,24 @@
             <div class="footer-col">
                 <h4>Enterprise</h4>
                 <ul>
-                    <li><a href="b2b-enterprise.html#custom-software">Custom Architectures</a></li>
-                    <li><a href="b2b-enterprise.html#ad-infrastructure">Advertising Optimization</a></li>
+                    <li><a href="b2b-enterprise.html#custom-software">Architectures</a></li>
+                    <li><a href="b2b-enterprise.html#ad-infrastructure">Ad Optimization</a></li>
                     <li><a href="b2b-enterprise.html#growth-funnels">Systems Consulting</a></li>
                 </ul>
             </div>
             <div class="footer-col">
                 <h4>Corporate</h4>
                 <ul>
-                    <li><a href="investors.html" class="lock-link">Investor Relations <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-lock"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></a></li>
+                    <li><a href="calculator.html">Leakage Calculator</a></li>
+                    <li><a href="investors.html">Investor Relations</a></li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom-bar">
             <p>© 2026 Soma Concepts Limited. Registered Private Limited Company (RC9218326).</p>
-            <p style="margin-top: 10px; font-size: 13px;">Contact: <a href="mailto:hr@somaconcepts.com.ng" style="color:var(--tech-cyan); text-decoration:none;">hr@somaconcepts.com.ng</a> | <a href="mailto:Somaconcepts1@gmail.com" style="color:var(--tech-cyan); text-decoration:none;">Somaconcepts1@gmail.com</a> | <a href="tel:+2348023081571" style="color:var(--tech-cyan); text-decoration:none;">08023081571</a></p>
+            <p style="margin-top: 10px; font-size: 13px;">Contact: <a href="mailto:hr@somaconcepts.com.ng" style="color:var(--brand-blue); text-decoration:none;">hr@somaconcepts.com.ng</a> | <a href="mailto:Somaconcepts1@gmail.com" style="color:var(--brand-blue); text-decoration:none;">Somaconcepts1@gmail.com</a> | <a href="tel:+2348023081571" style="color:var(--brand-blue); text-decoration:none;">08023081571</a></p>
         </div>
     </footer>
 
-    <!-- Scripting Logic -->
-    <script>
-        // Live Data Pipeline Animation Sequence
-        let activeNode = 1;
-        const pipelineStatusTexts = {
-            1: ['TRAFFIC_INBOUND', 'GOOGLE_AD_LEAD_INIT', 'PARSING_REFERRER', 'META_ROUTER_PING'],
-            2: ['EDGE_RENDER', 'NEXTJS_HYDRATE', 'RENDERING_HERO_VARS', 'EDGE_MIDDLEWARE_AUTH'],
-            3: ['ASYNC_PROCESS', 'FASTAPI_CONTROLLER_CALL', 'REQUEST_VALID', 'POST_OBJECT_PARSED'],
-            4: ['DATA_STORED', 'SUPABASE_PG_CONNECT', 'TRANS_COMMIT_COMPLETE', 'SYS_STATE_SYNCED']
-        };
-
-        function cyclePipeline() {
-            const current = document.getElementById(`node-${activeNode}`);
-            if (current) {
-                current.classList.remove('active');
-                current.classList.add('success');
-            }
-            
-            const statusEl = document.getElementById(`status-${activeNode}`);
-            if (statusEl) {
-                statusEl.innerText = 'STATUS: ACTIVE';
-                statusEl.style.color = '#10b981';
-            }
-
-            activeNode++;
-            if (activeNode > 4) {
-                activeNode = 1;
-                for (let i = 1; i <= 4; i++) {
-                    const node = document.getElementById(`node-${i}`);
-                    if (node) node.classList.remove('active', 'success');
-                    const status = document.getElementById(`status-${i}`);
-                    if (status) {
-                        status.innerText = pipelineStatusTexts[i][0];
-                        status.style.color = '';
-                    }
-                }
-            }
-
-            const next = document.getElementById(`node-${activeNode}`);
-            if (next) next.classList.add('active');
-            const nextStatus = document.getElementById(`status-${activeNode}`);
-            if (nextStatus) {
-                const options = pipelineStatusTexts[activeNode];
-                const randomText = options[Math.floor(Math.random() * options.length)];
-                nextStatus.innerText = randomText;
-                nextStatus.style.color = '#0082fb';
-            }
-        }
-
-        setInterval(cyclePipeline, 2500);
-        document.getElementById('node-1').classList.add('active');
-    </script>
 </body>
-
 </html>
