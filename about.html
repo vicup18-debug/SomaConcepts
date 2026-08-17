@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soma Concepts | About Us</title>
+    <meta name="description" content="Meet the elite engineering and creative team behind Soma Concepts. We are building Africa's premier digital ecosystems.">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700;800&display=swap" rel="stylesheet">
+    <style>
+        .team-hero-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            grid-template-rows: 200px 200px;
+            gap: 16px;
+            border-radius: 24px;
+            overflow: hidden;
+            margin-bottom: 60px;
+        }
+        .team-img-main {
+            grid-row: span 2;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .team-img-sub {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .leadership-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        .leader-card {
+            background: var(--bg-white);
+            border-radius: 24px;
+            padding: 24px;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid var(--border-soft);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        .leader-card:hover {
+            transform: translateY(-8px);
+        }
+        .leader-img {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 20px;
+            border: 4px solid var(--bg-primary);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .leader-name {
+            font-size: 22px;
+            font-weight: 800;
+            margin-bottom: 4px;
+            color: var(--navy);
+        }
+        .leader-title {
+            color: var(--brand-blue);
+            font-weight: 700;
+            font-size: 14px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+        .leader-bio {
+            color: var(--text-gray);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        @media (max-width: 768px) {
+            .team-hero-grid {
+                grid-template-columns: 1fr;
+                grid-template-rows: 250px 200px 200px;
+            }
+            .team-img-main {
+                grid-row: span 1;
+            }
+            .leadership-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Ambient Glowing Background Assets -->
+    <div class="ambient-glow-1"></div>
+
+    <!-- Navigation Header -->
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo-container">
+                <img src="logo.jpg" class="logo-img" alt="Soma Concepts Logo" style="border-radius: 4px;">
+                <div class="logo-text">SOMA<span class="text-blue">_CONCEPTS</span></div>
+            </a>
+            <nav>
+                <a href="saas-labs.html">Proprietary SaaS</a>
+                <a href="b2b-enterprise.html">B2B Enterprise</a>
+                <a href="investors.html">Investors</a>
+                <a href="about.html">About Us</a>
+            </nav>
+            <a href="blueprint.html" class="btn-primary btn-header">Request Blueprint <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <section class="subpage-container" style="max-width: 1200px; margin: 0 auto; padding: 140px 20px 60px;">
+        <div class="subpage-header">
+            <a href="index.html" class="back-home-link">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+                Back to Overview
+            </a>
+            <h1 style="font-size:42px; margin-bottom:12px;">The People Behind the <span>Ecosystems</span></h1>
+            <p style="color:var(--text-gray); font-size:16px; max-width:700px; margin:0 auto;">We are a collective of elite software engineers, growth architects, and creative directors building the future of Africa's digital infrastructure.</p>
+        </div>
+
+        <!-- Dynamic Photo Collage -->
+        <div class="team-hero-grid">
+            <img src="Team 1.jpg" alt="Soma Concepts Team Collaboration" class="team-img-main">
+            <img src="Team 2.jpg" alt="Soma Concepts Office Culture" class="team-img-sub">
+            <img src="Team 3.jpg" alt="Soma Concepts Engineering" class="team-img-sub">
+        </div>
+
+        <!-- Leadership Grid -->
+        <div class="section-header" style="margin-top: 100px;">
+            <span class="tag-label">Executive Leadership</span>
+            <h2>Meet Our <span class="text-blue">Core Team</span></h2>
+        </div>
+        
+        <div class="leadership-grid">
+            <!-- CEO -->
+            <div class="leader-card">
+                <img src="CEO.jpg" alt="Victor Uzorchikwa" class="leader-img">
+                <div class="leader-name">Victor Uzorchikwa</div>
+                <div class="leader-title">Chief Executive Officer</div>
+                <p class="leader-bio">A visionary founder driving Africa's digital transformation. Victor engineers the overarching strategy that allows our enterprise clients to scale with zero friction.</p>
+            </div>
+            
+            <!-- CCO -->
+            <div class="leader-card">
+                <img src="Samuel Ikediashi (Chief creative officer).jpeg" alt="Samuel Ikediashi" class="leader-img">
+                <div class="leader-name">Samuel Ikediashi</div>
+                <div class="leader-title">Chief Creative Officer</div>
+                <p class="leader-bio">The mastermind behind our breathtaking user experiences and branding. Samuel ensures every ecosystem we build is visually stunning and hyper-converting.</p>
+            </div>
+            
+            <!-- HR -->
+            <div class="leader-card">
+                <img src="Gideon I. Onuh (HR).jpeg" alt="Gideon I. Onuh" class="leader-img">
+                <div class="leader-name">Gideon I. Onuh</div>
+                <div class="leader-title">Head of HR & Ops</div>
+                <p class="leader-bio">The architect of our elite culture and operational excellence. Gideon builds the systems that keep our world-class engineering team operating at peak performance.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Culture Section -->
+    <section class="homepage-section bg-light" style="background: var(--bg-white); padding: 100px 0; border-top: 1px solid var(--border-soft);">
+        <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+            <div class="tab-layout-grid">
+                <div>
+                    <h3 style="font-size:32px; margin-bottom:16px;">Driven by Innovation</h3>
+                    <p style="color:var(--text-gray); margin-bottom:24px; font-size:16px; line-height: 1.8;">At Soma Concepts, we don't just write code—we engineer outcomes. Our culture is built on relentless iteration, extreme ownership, and a shared obsession with solving complex operational bottlenecks for our clients.</p>
+                    <p style="color:var(--text-gray); margin-bottom:32px; font-size:16px; line-height: 1.8;">Whether we are outside bonding as a unit or in the lab optimizing a billion-row PostgreSQL database, we move as one highly synchronized machine.</p>
+                </div>
+                <div class="tab-visual-box bento-item" style="padding: 0; background: transparent; border: none; box-shadow: 0 20px 40px rgba(0,0,0,0.1);">
+                    <img src="Team outdoor 2.jpg" style="width: 100%; height: 100%; object-fit: cover; border-radius: 16px;" alt="Soma Concepts Team Outdoors">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Global Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <h4 style="font-size: 20px; font-weight: 800; color: #1C4ED8;">SOMA_CONCEPTS</h4>
+                <p style="color: #64748B; font-size: 14px;">Building Africa's Premier Digital Ecosystems. We design experiences that inspire and convert.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Products</h4>
+                <ul>
+                    <li><a href="saas-labs.html#smart-writer">Smart Writer</a></li>
+                    <li><a href="saas-labs.html#solak">Solak</a></li>
+                    <li><a href="saas-labs.html#faithnow">FaithNow</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Enterprise</h4>
+                <ul>
+                    <li><a href="b2b-enterprise.html#custom-software">Architectures</a></li>
+                    <li><a href="b2b-enterprise.html#ad-infrastructure">Ad Optimization</a></li>
+                    <li><a href="b2b-enterprise.html#growth-funnels">Systems Consulting</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Corporate</h4>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="calculator.html">Leakage Calculator</a></li>
+                    <li><a href="investors.html">Investor Relations</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom-bar">
+            <p>© 2026 Soma Concepts Limited. Registered Private Limited Company (RC9218326).</p>
+            <p style="margin-top: 10px; font-size: 13px;">Contact: <a href="mailto:hr@somaconcepts.com.ng" style="color:var(--brand-blue); text-decoration:none;">hr@somaconcepts.com.ng</a> | <a href="mailto:Somaconcepts1@gmail.com" style="color:var(--brand-blue); text-decoration:none;">Somaconcepts1@gmail.com</a> | <a href="tel:+2348023081571" style="color:var(--brand-blue); text-decoration:none;">08023081571</a></p>
+        </div>
+    </footer>
+
+</body>
+</html>
