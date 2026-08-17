@@ -669,6 +669,21 @@ h1 span {
         gap: 30px;
     }
 }
+@media (max-width: 768px) {
+    .hero-container {
+        background: radial-gradient(circle at center top, rgba(28, 78, 216, 0.15) 0%, transparent 60%);
+    }
+    .hero-text h1 {
+        font-size: 42px;
+        line-height: 1.1;
+    }
+    .homepage-section {
+        padding: 60px 20px !important;
+    }
+    .section-header {
+        margin-bottom: 30px;
+    }
+}
 
 /* --- Micro Interactions & Hover States --- */
 .bento-item {
