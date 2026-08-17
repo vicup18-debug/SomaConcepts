@@ -50,7 +50,7 @@ header {
 }
 
 .nav-container {
-    max-width: 1200px;
+    max-width: 1440px;
     margin: 0 auto;
     padding: 20px 24px;
     display: flex;
@@ -133,7 +133,7 @@ nav a:hover {
 
 /* Hero Section */
 .hero-section {
-    max-width: 1200px;
+    max-width: 1440px;
     margin: 0 auto;
     padding: 160px 24px 80px;
     display: grid;
@@ -281,7 +281,7 @@ nav a:hover {
 /* Section Base */
 section {
     padding: 100px 24px;
-    max-width: 1200px;
+    max-width: 1440px;
     margin: 0 auto;
 }
 .section-header {
@@ -385,7 +385,7 @@ footer {
     border-top: 1px solid var(--border-soft);
 }
 .footer-container {
-    max-width: 1200px;
+    max-width: 1440px;
     margin: 0 auto;
     display: grid;
     grid-template-columns: 2fr 1fr 1fr 1fr;
@@ -412,7 +412,7 @@ footer {
     color: var(--brand-blue);
 }
 .footer-bottom-bar {
-    max-width: 1200px;
+    max-width: 1440px;
     margin: 0 auto;
     padding-top: 30px;
     border-top: 1px solid var(--border-soft);
@@ -670,14 +670,15 @@ h1 span {
     }
 }
 @media (max-width: 768px) {
-    .hero-container {
+    .hero-section {
         background: radial-gradient(circle at center top, rgba(28, 78, 216, 0.15) 0%, transparent 60%);
+        padding: 120px 20px 40px;
     }
-    .hero-text h1 {
-        font-size: 42px;
-        line-height: 1.1;
+    .hero-content h1 {
+        font-size: 38px;
+        line-height: 1.15;
     }
-    .homepage-section {
+    section {
         padding: 60px 20px !important;
     }
     .section-header {
