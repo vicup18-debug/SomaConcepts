@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://somaconcepts.com.ng/sitemap-index.xml

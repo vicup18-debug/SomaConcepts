@@ -1,0 +1,113 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import { company, services, whatsappLink } from '../data/site';
+---
+<Base title="Contact" description="Talk to Soma Concepts about your app, website, automation, brand or ads. Call or WhatsApp 0802 308 1571, or send us a message.">
+  <section class="section">
+    <div class="wrap grid">
+      <div class="intro">
+        <h1>Start a project</h1>
+        <p class="lead">Tell us what you want to build. We reply with next steps and an honest view of cost and time.</p>
+
+        <ul class="ways">
+          <li>
+            <Icon name="chat" size={28} />
+            <div><h2>WhatsApp</h2><a href={whatsappLink()}>Message {company.phoneDisplay}</a></div>
+          </li>
+          <li>
+            <Icon name="phone" size={28} />
+            <div><h2>Call</h2><a href={`tel:${company.phoneIntl}`}>{company.phoneDisplay}</a></div>
+          </li>
+          <li>
+            <Icon name="mail" size={28} />
+            <div><h2>Email</h2><a href={`mailto:${company.email}`}>{company.email}</a></div>
+          </li>
+          <li>
+            <Icon name="pin" size={28} />
+            <div><h2>Office</h2><p>{company.city}, {company.country}</p></div>
+          </li>
+        </ul>
+      </div>
+
+      <form class="brief cut-tl" id="brief" action={`mailto:${company.email}`} method="post" enctype="text/plain">
+        <h2>Send us a short brief</h2>
+        <p class="muted small">Your brief opens in WhatsApp or your email app, filled in and ready to send.</p>
+
+        <label for="name">Your name</label>
+        <input id="name" name="name" autocomplete="name" required />
+
+        <label for="business">Business name</label>
+        <input id="business" name="business" autocomplete="organization" />
+
+        <label for="service">What do you need?</label>
+        <select id="service" name="service">
+          {services.map((s) => <option value={s.id}>{s.name}</option>)}
+          <option value="tech-talk">Tech Talk academy</option>
+          <option value="not-sure">Not sure yet</option>
+        </select>
+
+        <label for="message">Tell us a little about it</label>
+        <textarea id="message" name="message" rows="5" required placeholder="What does your business do, and what should this help you achieve?"></textarea>
+
+        <div class="actions">
+          <button class="btn btn--primary" type="submit">Send on WhatsApp</button>
+          <button class="btn btn--outline" type="submit" data-channel="email">Send by email</button>
+        </div>
+        <p class="error" id="brief-error" role="alert" hidden>Add your name and a short message, then send again.</p>
+      </form>
+    </div>
+  </section>
+</Base>
+
+<script define:vars={{ whatsapp: company.whatsapp, email: company.email }}>
+  const form = document.getElementById('brief');
+  const error = document.getElementById('brief-error');
+  const select = document.getElementById('service');
+  const pre = new URLSearchParams(location.search).get('service');
+  if (pre && [...select.options].some((o) => o.value === pre)) select.value = pre;
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const data = new FormData(form);
+    const name = String(data.get('name') || '').trim();
+    const message = String(data.get('message') || '').trim();
+    if (!name || !message) { error.hidden = false; return; }
+    error.hidden = true;
+    const service = select.options[select.selectedIndex].text;
+    const business = String(data.get('business') || '').trim();
+    const text = `Hello Soma Concepts, I'm ${name}${business ? ` from ${business}` : ''}.\n\nI need: ${service}\n\n${message}`;
+    if (e.submitter && e.submitter.dataset.channel === 'email') {
+      location.href = `mailto:${email}?subject=${encodeURIComponent('Project enquiry: ' + service)}&body=${encodeURIComponent(text)}`;
+    } else {
+      window.open(`https://wa.me/${whatsapp}?text=${encodeURIComponent(text)}`, '_blank', 'noopener');
+    }
+  });
+</script>
+
+<style>
+  .grid { display: grid; gap: 48px; }
+  @media (min-width: 960px) { .grid { grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; } }
+  .intro { display: grid; gap: 24px; }
+  .ways { list-style: none; margin: 16px 0 0; padding: 0; display: grid; border-top: 1px solid var(--hairline); }
+  .ways li { display: grid; grid-template-columns: 28px 1fr; gap: 18px; padding-block: 20px; border-bottom: 1px solid var(--hairline); align-items: start; }
+  .ways h2 { font-family: var(--font-body); font-size: var(--step--1); font-weight: 600; color: var(--slate); margin-bottom: 2px; }
+  .ways a, .ways p { font-size: var(--step-1); font-weight: 500; }
+  .ways a { color: var(--ink); text-decoration-color: var(--hairline); }
+  .ways a:hover { color: var(--blue); }
+
+  .brief { --cut: 40px; background: var(--mist); padding: 40px 32px; display: grid; gap: 8px; }
+  @media (min-width: 600px) { .brief { padding: 48px; } }
+  .brief h2 { font-size: var(--step-3); }
+  .small { font-size: var(--step--1); margin-bottom: 16px; }
+  label { font-weight: 600; font-size: var(--step--1); margin-top: 12px; }
+  input, select, textarea {
+    font: inherit; color: var(--ink); background: var(--white);
+    border: 1px solid #B9C5D6; border-radius: var(--radius-sm);
+    padding: 12px 14px; min-height: 48px; width: 100%;
+  }
+  input:focus, select:focus, textarea:focus { outline: 3px solid var(--cyan); outline-offset: 1px; border-color: var(--navy); }
+  textarea { resize: vertical; }
+  .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
+  .error { color: #B42318; font-weight: 600; margin-top: 8px; }
+</style>

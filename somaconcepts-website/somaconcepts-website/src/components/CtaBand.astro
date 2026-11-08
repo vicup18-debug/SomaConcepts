@@ -1,0 +1,30 @@
+---
+import { company, whatsappLink } from '../data/site';
+interface Props { heading?: string; text?: string }
+const {
+  heading = 'Tell us what you need to build.',
+  text = 'Send a few lines about your business. We reply with next steps and an honest view of cost and time.',
+} = Astro.props;
+---
+<section class="cta" aria-labelledby="cta-heading">
+  <div class="wrap inner">
+    <div class="copy">
+      <h2 id="cta-heading">{heading}</h2>
+      <p>{text}</p>
+    </div>
+    <div class="btn-row on-dark">
+      <a class="btn btn--primary" href={whatsappLink()}>Chat on WhatsApp</a>
+      <a class="btn btn--light" href={`tel:${company.phoneIntl}`}>Call {company.phoneDisplay}</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cta { background: var(--blue); color: var(--white); padding-block: var(--space-16); }
+  .inner { display: grid; gap: 32px; align-items: end; }
+  @media (min-width: 900px) { .inner { grid-template-columns: 1.4fr 1fr; } .btn-row { justify-content: flex-end; } }
+  h2 { font-size: var(--step-4); margin-bottom: 14px; }
+  p { color: #DCE7FB; max-width: 52ch; font-size: var(--step-1); }
+  .btn--primary { background: var(--white); color: var(--navy); }
+  .btn--primary:hover { background: var(--navy); color: var(--white) !important; }
+</style>

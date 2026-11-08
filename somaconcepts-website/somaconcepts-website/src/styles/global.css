@@ -1,0 +1,133 @@
+/* Soma Concepts brand tokens (from the brand system) and base styles. */
+@import '@fontsource/saira/600.css';
+@import '@fontsource/saira/700.css';
+@import '@fontsource-variable/inter/wght.css';
+
+:root {
+  --navy: #0B2545;
+  --blue: #1660D6;
+  --blue-on-dark: #4F8FF5;
+  --silver: #8E9AAB;
+  --cyan: #2BB3F0;
+  --slate: #4A5A73;
+  --mist: #EEF3FA;
+  --hairline: #DDE4EE;
+  --ink: #0B2545;
+  --white: #FFFFFF;
+  --on-dark-muted: #B7C6DB;
+
+  --font-display: 'Saira', system-ui, sans-serif;
+  --font-body: 'Inter Variable', 'Inter', system-ui, sans-serif;
+
+  --step--1: 0.875rem;
+  --step-0: 1rem;
+  --step-1: 1.125rem;
+  --step-2: 1.375rem;
+  --step-3: clamp(1.75rem, 1.4rem + 1.4vw, 2.25rem);
+  --step-4: clamp(2.25rem, 1.6rem + 2.6vw, 3.25rem);
+  --step-5: clamp(2.5rem, 1.6rem + 4vw, 4.5rem);
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-24: 96px;
+
+  --radius-sm: 4px;
+  --cut: 48px;
+  --wrap: 1200px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body {
+  margin: 0;
+  background: var(--white);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: var(--step-0);
+  line-height: 1.6;
+  text-rendering: optimizeLegibility;
+}
+
+img, svg { display: block; max-width: 100%; }
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  margin: 0;
+  text-wrap: balance;
+}
+h1 { font-size: var(--step-5); }
+h2 { font-size: var(--step-4); }
+h3 { font-size: var(--step-2); font-weight: 600; line-height: 1.25; }
+
+p { margin: 0; text-wrap: pretty; }
+
+a { color: var(--blue); text-underline-offset: 3px; }
+a:hover { color: var(--navy); }
+
+:focus-visible { outline: 3px solid var(--cyan); outline-offset: 3px; }
+
+.wrap { width: 100%; max-width: var(--wrap); margin-inline: auto; padding-inline: 24px; }
+@media (min-width: 768px) { .wrap { padding-inline: 40px; } }
+
+.section { padding-block: var(--space-16); }
+@media (min-width: 900px) { .section { padding-block: var(--space-24); } }
+.section--mist { background: var(--mist); }
+.section--navy { background: var(--navy); color: var(--white); }
+.section--navy a:not(.btn) { color: var(--white); }
+
+.lead { font-size: var(--step-1); color: var(--slate); max-width: 62ch; }
+.section--navy .lead { color: var(--on-dark-muted); }
+.muted { color: var(--slate); }
+
+.section-head { display: grid; gap: var(--space-4); margin-bottom: var(--space-12); max-width: 760px; }
+
+/* Buttons: square-cornered, flat. */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: 48px; padding: 12px 22px;
+  border-radius: var(--radius-sm); border: 2px solid transparent;
+  font-family: var(--font-body); font-weight: 600; font-size: var(--step-0); line-height: 1.2;
+  text-decoration: none; cursor: pointer;
+}
+.btn--primary { background: var(--blue); color: var(--white); }
+.btn--primary:hover { background: var(--navy); color: var(--white); }
+.btn--outline { border-color: var(--navy); color: var(--navy); background: transparent; }
+.btn--outline:hover { background: var(--navy); color: var(--white); }
+.section--navy .btn--primary:hover, .on-dark .btn--primary:hover { background: var(--white); color: var(--navy); }
+.btn--light { border-color: var(--white); color: var(--white); background: transparent; }
+.btn--light:hover { background: var(--white); color: var(--navy); }
+.btn-row { display: flex; flex-wrap: wrap; gap: 12px; }
+
+/* The node: the cyan dot from the mark, used to mark list items. */
+.nodes { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+.nodes li { position: relative; padding-left: 22px; }
+.nodes li::before {
+  content: ''; position: absolute; left: 0; top: 0.62em;
+  width: 8px; height: 8px; border-radius: 50%; background: var(--cyan);
+}
+
+/* The 45-degree cut, the brand's signature corner. */
+.cut-tl { clip-path: polygon(var(--cut) 0, 100% 0, 100% 100%, 0 100%, 0 var(--cut)); }
+.cut-br { clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--cut)), calc(100% - var(--cut)) 100%, 0 100%); }
+
+.visually-hidden {
+  position: absolute !important; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap;
+}
+
+.skip-link {
+  position: absolute; left: 16px; top: -100px; z-index: 100;
+  background: var(--navy); color: var(--white); padding: 10px 16px; border-radius: var(--radius-sm);
+}
+.skip-link:focus { top: 16px; color: var(--white); }

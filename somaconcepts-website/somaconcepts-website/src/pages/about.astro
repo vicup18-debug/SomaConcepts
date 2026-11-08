@@ -1,0 +1,144 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { company } from '../data/site';
+import victor from '../assets/team/victor-uzorchikwa.jpg';
+import samuel from '../assets/team/samuel-ikediashi.jpg';
+import gideon from '../assets/team/gideon-onuh.jpg';
+import ebonom from '../assets/team/ebonom-agam.jpg';
+import solak from '../assets/products/solak.png';
+import smartWriter from '../assets/products/smart-writer.png';
+
+const team = [
+  { name: 'Victor Uzorchikwa', role: 'Co-founder and CEO', img: victor },
+  { name: 'Samuel Ikediashi', role: 'Co-founder and Creative Director', img: samuel },
+  { name: 'Gideon Onuh', role: 'Human Resources', img: gideon },
+  { name: 'Ebonom Agam, Esq.', role: 'Legal Partner', img: ebonom },
+];
+
+const promises = [
+  { title: 'Clear, not clever', text: 'Plain words about what we will build, when, and what it costs.' },
+  { title: 'Proof, not hype', text: 'We show work and results instead of adjectives.' },
+  { title: 'Results, not jargon', text: 'We talk about what changes for your business, not the technology behind it.' },
+  { title: 'Partners, not vendors', text: 'We stay after launch and keep improving what we built with you.' },
+];
+---
+<Base title="About" description="Soma Concepts is an Abuja-based technology company that builds and runs the digital side of growing businesses. Meet the team, our products and the Tech Talk academy.">
+  <section class="page-head">
+    <div class="wrap head-grid">
+      <div class="head-copy">
+        <h1>A technology company from Abuja</h1>
+        <p class="lead">{company.name} started in {company.founded} to give growing Nigerian businesses one dependable partner for their apps, websites, automation and marketing. We have served {company.clientsServed} clients so far, from real estate to travel and logistics.</p>
+      </div>
+      <img class="head-mark" src="/brand/soma-mark.svg" alt="" width="200" height="200" />
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="mark-h">
+    <div class="wrap two">
+      <h2 id="mark-h">What our mark means</h2>
+      <div class="prose">
+        <p>Four bands locked into one square. Each band is a part of a business: its apps, its website, its operations and its marketing. The blue corners lock them together, the way we connect them for our clients. The square is the promise: built to last.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--mist" aria-labelledby="team-h">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="team-h">The people behind Soma</h2>
+        <p class="lead">A compact leadership team, backed by developers, designers, video editors and content creators.</p>
+      </div>
+      <ul class="team">
+        {team.map((p) => (
+          <li>
+            <Image src={p.img} alt={`Portrait of ${p.name}`} width={480} height={560} quality={78} class="photo" />
+            <h3>{p.name}</h3>
+            <p class="muted">{p.role}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="products-h">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="products-h">We build our own products too</h2>
+        <p class="lead">Running our own software keeps us honest about what it takes to keep a product working, and that experience goes into every client build.</p>
+      </div>
+      <div class="products">
+        <article>
+          <Image src={solak} alt="Solak logo" width={240} class="product-logo" />
+          <h3>Solak</h3>
+          <p class="muted">Verified attendance and class management for lecturers and students: live check-in, course materials, assignments and announcements in one place. Now in pilot at Kaduna Polytechnic.</p>
+        </article>
+        <article>
+          <Image src={smartWriter} alt="Smart Writer logo" width={420} class="product-logo" />
+          <h3>Smart Writer</h3>
+          <p class="muted">An AI assistant for academic writing, in development.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="tech-talk" class="section section--navy" aria-labelledby="tt-h">
+    <div class="wrap two">
+      <div class="tt-title">
+        <Icon name="training" size={48} dark />
+        <h2 id="tt-h">Tech Talk academy</h2>
+      </div>
+      <div class="prose">
+        <p class="lead">Our academy in Abuja and Kaduna teaches practical, in-demand tech skills to students and young professionals.</p>
+        <p>It also helps us find and train the people who build for our clients.</p>
+        <a class="btn btn--light" href={`/contact/?service=tech-talk`}>Ask about the next cohort</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="promise-h">
+    <div class="wrap">
+      <h2 id="promise-h" class="promise-title">How we work with you</h2>
+      <ul class="promises">
+        {promises.map((p) => <li><h3>{p.title}</h3><p class="muted">{p.text}</p></li>)}
+      </ul>
+    </div>
+  </section>
+
+  <CtaBand />
+</Base>
+
+<style>
+  .page-head { padding-block: 56px; border-bottom: 1px solid var(--hairline); }
+  .head-grid { display: grid; gap: 32px; align-items: center; }
+  @media (min-width: 900px) { .head-grid { grid-template-columns: 1fr 220px; gap: 80px; } }
+  .head-copy { display: grid; gap: 20px; }
+  .head-mark { width: 140px; height: auto; }
+  @media (min-width: 900px) { .head-mark { width: 220px; } }
+
+  .two { display: grid; gap: 24px; }
+  @media (min-width: 900px) { .two { grid-template-columns: 1fr 1.6fr; gap: 80px; } }
+  .prose { display: grid; gap: 18px; max-width: 64ch; justify-items: start; }
+
+  .team { list-style: none; margin: 0; padding: 0; display: grid; gap: 32px 24px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  @media (min-width: 1000px) { .team { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+  .team li { display: grid; gap: 4px; align-content: start; }
+  .team :global(.photo) { width: 100%; aspect-ratio: 6 / 7; height: auto; object-fit: cover; object-position: 50% 15%; margin-bottom: 12px; background: var(--hairline); }
+  .team li:first-child :global(.photo) { clip-path: polygon(40px 0, 100% 0, 100% 100%, 0 100%, 0 40px); }
+  .team h3 { font-size: var(--step-1); }
+
+  .products { display: grid; gap: 24px; }
+  @media (min-width: 800px) { .products { grid-template-columns: 1fr 1fr; gap: 40px; } }
+  .products article { border: 1px solid var(--hairline); padding: 32px; display: grid; gap: 12px; align-content: start; }
+  .products :global(.product-logo) { height: 72px; width: auto; object-fit: contain; object-position: left center; margin-bottom: 8px; }
+
+  .tt-title { display: grid; gap: 20px; align-content: start; }
+
+  .promise-title { margin-bottom: 32px; }
+  .promises { list-style: none; margin: 0; padding: 0; display: grid; gap: 32px; }
+  @media (min-width: 700px) { .promises { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (min-width: 1100px) { .promises { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+  .promises li { border-top: 2px solid var(--navy); padding-top: 18px; display: grid; gap: 8px; align-content: start; }
+</style>

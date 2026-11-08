@@ -1,0 +1,64 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { company } from '../data/site';
+
+interface Props { title?: string; description: string; image?: string }
+const { title, description, image = '/og-image.png' } = Astro.props;
+const fullTitle = title ? `${title} | ${company.name}` : `${company.name}: apps, websites, automation and marketing in Nigeria`;
+const canonical = new URL(Astro.url.pathname, Astro.site).toString();
+const ogImage = new URL(image, Astro.site).toString();
+
+const orgSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  name: company.name,
+  legalName: company.legalName,
+  url: company.url,
+  logo: new URL('/brand/soma-mark.svg', Astro.site).toString(),
+  image: ogImage,
+  telephone: company.phoneIntl,
+  email: company.email,
+  foundingDate: String(company.founded),
+  address: { '@type': 'PostalAddress', addressLocality: company.city, addressCountry: 'NG' },
+  areaServed: 'Nigeria',
+  sameAs: [company.instagram, company.tiktok],
+};
+---
+<!doctype html>
+<html lang="en-NG">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta name="theme-color" content="#0B2545" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={company.name} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="en_NG" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <script type="application/ld+json" set:html={JSON.stringify(orgSchema)} />
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Skip to content</a>
+    <Header />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>
