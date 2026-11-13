@@ -83,3 +83,13 @@ export const testimonials = [
     role: 'Non-profit',
   },
 ];
+
+// Work shown on the site. `image` names a file in src/assets/work; `phone` means a phone screenshot.
+export const projects = [
+  { id: 'airgo', name: 'Airgo', kind: 'Client · Apps, website and admin', summary: 'Hotels, car hire, rides and deliveries in one platform, with escrow payments.', image: 'airgo-mob', phone: true, href: '/work/#airgo-case' },
+  { id: 'soluxe', name: 'Soluxe Homes', kind: 'Client · Company website', summary: 'Verified land and premium homes in Abuja and Lagos, with listings and inspection booking.', image: 'soluxe-desk' },
+  { id: 'crixux', name: 'CRIXUX INTERBIZ', kind: 'Client · Fintech app prototype', summary: 'A money and investing app that works in English, Yorùbá, Hausa and Igbo.', image: 'crixux-desk' },
+  { id: 'nonimedia', name: 'Nonimedia Production Concept', kind: 'Client · Website', summary: 'A gallery-first website for a wedding and event photography studio.', image: 'nonimedia-desk' },
+  { id: 'inspiring-teens', name: 'Inspiring Teens', kind: 'Client · Non-profit website', summary: 'The website for a foundation that mentors teenagers.', image: 'inspiringteens-desk', link: 'https://inspiringteens.com.ng' },
+  { id: 'faithnow', name: 'FaithNow', kind: 'Our product', summary: 'Structured biblical training and a community to grow with, built and run in-house.', image: 'faithnow-desk' },
+];

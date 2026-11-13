@@ -1,0 +1,80 @@
+---
+import Base from '../layouts/Base.astro';
+import { company } from '../data/site';
+const updated = '14 November 2026';
+---
+<Base title="Privacy policy" description="How Soma Concepts handles the information you share with us through our website, WhatsApp, phone and email.">
+  <section class="page-head">
+    <div class="glow breathe" aria-hidden="true"></div>
+    <div class="wrap">
+      <p class="eyebrow">Privacy</p>
+      <h1>Privacy policy</h1>
+      <p class="lead">How we handle the information you share with us. Last updated {updated}.</p>
+    </div>
+  </section>
+
+  <section class="section policy-section">
+    <div class="wrap">
+      <article class="policy glass">
+        <h2>Who we are</h2>
+        <p>{company.legalName} ("Soma Concepts", "we") is a technology company based in {company.city}, {company.country}. For anything about your information, contact us at <a href={`mailto:${company.email}`}>{company.email}</a> or {company.phoneDisplay}.</p>
+
+        <h2>What we collect and why</h2>
+        <h3>The contact form on this website</h3>
+        <p>The form does not send anything to our servers. When you press send, it opens WhatsApp or your email app with your message filled in, and we receive only what you choose to send.</p>
+
+        <h3>WhatsApp</h3>
+        <p>When you message us on WhatsApp ({company.phoneDisplay}), we receive your WhatsApp name, your phone number and your messages.</p>
+        <ul class="nodes">
+          <li>An automated assistant may reply first. It uses Claude, an AI model made by Anthropic, to read your message and write a reply. It is told to say it is an assistant if you ask.</li>
+          <li>Our team can read every conversation and take over at any time. You can ask for a person whenever you like.</li>
+          <li>If you describe a project, we save the details you give (such as your name, business, what you need, timeline and budget range) so we can follow up.</li>
+        </ul>
+
+        <h3>Phone calls and email</h3>
+        <p>We keep the details you give us so we can reply, prepare a proposal and, if we work together, deliver the project.</p>
+
+        <h3>Browsing this website</h3>
+        <p>This website does not use cookies, analytics or advertising trackers. Our hosting provider keeps standard technical logs, such as IP addresses and browser types, to keep the site secure and running.</p>
+
+        <h2>How we use your information</h2>
+        <ul class="nodes">
+          <li>To reply to you, understand your project and send proposals.</li>
+          <li>To deliver and support work you have hired us for.</li>
+          <li>To keep the records the law requires, such as invoices.</li>
+        </ul>
+        <p>We do not sell your information, and we do not use it for advertising.</p>
+
+        <h2>Who helps us process it</h2>
+        <p>We use a small number of service providers, and share only what each needs to do its job:</p>
+        <ul class="nodes">
+          <li><strong>Meta</strong>, which runs WhatsApp and delivers our messages.</li>
+          <li><strong>Anthropic</strong>, whose Claude model powers our WhatsApp assistant's replies.</li>
+          <li><strong>Hosting and database providers</strong> that run our website and our message inbox.</li>
+          <li><strong>Google</strong>, which provides our email.</li>
+        </ul>
+        <p>Some of these providers store data outside Nigeria.</p>
+
+        <h2>How long we keep it</h2>
+        <p>We keep enquiry details only as long as we need them to respond and follow up, and client records for as long as the law requires. You can ask us to delete your details at any time.</p>
+
+        <h2>Your rights</h2>
+        <p>Under the Nigeria Data Protection Act 2023, you can ask us to show you the information we hold about you, correct it, delete it, or stop using it. Write to <a href={`mailto:${company.email}`}>{company.email}</a> and we will respond promptly. If you are unhappy with how we handled your request, you can complain to the Nigeria Data Protection Commission.</p>
+
+        <h2>Changes to this policy</h2>
+        <p>If we change how we handle information, we will update this page and the date at the top.</p>
+      </article>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .policy-section { padding-top: 0; }
+  .policy { max-width: 820px; padding: 36px 24px; border-radius: var(--radius-lg); display: grid; gap: 16px; }
+  @media (min-width: 700px) { .policy { padding: 56px; } }
+  .policy h2 { font-size: var(--step-3); margin-top: 24px; }
+  .policy h2:first-child { margin-top: 0; }
+  .policy h3 { font-size: var(--step-1); margin-top: 8px; }
+  .policy p { color: var(--muted); }
+  .policy a { color: var(--white); }
+</style>
