@@ -2,9 +2,10 @@
 import Base from '../layouts/Base.astro';
 ---
 <Base title="Page not found" description="This page does not exist on the Soma Concepts website.">
-  <section class="section">
+  <section class="section nf-section">
+    <div class="glow breathe" aria-hidden="true"></div>
     <div class="wrap nf">
-      <img src="/brand/soma-mark.svg" alt="" width="120" height="120" />
+      <img class="floaty" src="/brand/soma-mark-reversed.svg" alt="" width="120" height="120" />
       <h1>This page doesn't exist</h1>
       <p class="lead">The link may be old or mistyped. Start from the home page, or tell us what you were looking for.</p>
       <div class="btn-row">
@@ -16,5 +17,8 @@ import Base from '../layouts/Base.astro';
 </Base>
 
 <style>
-  .nf { display: grid; gap: 24px; justify-items: start; min-height: 50vh; align-content: center; }
+  .nf-section { overflow: hidden; }
+  .nf-section > .glow { left: 20%; top: -10%; width: 60%; height: 120%; }
+  .nf { position: relative; display: grid; gap: 24px; justify-items: center; text-align: center; min-height: 55vh; align-content: center; }
+  .nf h1 { font-size: clamp(2.25rem, 1.4rem + 3.4vw, 4rem); }
 </style>

@@ -1,0 +1,65 @@
+---
+import { Image } from 'astro:assets';
+import { projects } from '../data/site';
+
+interface Props { items?: typeof projects; linkTo?: 'work' | 'self' }
+const { items = projects, linkTo = 'work' } = Astro.props;
+
+const shots = import.meta.glob<{ default: ImageMetadata }>('../assets/work/*.webp', { eager: true });
+const shot = (name: string) => shots[`../assets/work/${name}.webp`].default;
+type Project = (typeof projects)[number];
+// On the home page every card opens its place on the work page. On the work page itself,
+// a card links only where there is somewhere to go: the Airgo case study or a live site.
+const hrefFor = (p: Project): string | undefined =>
+  linkTo === 'work' ? (p.href ?? `/work/#${p.id}`) : (p.href ?? ('link' in p ? p.link : undefined));
+---
+<ul class="cards">
+  {items.map((p) => {
+    const href = hrefFor(p);
+    const Tag = href ? 'a' : 'div';
+    return (
+      <li id={p.id}>
+        <Tag class:list={['card', { 'card--link': href }]} href={href}>
+          <div class={`media ${p.phone ? 'media--phone' : ''}`}>
+            {p.phone ? (
+              <div class="mini-phone"><Image src={shot(p.image)} alt={`${p.name} app screen`} widths={[240, 360]} sizes="180px" /></div>
+            ) : (
+              <Image src={shot(p.image)} alt={`${p.name} website`} widths={[480, 720]} sizes="(min-width: 1100px) 380px, (min-width: 700px) 45vw, 90vw" />
+            )}
+          </div>
+          <div class="card-body">
+            <span class="kind">{p.kind}</span>
+            <h3>{p.name}</h3>
+            <p>{p.summary}</p>
+          </div>
+        </Tag>
+      </li>
+    );
+  })}
+</ul>
+
+<style>
+  li { scroll-margin-top: 100px; }
+  .cards { list-style: none; margin: 0; padding: 0; display: grid; gap: 20px; grid-template-columns: repeat(auto-fill, minmax(min(320px, 100%), 1fr)); }
+  .card {
+    height: 100%; display: flex; flex-direction: column; overflow: hidden; border-radius: 20px; color: var(--white); text-decoration: none;
+    background: var(--glass); border: 1px solid var(--line);
+    transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
+  }
+  .card--link:hover { color: var(--white); transform: translateY(-4px); border-color: rgba(120, 170, 255, 0.5); box-shadow: 0 24px 60px rgba(22, 96, 214, 0.3); }
+  .media { height: 230px; overflow: hidden; background: #0B2545; }
+  .media :global(img) { width: 100%; height: 100%; object-fit: cover; object-position: top left; transition: transform 600ms ease; }
+  .card--link:hover .media :global(img) { transform: scale(1.04); }
+  .media--phone {
+    display: flex; justify-content: center; align-items: flex-start; padding-top: 28px;
+    background: radial-gradient(closest-side, rgba(22, 96, 214, 0.65), rgba(6, 21, 46, 0)) center 80% / 120% 120% no-repeat, #0B2545;
+  }
+  .mini-phone { width: 44%; border-radius: 24px; padding: 6px; background: #0A1424; border: 1px solid rgba(255, 255, 255, 0.22); }
+  .mini-phone :global(img) { width: 100%; height: auto; aspect-ratio: 9 / 16; object-fit: cover; object-position: top; border-radius: 18px; }
+  .card--link:hover .mini-phone :global(img) { transform: none; }
+  .card-body { padding: 20px 22px 24px; display: grid; gap: 6px; }
+  .kind { font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--cyan); }
+  .card-body h3 { font-size: 1.375rem; }
+  .card-body p { font-size: var(--step--1); line-height: 1.55; color: var(--muted); }
+  @media (prefers-reduced-motion: reduce) { .card, .media :global(img) { transition: none; } }
+</style>

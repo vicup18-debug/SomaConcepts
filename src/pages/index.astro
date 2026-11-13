@@ -1,121 +1,131 @@
 ---
+import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
-import HeroMark from '../components/HeroMark.astro';
 import Icon from '../components/Icon.astro';
 import CtaBand from '../components/CtaBand.astro';
+import ProjectCards from '../components/ProjectCards.astro';
 import { company, services, process, testimonials } from '../data/site';
+
+const shots = import.meta.glob<{ default: ImageMetadata }>('../assets/work/*.webp', { eager: true });
+const shot = (name: string) => shots[`../assets/work/${name}.webp`].default;
+
+const short: Record<string, string> = {
+  'mobile-apps': 'Android and iOS, with the admin tools behind them.',
+  websites: 'Fast sites and web apps that bring in customers.',
+  automation: 'Forms, invoices and follow-ups that run themselves.',
+  'brand-strategy': 'Logo, voice and templates that look like one company.',
+  ads: 'Meta, Google and TikTok, with spend reported plainly.',
+};
+const shortName: Record<string, string> = { websites: 'Websites' };
 ---
 <Base description="Soma Concepts builds and runs mobile apps, websites, business automation, brand strategy and ads for growing businesses in Nigeria. Based in Abuja.">
 
-  <!-- Hero: the one bold moment. The mark's bands lock together on load. -->
-  <section class="hero">
-    <div class="wrap hero-grid">
-      <div class="hero-copy">
-        <h1>We build and run the digital side of your business.</h1>
-        <p class="lead">Apps, websites, automation and marketing for growing businesses in Nigeria. Made to work on day one, and still working years later.</p>
-        <div class="btn-row">
-          <a class="btn btn--primary" href="/contact/">Start a project</a>
-          <a class="btn btn--outline" href="/work/">See our work</a>
+  <section class="hero" aria-labelledby="hero-h">
+    <div class="glow hero-glow breathe" aria-hidden="true"></div>
+    <div class="wrap hero-copy">
+      <p class="kicker rise"><span class="kline" aria-hidden="true"></span>Built to last<span class="kline kline--r" aria-hidden="true"></span></p>
+      <h1 id="hero-h" class="rise rise-2">
+        <span>We build and run</span>
+        <span class="accent">the digital side</span>
+        <span>of your business.</span>
+      </h1>
+      <p class="hero-lead rise rise-3">Apps, websites, automation and marketing for growing Nigerian businesses, and a team that stays to keep them running.</p>
+      <div class="btn-row hero-ctas rise rise-4">
+        <a class="btn btn--primary" href="/contact/">Start a project <span aria-hidden="true">→</span></a>
+        <a class="btn btn--outline" href="/work/">See our work</a>
+      </div>
+    </div>
+
+    <div class="wrap stage" aria-label="Some of our work on screen" role="img">
+      <div class="desk-light" aria-hidden="true"></div>
+      <div class="laptop">
+        <div class="screen">
+          <Image src={shot('soluxe-desk')} alt="" widths={[640, 960, 1280]} sizes="(min-width: 1100px) 820px, 80vw" loading="eager" fetchpriority="high" />
+          <div class="sheen sweep" aria-hidden="true"></div>
         </div>
-        <p class="proof">Based in {company.city}. {company.clientsServed} clients served since {company.founded}.</p>
+        <div class="base" aria-hidden="true"></div>
+        <p class="chip chip--laptop floaty-slow"><span class="node pulse"></span>Soluxe Homes · real estate website</p>
       </div>
-      <div class="hero-art cut-tl">
-        <HeroMark />
-        <svg class="hero-corner" viewBox="0 0 120 120" aria-hidden="true"><polygon points="120,0 120,120 0,120" fill="#1660D6" /></svg>
+      <div class="phone floaty">
+        <div class="phone-body">
+          <Image src={shot('crixux-mob')} alt="" widths={[240, 360]} sizes="200px" loading="eager" />
+        </div>
+        <p class="chip chip--phone"><strong>CRIXUX app</strong><span>English · Yorùbá · Hausa · Igbo</span></p>
       </div>
     </div>
   </section>
 
-  <!-- Services -->
-  <section class="section" aria-labelledby="services-heading">
+  <section class="wrap services" aria-label="Services">
+    <ul class="svc-grid">
+      {services.map((s) => (
+        <li>
+          <a href={`/services/#${s.id}`} class={`svc ${s.id === 'websites' ? 'svc--on' : ''}`}>
+            <span class="svc-icon"><Icon name={s.icon} size={28} /></span>
+            <span class="svc-name">{shortName[s.id] ?? s.name}</span>
+            <span class="svc-text">{short[s.id] ?? s.summary}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <div class="stats glass">
+      <div><strong>{company.clientsServed}</strong><span>Clients served</span></div>
+      <span class="divider" aria-hidden="true"></span>
+      <div><strong>{services.length}</strong><span>Services, one team</span></div>
+      <span class="divider" aria-hidden="true"></span>
+      <div><strong>{company.founded}</strong><span>Building in Abuja since</span></div>
+      <a class="btn btn--primary" href="/contact/">Start a project <span aria-hidden="true">→</span></a>
+    </div>
+
+    <p class="motto" aria-hidden="true"><span></span>Design · Build · Launch · Run<span></span></p>
+  </section>
+
+  <section class="section work" aria-labelledby="work-h">
     <div class="wrap">
-      <div class="section-head">
-        <h2 id="services-heading">What we do</h2>
-        <p class="lead">Five services, one team. Use one, or let us handle the whole journey from first screen to first customer.</p>
+      <div class="section-head section-head--split">
+        <div>
+          <p class="eyebrow">Our work</p>
+          <h2 id="work-h">Live products, not mockups.</h2>
+          <p class="lead">Every screen here is running for a real business, or for one of our own products.</p>
+        </div>
+        <a class="btn btn--outline" href="/work/">See all work <span aria-hidden="true">→</span></a>
       </div>
-      <ul class="services">
-        {services.map((s) => (
-          <li>
-            <Icon name={s.icon} size={36} />
-            <div>
-              <h3><a href={`/services/#${s.id}`}>{s.name}</a></h3>
-              <p class="muted">{s.summary}</p>
-            </div>
-          </li>
-        ))}
-      </ul>
+      <ProjectCards />
     </div>
   </section>
 
-  <!-- Featured case study -->
-  <section class="section section--navy feature" aria-labelledby="airgo-heading">
-    <div class="wrap feature-grid">
-      <div class="feature-copy">
-        <p class="kicker">Case study</p>
-        <h2 id="airgo-heading">Airgo: one platform for stays, car hire, rides and deliveries</h2>
-        <p class="lead">A Nigerian travel and logistics company wanted to take its business online. We designed and built the whole platform, and we still run it.</p>
-        <a class="btn btn--primary" href="/work/">Read the Airgo case study</a>
+  <section class="section stay" aria-labelledby="stay-h">
+    <div class="wrap stay-grid">
+      <div class="stay-copy">
+        <p class="eyebrow">How we work</p>
+        <h2 id="stay-h">A team in Abuja that stays after launch.</h2>
+        <p class="lead">Most agencies hand over and leave. We host, fix and improve what we build, because we run our own products the same way.</p>
+        <div class="btn-row">
+          <a class="btn btn--primary" href="/contact/">Start a project <span aria-hidden="true">→</span></a>
+          <a class="btn btn--outline" href="/about/">Meet the team</a>
+        </div>
       </div>
-      <dl class="facts">
-        <div><dt>3</dt><dd>Android apps: customers, hotel partners, drivers</dd></div>
-        <div><dt>1</dt><dd>Customer website that matches the app</dd></div>
-        <div><dt>Escrow</dt><dd>Payments held until the stay or car hire is delivered</dd></div>
-        <div><dt>PIN</dt><dd>Every partner payout approved by staff before it leaves</dd></div>
-      </dl>
-    </div>
-  </section>
-
-  <!-- Process: a real sequence, so it is numbered -->
-  <section class="section" aria-labelledby="process-heading">
-    <div class="wrap">
-      <div class="section-head">
-        <h2 id="process-heading">How a project runs</h2>
-        <p class="lead">Typical times for a website or a first app. Larger platforms take longer, and we agree the dates with you up front.</p>
-      </div>
-      <ol class="steps">
+      <ol class="steps glass">
         {process.map((p, i) => (
           <li>
-            <span class="step-num" aria-hidden="true">{i + 1}</span>
-            <h3>{p.name}</h3>
-            <p class="time">{p.time}</p>
-            <p class="muted">{p.text}</p>
+            <span class="step-no">{String(i + 1).padStart(2, '0')}</span>
+            <div>
+              <h3>{p.name} <span>{p.time}</span></h3>
+              <p>{p.text}</p>
+            </div>
           </li>
         ))}
       </ol>
     </div>
   </section>
 
-  <!-- Why us -->
-  <section class="section section--mist" aria-labelledby="why-heading">
-    <div class="wrap why-grid">
-      <div class="section-head">
-        <h2 id="why-heading">Why clients stay with us</h2>
-        <p class="lead">Most agencies hand over a project and move on. We are set up to stay.</p>
-      </div>
-      <div class="why">
-        <div>
-          <h3>We run software, not only build it</h3>
-          <p class="muted">We run our own products, so hosting, updates and real users are everyday work for us. That is what keeps your app working after launch.</p>
-        </div>
-        <div>
-          <h3>One partner from build to growth</h3>
-          <p class="muted">Your app, website, automation and ads come from one team, so nothing gets lost between a developer, a designer and a marketer.</p>
-        </div>
-        <div>
-          <h3>We train our own engineers</h3>
-          <p class="muted">Our Tech Talk academy in Abuja and Kaduna gives us a steady pipeline of skilled people, so your project is never short of hands.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Testimonials -->
-  <section class="section" aria-labelledby="clients-heading">
+  <section class="section quotes-section" aria-labelledby="quotes-h">
     <div class="wrap">
-      <h2 id="clients-heading" class="clients-title">What clients say</h2>
+      <h2 id="quotes-h" class="quotes-title">What clients say</h2>
       <div class="quotes">
         {testimonials.map((t) => (
-          <figure>
+          <figure class="glass">
+            <svg class="qmark" width="36" height="28" viewBox="0 0 36 28" aria-hidden="true"><path d="M0 28V16L8 0h7L10 14h5v14H0Zm21 0V16l8-16h7l-5 14h5v14H21Z" fill="#2BB3F0"/></svg>
             <blockquote><p>{t.quote}</p></blockquote>
             <figcaption><strong>{t.who}</strong><span>{t.role}</span></figcaption>
           </figure>
@@ -129,59 +139,111 @@ import { company, services, process, testimonials } from '../data/site';
 
 <style>
   /* Hero */
-  .hero { padding-block: 40px 64px; }
-  @media (min-width: 900px) { .hero { padding-block: 72px 96px; } }
-  .hero-grid { display: grid; gap: 40px; align-items: center; }
-  @media (min-width: 900px) { .hero-grid { grid-template-columns: 1.15fr 1fr; gap: 64px; } }
-  .hero-copy { display: grid; gap: 24px; }
-  .hero h1 { max-width: 14ch; }
-  .proof { color: var(--slate); font-size: var(--step--1); display: flex; align-items: center; gap: 10px; }
-  .proof::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--cyan); flex: none; }
-  .hero-art { --cut: 64px; position: relative; background: var(--navy); aspect-ratio: 1 / 1; display: grid; place-items: center; padding: 18%; max-width: 520px; width: 100%; justify-self: center; }
-  .hero-corner { position: absolute; right: 0; bottom: 0; width: 22%; height: auto; }
+  .hero { position: relative; padding-top: 64px; overflow: hidden; }
+  @media (min-width: 900px) { .hero { padding-top: 88px; } }
+  .hero-glow { left: 50%; top: 380px; width: 1100px; height: 760px; margin-left: -550px; }
+  .hero-copy { position: relative; display: grid; justify-items: center; text-align: center; gap: 22px; }
+  .kicker { display: flex; align-items: center; gap: 16px; color: var(--muted); font-family: var(--font-display); font-style: italic; font-weight: 400; font-size: clamp(1.25rem, 1rem + 1vw, 1.875rem); }
+  .kline { width: 56px; height: 1px; background: linear-gradient(90deg, rgba(43,179,240,0), var(--cyan)); }
+  .kline--r { background: linear-gradient(90deg, var(--cyan), rgba(43,179,240,0)); }
+  .hero h1 { font-size: clamp(2.75rem, 1rem + 6.6vw, 6rem); line-height: 0.98; letter-spacing: -0.02em; }
+  .hero h1 span { display: block; }
+  .hero-lead { max-width: 640px; font-size: clamp(1.0625rem, 0.95rem + 0.5vw, 1.3125rem); line-height: 1.5; color: var(--muted); }
+  .hero-ctas { justify-content: center; margin-top: 6px; }
+
+  .stage { position: relative; max-width: 1080px; margin-top: 56px; padding-bottom: 28px; }
+  .desk-light { position: absolute; left: 6%; right: 6%; bottom: -10px; height: 90px; border-radius: 50%; background: radial-gradient(closest-side, rgba(120,170,255,0.32), rgba(6,21,46,0)); }
+  .laptop { position: relative; width: 82%; }
+  .screen {
+    position: relative; overflow: hidden; aspect-ratio: 16 / 10;
+    border-radius: 16px 16px 6px 6px; padding: 10px 10px 14px;
+    background: linear-gradient(180deg, #1B2B44, #0C1729);
+    border: 1px solid rgba(255,255,255,0.14);
+    box-shadow: 0 40px 120px rgba(22,96,214,0.45), 0 0 0 1px rgba(79,143,245,0.25);
+  }
+  .screen :global(img) { width: 100%; height: 100%; object-fit: cover; object-position: top; border-radius: 6px; }
+  .sheen { position: absolute; top: 0; bottom: 0; left: 0; width: 30%; background: linear-gradient(100deg, rgba(255,255,255,0), rgba(255,255,255,0.10), rgba(255,255,255,0)); pointer-events: none; }
+  .base { width: 112%; margin-left: -6%; height: clamp(10px, 1.6vw, 22px); border-radius: 2px 2px 22px 22px; background: linear-gradient(180deg, #C4CFDE, #6C7A90 70%, #3B475B); }
+  .phone { position: absolute; right: 3%; bottom: 0; width: 22%; min-width: 104px; }
+  .phone-body {
+    transform: rotate(-4deg); border-radius: clamp(18px, 3vw, 34px); padding: clamp(5px, 0.7vw, 8px);
+    background: #0A1424; border: 1px solid rgba(255,255,255,0.22);
+    box-shadow: 0 30px 80px rgba(0,0,0,0.55), 0 0 60px rgba(43,179,240,0.25);
+  }
+  .phone-body :global(img) { width: 100%; height: auto; aspect-ratio: 9 / 17.5; object-fit: cover; object-position: top; border-radius: clamp(13px, 2.4vw, 27px); }
+  .chip {
+    position: absolute; display: none; gap: 10px; align-items: center;
+    padding: 10px 16px; border-radius: 999px; font-size: 14px; font-weight: 600; white-space: nowrap;
+    background: rgba(13,32,64,0.75); border: 1px solid rgba(255,255,255,0.16);
+    -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+  }
+  .chip--laptop { left: -24px; top: 36px; }
+  .chip--phone { right: 97%; bottom: 16%; flex-direction: column; align-items: flex-start; gap: 0; border-radius: 12px; padding: 10px 14px; font-size: 13px; line-height: 1.4; }
+  .chip--phone strong { font-weight: 600; }
+  .chip--phone span { color: var(--muted); font-weight: 400; }
+  @media (min-width: 820px) { .chip { display: flex; } }
 
   /* Services */
-  .services { list-style: none; margin: 0; padding: 0; display: grid; border-top: 1px solid var(--hairline); }
-  @media (min-width: 800px) { .services { grid-template-columns: 1fr 1fr; column-gap: 64px; } }
-  .services li { display: grid; grid-template-columns: 36px 1fr; gap: 20px; padding-block: 28px; border-bottom: 1px solid var(--hairline); }
-  .services h3 { margin-bottom: 6px; }
-  .services h3 a { color: var(--ink); text-decoration: none; }
-  .services h3 a:hover { color: var(--blue); text-decoration: underline; }
+  .services { position: relative; margin-top: 88px; }
+  .svc-grid { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(min(150px, 100%), 1fr)); }
+  @media (min-width: 1000px) { .svc-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); } }
+  .svc {
+    height: 100%; display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center;
+    padding: 26px 18px 22px; border-radius: var(--radius); color: var(--white); text-decoration: none;
+    background: linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.03));
+    border: 1px solid rgba(255,255,255,0.14);
+    -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px);
+    transition: transform 200ms ease, border-color 200ms ease, box-shadow 200ms ease;
+  }
+  .svc:hover { color: var(--white); transform: translateY(-4px); border-color: rgba(120,170,255,0.6); box-shadow: 0 20px 50px rgba(22,96,214,0.35); }
+  .svc--on { background: linear-gradient(180deg, #1660D6, #0F3F8F); border-color: rgba(120,170,255,0.6); box-shadow: 0 20px 60px rgba(22,96,214,0.45); }
+  .svc-icon { width: 56px; height: 56px; border-radius: 50%; display: grid; place-items: center; background: rgba(22,96,214,0.35); box-shadow: inset 0 0 0 1px rgba(79,143,245,0.6); }
+  .svc--on .svc-icon { background: rgba(255,255,255,0.16); box-shadow: none; }
+  .svc-name { font-family: var(--font-display); font-weight: 600; font-size: 1.25rem; }
+  .svc-text { font-size: var(--step--1); line-height: 1.45; color: var(--muted); }
+  @media (max-width: 520px) {
+    .svc { padding: 20px 12px 18px; gap: 10px; }
+    .svc-icon { width: 46px; height: 46px; }
+    .svc-name { font-size: 1.0625rem; }
+    .svc-text { font-size: 0.8125rem; }
+    .stats { padding: 20px 16px; }
+    .svc-grid li:last-child:nth-child(odd) { grid-column: 1 / -1; }
+    .motto span { flex-basis: 20px; }
+  }
+  .svc--on .svc-text { color: #DCE7F7; }
 
-  /* Feature */
-  .feature { position: relative; overflow: hidden; }
-  .feature-grid { display: grid; gap: 48px; align-items: center; }
-  @media (min-width: 900px) { .feature-grid { grid-template-columns: 1.2fr 1fr; gap: 80px; } }
-  .feature-copy { display: grid; gap: 20px; justify-items: start; }
-  .kicker { color: var(--cyan); font-weight: 600; }
-  .facts { margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: #24426E; }
-  .facts div { background: var(--navy); padding: 24px 20px 24px 0; }
-  .facts div:nth-child(even) { padding-left: 20px; }
-  .facts dt { font-family: var(--font-display); font-weight: 700; font-size: var(--step-3); color: var(--white); line-height: 1.1; margin-bottom: 8px; }
-  .facts dd { margin: 0; color: var(--on-dark-muted); font-size: var(--step--1); }
+  .stats { margin-top: 28px; display: flex; flex-wrap: wrap; align-items: center; gap: 20px 24px; padding: 22px 28px; border-radius: 22px; }
+  .stats > div { flex: 1 1 90px; display: grid; justify-items: center; gap: 2px; text-align: center; }
+  .stats strong { font-family: var(--font-display); font-weight: 700; font-size: clamp(1.75rem, 1.2rem + 1.8vw, 2.5rem); line-height: 1.1; color: var(--blue-light); }
+  .stats span { font-size: var(--step--1); color: var(--muted); }
+  .stats .divider { display: none; width: 1px; height: 56px; background: var(--line); }
+  .stats .btn { flex: 1 1 100%; }
+  @media (min-width: 900px) { .stats .divider { display: block; } .stats .btn { flex: 0 0 auto; } }
 
-  /* Steps */
-  .steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 32px; }
-  @media (min-width: 700px) { .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-  @media (min-width: 1100px) { .steps { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 40px; } }
-  .steps li { display: grid; gap: 8px; align-content: start; border-top: 2px solid var(--navy); padding-top: 20px; }
-  .step-num { font-family: var(--font-display); font-weight: 700; font-size: var(--step-3); color: var(--blue); line-height: 1; }
-  .time { font-size: var(--step--1); font-weight: 600; color: var(--navy); }
+  .motto { margin-top: 48px; display: flex; align-items: center; justify-content: center; gap: 18px; color: var(--faint); font-family: var(--font-display); font-weight: 500; font-size: clamp(0.95rem, 0.8rem + 0.6vw, 1.25rem); letter-spacing: 0.12em; text-align: center; }
+  .motto span { flex: 0 0 64px; height: 1px; background: rgba(143,164,194,0.5); }
 
-  /* Why */
-  .why-grid .section-head { margin-bottom: 40px; }
-  .why { display: grid; gap: 32px; }
-  @media (min-width: 900px) { .why { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 48px; } }
-  .why h3 { margin-bottom: 10px; }
+  /* Work */
+  .work { padding-top: var(--space-32); }
+  /* How we work */
+  .stay-grid { display: grid; gap: 48px; align-items: center; }
+  @media (min-width: 960px) { .stay-grid { grid-template-columns: 1fr 1.05fr; gap: 72px; } }
+  .stay-copy { display: grid; gap: 20px; justify-items: start; }
+  .steps { list-style: none; margin: 0; padding: 12px 28px; display: grid; border-radius: var(--radius-lg); }
+  .steps li { display: grid; grid-template-columns: 44px 1fr; gap: 16px; padding-block: 20px; border-bottom: 1px solid var(--line); }
+  .steps li:last-child { border-bottom: 0; }
+  .step-no { font-family: var(--font-display); font-weight: 700; font-size: 1.25rem; color: var(--blue-light); }
+  .steps h3 { font-size: 1.25rem; display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: baseline; }
+  .steps h3 span { font-family: var(--font-body); font-size: var(--step--1); font-weight: 500; color: var(--cyan); }
+  .steps p { margin-top: 6px; color: var(--muted); font-size: 0.9375rem; }
 
   /* Quotes */
-  .clients-title { margin-bottom: 40px; }
-  .quotes { display: grid; gap: 24px; }
-  @media (min-width: 900px) { .quotes { grid-template-columns: 1fr 1fr; gap: 40px; } }
-  figure { margin: 0; padding: 32px; background: var(--mist); display: grid; gap: 20px; align-content: space-between; }
-  figure:first-child { --cut: 32px; clip-path: polygon(var(--cut) 0, 100% 0, 100% 100%, 0 100%, 0 var(--cut)); }
-  blockquote { margin: 0; font-size: var(--step-1); line-height: 1.55; }
-  blockquote p::before { content: '“'; } blockquote p::after { content: '”'; }
+  .quotes-section { padding-top: 0; }
+  .quotes-title { margin-bottom: 32px; }
+  .quotes { display: grid; gap: 20px; }
+  @media (min-width: 900px) { .quotes { grid-template-columns: 1fr 1fr; } }
+  figure { margin: 0; padding: 32px; display: grid; gap: 20px; align-content: space-between; border-radius: var(--radius-lg); }
+  blockquote { margin: 0; font-size: var(--step-1); line-height: 1.6; }
   figcaption { display: grid; gap: 2px; font-size: var(--step--1); }
-  figcaption span { color: var(--slate); }
+  figcaption span { color: var(--muted); }
 </style>
