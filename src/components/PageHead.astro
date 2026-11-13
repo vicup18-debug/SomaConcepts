@@ -1,0 +1,24 @@
+---
+import FlowLines from './FlowLines.astro';
+interface Props { eyebrow?: string; title: string; lead?: string }
+const { eyebrow, title, lead } = Astro.props;
+---
+<section class="page-head">
+  <FlowLines variant="wave" />
+  <div class="orb breathe glow" aria-hidden="true"></div>
+  <span class="spark twinkle-2" style="left: 88%; top: 30%;" aria-hidden="true"></span>
+  <div class="wrap inner">
+    {eyebrow && <p class="eyebrow rise">{eyebrow}</p>}
+    <h1 class="rise">{title}</h1>
+    {lead && <p class="lead rise-2">{lead}</p>}
+    <slot />
+  </div>
+</section>
+
+<style>
+  .page-head { position: relative; overflow: hidden; padding-block: 72px 56px; border-bottom: 1px solid var(--line); }
+  @media (min-width: 900px) { .page-head { padding-block: 112px 80px; } }
+  .glow { right: -160px; top: -220px; width: 620px; height: 620px; background: radial-gradient(closest-side, rgba(22, 96, 214, 0.45), rgba(5, 15, 34, 0)); }
+  .inner { display: grid; gap: 20px; justify-items: start; }
+  h1 { max-width: 18ch; }
+</style>

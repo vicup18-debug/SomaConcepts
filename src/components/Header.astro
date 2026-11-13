@@ -11,7 +11,7 @@ const isCurrent = (href: string) => path === href.replace(/\/$/, '');
 <header class="site-header">
   <div class="wrap bar">
     <a href="/" class="logo" aria-label="Soma Concepts, home">
-      <img src="/brand/soma-logo-horizontal.svg" alt="Soma Concepts" width="109" height="40" />
+      <img src="/brand/soma-logo-horizontal-reversed.svg" alt="Soma Concepts" width="109" height="40" />
     </a>
 
     <nav class="nav-desktop" aria-label="Main">
@@ -20,7 +20,7 @@ const isCurrent = (href: string) => path === href.replace(/\/$/, '');
           <li><a href={l.href} aria-current={isCurrent(l.href) ? 'page' : undefined}>{l.label}</a></li>
         ))}
       </ul>
-      <a href="/contact/" class="btn btn--primary">Start a project</a>
+      <a href="/contact/" class="btn btn--cyan">Start a project</a>
     </nav>
 
     <details class="nav-mobile">
@@ -41,26 +41,27 @@ const isCurrent = (href: string) => path === href.replace(/\/$/, '');
 </header>
 
 <style>
-  .site-header { position: sticky; top: 0; z-index: 50; background: rgba(255, 255, 255, 0.96); border-bottom: 1px solid var(--hairline); }
-  @supports (backdrop-filter: blur(8px)) { .site-header { background: rgba(255, 255, 255, 0.88); backdrop-filter: blur(8px); } }
+  .site-header { position: sticky; top: 0; z-index: 50; background: rgba(5, 15, 34, 0.82); border-bottom: 1px solid var(--line); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); }
   .bar { display: flex; align-items: center; justify-content: space-between; gap: 24px; min-height: 76px; }
-  .logo img { height: 44px; width: auto; }
+  .logo img { height: 40px; width: auto; }
 
   ul { list-style: none; margin: 0; padding: 0; }
-  .nav-desktop { display: none; align-items: center; gap: 32px; }
-  .nav-desktop ul { display: flex; gap: 28px; }
-  .nav-desktop a:not(.btn), .sheet a:not(.btn) { color: var(--ink); text-decoration: none; font-weight: 500; }
-  .nav-desktop a:not(.btn):hover { color: var(--blue); }
-  a[aria-current='page'] { color: var(--blue) !important; box-shadow: inset 0 -2px 0 var(--blue); }
+  .nav-desktop { display: none; align-items: center; gap: 36px; }
+  .nav-desktop ul { display: flex; gap: 32px; }
+  .nav-desktop a:not(.btn), .sheet a:not(.btn) { color: var(--muted); text-decoration: none; font-weight: 500; }
+  .nav-desktop a:not(.btn):hover, .sheet a:not(.btn):hover { color: #FFFFFF; }
+  a[aria-current='page'] { color: #FFFFFF !important; box-shadow: inset 0 -2px 0 var(--cyan); padding-bottom: 4px; }
+  .nav-desktop .btn { min-height: 42px; padding: 9px 18px; font-size: 15px; }
 
-  .nav-mobile summary { list-style: none; display: flex; align-items: center; gap: 10px; min-height: 44px; padding: 0 4px; cursor: pointer; font-weight: 600; }
+  .nav-mobile summary { list-style: none; display: flex; align-items: center; gap: 10px; min-height: 44px; padding: 0 4px; cursor: pointer; font-weight: 600; color: #FFFFFF; }
   .nav-mobile summary::-webkit-details-marker { display: none; }
   .burger { display: grid; gap: 6px; width: 22px; }
-  .burger span { display: block; height: 2px; background: var(--navy); transition: transform 200ms ease; }
+  .burger span { display: block; height: 2px; background: #FFFFFF; transition: transform 200ms ease; }
   .nav-mobile[open] .burger span:first-child { transform: translateY(4px) rotate(45deg); }
   .nav-mobile[open] .burger span:last-child { transform: translateY(-4px) rotate(-45deg); }
-  .sheet { position: absolute; left: 0; right: 0; top: 100%; background: var(--white); border-bottom: 1px solid var(--hairline); padding: 8px 24px 24px; display: grid; gap: 16px; }
-  .sheet li a { display: block; padding: 14px 0; border-bottom: 1px solid var(--hairline); font-size: var(--step-1); }
+  .sheet { position: absolute; left: 0; right: 0; top: 100%; background: #071530; border-bottom: 1px solid var(--line); padding: 8px 20px 24px; display: grid; gap: 16px; }
+  .sheet li a { display: block; padding: 14px 0; border-bottom: 1px solid var(--line); font-size: var(--step-1); }
+  .sheet a[aria-current='page'] { box-shadow: none; }
 
   @media (min-width: 900px) {
     .nav-desktop { display: flex; }

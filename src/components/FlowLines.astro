@@ -1,0 +1,27 @@
+---
+// The moving lines from the logo's circuits: a faint track with a cyan pulse travelling along it.
+interface Props { variant?: 'hero' | 'down' | 'wave'; class?: string }
+const { variant = 'hero', class: cls = '' } = Astro.props;
+const paths: Record<string, string[]> = {
+  // Paths stay clear of the text column: along the top margin, and rising through the artwork on the right.
+  hero: ['M560 940 C 700 720, 780 560, 1000 500 S 1300 320, 1500 120', 'M-60 70 C 220 30, 460 20, 720 60 S 1120 20, 1500 50'],
+  down: ['M1500 60 C 1260 140, 1120 360, 980 560 S 760 900, 640 960'],
+  // Along the top margin, then down the right edge, clear of headings.
+  wave: ['M-60 36 C 300 8, 640 8, 960 28 S 1320 260, 1500 560'],
+};
+const ds = paths[variant];
+---
+<svg class={`flow-lines ${cls}`} viewBox="0 0 1440 900" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+  {ds.map((d, i) => (
+    <>
+      <path d={d} fill="none" stroke={i % 2 ? 'rgba(79,143,245,0.16)' : 'rgba(43,179,240,0.18)'} stroke-width="2" vector-effect="non-scaling-stroke" />
+      <path class="flow" d={d} fill="none" stroke={i % 2 ? '#4F8FF5' : '#2BB3F0'} stroke-width="2" stroke-dasharray="4 12" stroke-linecap="round" vector-effect="non-scaling-stroke" style={i ? 'animation-duration: 12s' : undefined} />
+    </>
+  ))}
+</svg>
+
+<style>
+  /* On narrow screens the text fills the width, so the lines would run through it: hide them there. */
+  .flow-lines { position: absolute; left: 0; top: 0; width: 100%; height: 100%; pointer-events: none; display: none; }
+  @media (min-width: 1000px) { .flow-lines { display: block; } }
+</style>

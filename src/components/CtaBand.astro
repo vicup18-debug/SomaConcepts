@@ -3,28 +3,35 @@ import { company, whatsappLink } from '../data/site';
 interface Props { heading?: string; text?: string }
 const {
   heading = 'Tell us what you need to build.',
-  text = 'Send a few lines about your business. We reply with next steps and an honest view of cost and time.',
+  text = 'Send a few lines about your business on WhatsApp. We reply with next steps and an honest view of cost and time.',
 } = Astro.props;
 ---
 <section class="cta" aria-labelledby="cta-heading">
-  <div class="wrap inner">
-    <div class="copy">
-      <h2 id="cta-heading">{heading}</h2>
-      <p>{text}</p>
-    </div>
-    <div class="btn-row on-dark">
-      <a class="btn btn--primary" href={whatsappLink()}>Chat on WhatsApp</a>
-      <a class="btn btn--light" href={`tel:${company.phoneIntl}`}>Call {company.phoneDisplay}</a>
+  <div class="wrap">
+    <div class="panel">
+      <div class="orb breathe" aria-hidden="true"></div>
+      <span class="spark twinkle" style="left: 62%; top: 22%;" aria-hidden="true"></span>
+      <span class="spark twinkle-3" style="left: 8%; bottom: 18%;" aria-hidden="true"></span>
+      <div class="copy">
+        <h2 id="cta-heading">{heading}</h2>
+        <p>{text}</p>
+      </div>
+      <div class="btn-row">
+        <a class="btn btn--primary" href={whatsappLink()}>Chat on WhatsApp <span class="arrow" aria-hidden="true">→</span></a>
+        <a class="btn btn--ghost" href={`tel:${company.phoneIntl}`}>Call {company.phoneDisplay}</a>
+      </div>
     </div>
   </div>
 </section>
 
 <style>
-  .cta { background: var(--blue); color: var(--white); padding-block: var(--space-16); }
-  .inner { display: grid; gap: 32px; align-items: end; }
-  @media (min-width: 900px) { .inner { grid-template-columns: 1.4fr 1fr; } .btn-row { justify-content: flex-end; } }
+  .cta { padding-block: 24px 96px; }
+  .panel { position: relative; overflow: hidden; display: grid; gap: 32px; align-items: end; padding: 48px 28px; border-radius: 24px; background: linear-gradient(135deg, #0B2A5C 0%, #081A36 60%); border: 1px solid rgba(79, 143, 245, 0.35); }
+  @media (min-width: 900px) { .panel { grid-template-columns: 1.4fr 1fr; padding: 64px 56px; } .btn-row { justify-content: flex-end; } }
+  .orb { right: -140px; top: -180px; width: 520px; height: 520px; background: radial-gradient(closest-side, rgba(43, 179, 240, 0.35), rgba(8, 26, 54, 0)); }
+  .copy, .btn-row { position: relative; }
+  .panel .spark { display: none; }
+  @media (min-width: 900px) { .panel .spark { display: block; } }
   h2 { font-size: var(--step-4); margin-bottom: 14px; }
-  p { color: #DCE7FB; max-width: 52ch; font-size: var(--step-1); }
-  .btn--primary { background: var(--white); color: var(--navy); }
-  .btn--primary:hover { background: var(--navy); color: var(--white) !important; }
+  p { color: var(--muted); max-width: 52ch; font-size: var(--step-1); }
 </style>
