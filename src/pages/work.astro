@@ -1,7 +1,12 @@
 ---
 import Base from '../layouts/Base.astro';
+import PageHead from '../components/PageHead.astro';
 import CtaBand from '../components/CtaBand.astro';
+import Phone from '../components/Phone.astro';
+import ProjectCard from '../components/ProjectCard.astro';
 import { testimonials } from '../data/site';
+import { projects } from '../data/projects';
+import airgoPhone from '../assets/work/airgo-phone.jpg';
 
 const parts = [
   { name: 'Airgo app', who: 'Customers', what: 'Book stays, request car hire, rides and deliveries, see nearby drivers on a map and track every booking.' },
@@ -11,27 +16,38 @@ const parts = [
   { name: 'Admin dashboard', who: 'Airgo staff', what: 'Approve partners, manage bookings and approve every payout with a PIN.' },
 ];
 ---
-<Base title="Work" description="How Soma Concepts designed, built and runs Airgo: three Android apps, a customer website and an admin system with escrow payments for a Nigerian travel and logistics company.">
-  <section class="page-head">
-    <div class="wrap">
-      <p class="kicker">Case study</p>
-      <h1>Airgo</h1>
-      <p class="lead">One platform where Nigerians book hotels and apartments, hire cars, request rides and send packages. We designed it, built it and run it.</p>
-      <dl class="glance">
-        <div><dt>Client</dt><dd>Airgo, a travel and logistics company backed by an established travel agency</dd></div>
-        <div><dt>What we did</dt><dd>Product design, three mobile apps, customer website, admin dashboard, payments, launch planning</dd></div>
-        <div><dt>Status</dt><dd>Rolling out on Google Play. Flight booking in development.</dd></div>
-      </dl>
+<Base title="Work" description="Live apps and websites built by Soma Concepts for Nigerian businesses, including the Airgo travel and logistics platform, Soluxe Homes, Nonimedia, Megavolt Energy and more.">
+  <PageHead eyebrow="Our work" title="Live products, not mockups." lead="Every project here is running today for a real business. Open any of them and try it." />
+
+  <section class="section" aria-label="All projects">
+    <div class="wrap grid">
+      {projects.map((p) => <ProjectCard project={p} />)}
     </div>
   </section>
 
-  <section class="section">
-    <div class="wrap two">
-      <div>
-        <h2>The challenge</h2>
+  <section id="airgo" class="section section--raised case" aria-labelledby="airgo-h">
+    <div class="wrap case-head">
+      <div class="case-copy">
+        <p class="eyebrow">Case study</p>
+        <h2 id="airgo-h">Airgo: one platform for stays, car hire, rides and deliveries</h2>
+        <p class="lead">One platform where Nigerians book hotels and apartments, hire cars, request rides and send packages. We designed it, built it and run it.</p>
+        <dl class="glance">
+          <div><dt>Client</dt><dd>Airgo, a travel and logistics company backed by an established travel agency</dd></div>
+          <div><dt>What we did</dt><dd>Product design, three mobile apps, customer website, admin dashboard, payments, launch planning</dd></div>
+          <div><dt>Status</dt><dd>Rolling out on Google Play. Flight booking in development.</dd></div>
+        </dl>
+        <div class="btn-row"><a class="btn btn--ghost" href="https://airgo.ng" target="_blank" rel="noopener">Visit airgo.ng <span class="arrow" aria-hidden="true">↗</span></a></div>
       </div>
+      <div class="case-phone">
+        <div class="orb breathe case-orb" aria-hidden="true"></div>
+        <div class="float"><Phone src={airgoPhone} alt="Airgo app home screen" tilt={5} glow width={340} /></div>
+      </div>
+    </div>
+
+    <div class="wrap two">
+      <h3 class="side">The challenge</h3>
       <div class="prose">
-        <p>Airgo's founder already ran a travel agency and wanted one platform for stays, car hire, rides and deliveries. Each service works differently, so the platform had to handle all of them without confusing customers or partners.</p>
+        <p class="muted">Airgo's founder already ran a travel agency and wanted one platform for stays, car hire, rides and deliveries. Each service works differently, so the platform had to handle all of them without confusing customers or partners.</p>
         <ul class="nodes">
           <li><strong>Different payment models.</strong> Stays and car hire need money held until the service is delivered. Rides and deliveries are paid to drivers in cash or by transfer.</li>
           <li><strong>Three kinds of users.</strong> Customers, hotel and apartment owners, and drivers each need their own tools and payouts.</li>
@@ -40,34 +56,29 @@ const parts = [
         </ul>
       </div>
     </div>
-  </section>
 
-  <section class="section section--mist" aria-labelledby="built-h">
-    <div class="wrap">
-      <div class="section-head">
-        <h2 id="built-h">What we built</h2>
-        <p class="lead">Five parts that share one set of accounts, bookings and payments.</p>
-      </div>
-      <div class="table-wrap">
-        <table>
-          <thead><tr><th scope="col">Part</th><th scope="col">Used by</th><th scope="col">What it does</th></tr></thead>
-          <tbody>
-            {parts.map((p) => <tr><th scope="row">{p.name}</th><td>{p.who}</td><td>{p.what}</td></tr>)}
-          </tbody>
-        </table>
-      </div>
-      <ul class="nodes features">
-        <li><strong>Escrow payments</strong> for stays and car hire: customers pay up front, partners are paid once the service is delivered.</li>
-        <li><strong>Bidding for car hire.</strong> Customers send a request, owners reply with a price, and the customer has an hour to accept.</li>
-        <li><strong>Prepaid wallets</strong> for drivers and riders, so Airgo collects its commission automatically on each accepted job.</li>
-        <li><strong>Safe payouts.</strong> No payout leaves without staff approval and a PIN.</li>
-      </ul>
-    </div>
-  </section>
-
-  <section class="section">
     <div class="wrap two">
-      <div><h2>How we worked</h2></div>
+      <h3 class="side">What we built</h3>
+      <div class="prose">
+        <div class="table-wrap glass">
+          <table>
+            <thead><tr><th scope="col">Part</th><th scope="col">Used by</th><th scope="col">What it does</th></tr></thead>
+            <tbody>
+              {parts.map((p) => <tr><th scope="row">{p.name}</th><td>{p.who}</td><td>{p.what}</td></tr>)}
+            </tbody>
+          </table>
+        </div>
+        <ul class="nodes">
+          <li><strong>Escrow payments</strong> for stays and car hire: customers pay up front, partners are paid once the service is delivered.</li>
+          <li><strong>Bidding for car hire.</strong> Customers send a request, owners reply with a price, and the customer has an hour to accept.</li>
+          <li><strong>Prepaid wallets</strong> for drivers and riders, so Airgo collects its commission automatically on each accepted job.</li>
+          <li><strong>Safe payouts.</strong> No payout leaves without staff approval and a PIN.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="wrap two">
+      <h3 class="side">How we worked</h3>
       <ol class="how">
         <li><strong>Audit.</strong> We checked the existing site against leading booking platforms and fixed the critical issues first.</li>
         <li><strong>Design.</strong> We designed all three apps in Figma, so the client approved every screen before we built it.</li>
@@ -78,12 +89,15 @@ const parts = [
     </div>
   </section>
 
-  <section class="section section--mist" aria-labelledby="more-h">
+  <section class="section" aria-labelledby="more-h">
     <div class="wrap">
-      <h2 id="more-h" class="more-title">More from our clients</h2>
+      <div class="section-head">
+        <p class="eyebrow">Clients</p>
+        <h2 id="more-h">What clients say</h2>
+      </div>
       <div class="quotes">
         {testimonials.map((t) => (
-          <figure>
+          <figure class="glass">
             <blockquote><p>{t.quote}</p></blockquote>
             <figcaption><strong>{t.who}</strong><span>{t.role}</span></figcaption>
           </figure>
@@ -92,43 +106,47 @@ const parts = [
     </div>
   </section>
 
-  <CtaBand heading="Have a platform like this in mind?" />
+  <CtaBand heading="Have a product like these in mind?" />
 </Base>
 
 <style>
-  .page-head { padding-block: 56px; background: var(--navy); color: var(--white); position: relative; overflow: hidden; }
-  .page-head::after { content: ''; position: absolute; right: 0; bottom: 0; width: 120px; height: 120px; background: var(--blue); clip-path: polygon(100% 0, 100% 100%, 0 100%); }
-  .page-head .wrap { display: grid; gap: 18px; position: relative; z-index: 1; }
-  .page-head .lead { color: var(--on-dark-muted); }
-  .kicker { color: var(--cyan); font-weight: 600; }
-  .glance { margin: 24px 0 0; display: grid; gap: 1px; background: #24426E; max-width: 1000px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: 20px; }
+
+  .case { scroll-margin-top: 76px; display: grid; gap: 64px; overflow: hidden; }
+  .case-head { display: grid; gap: 48px; align-items: center; }
+  @media (min-width: 1000px) { .case-head { grid-template-columns: 1.4fr 1fr; } }
+  .case-copy { display: grid; gap: 18px; }
+  .case-phone { position: relative; width: 100%; max-width: 300px; justify-self: center; }
+  .case-orb { left: 50%; top: 50%; width: 420px; height: 420px; margin: -210px 0 0 -210px; background: radial-gradient(closest-side, rgba(22, 96, 214, 0.7), rgba(22, 96, 214, 0.12) 70%, rgba(8, 26, 54, 0)); }
+  .glance { margin: 12px 0 0; display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
   @media (min-width: 800px) { .glance { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-  .glance div { background: var(--navy); padding: 18px 20px 18px 0; }
-  @media (min-width: 800px) { .glance div + div { padding-left: 20px; } }
-  .glance dt { font-weight: 600; color: var(--white); margin-bottom: 4px; }
-  .glance dd { margin: 0; color: var(--on-dark-muted); font-size: var(--step--1); }
+  .glance div { background: var(--bg-2); padding: 18px 20px; }
+  .glance dt { font-weight: 600; color: #FFFFFF; margin-bottom: 4px; }
+  .glance dd { margin: 0; color: var(--muted); font-size: var(--step--1); }
 
-  .two { display: grid; gap: 24px; }
-  @media (min-width: 900px) { .two { grid-template-columns: 1fr 1.6fr; gap: 80px; } }
-  .prose { display: grid; gap: 20px; max-width: 68ch; }
+  .two { display: grid; gap: 20px; }
+  @media (min-width: 900px) { .two { grid-template-columns: 1fr 2.2fr; gap: 64px; } }
+  .side { font-size: var(--step-3); font-weight: 700; }
+  .prose { display: grid; gap: 24px; max-width: 76ch; }
 
-  .table-wrap { overflow-x: auto; border-top: 2px solid var(--navy); }
-  table { width: 100%; border-collapse: collapse; min-width: 640px; }
-  th, td { text-align: left; vertical-align: top; padding: 16px 16px 16px 0; border-bottom: 1px solid var(--hairline); }
-  thead th { font-size: var(--step--1); color: var(--slate); font-weight: 600; }
+  .table-wrap { overflow-x: auto; padding: 4px 20px; }
+  table { width: 100%; border-collapse: collapse; min-width: 600px; }
+  th, td { text-align: left; vertical-align: top; padding: 16px 16px 16px 0; border-bottom: 1px solid var(--line); }
+  tbody tr:last-child th, tbody tr:last-child td { border-bottom: 0; }
+  thead th { font-size: var(--step--1); color: var(--dim); font-weight: 600; }
   tbody th { font-family: var(--font-display); font-weight: 600; font-size: var(--step-1); white-space: nowrap; }
-  tbody td:nth-child(2) { color: var(--slate); width: 26%; }
-  .features { margin-top: 40px; max-width: 80ch; }
+  td { color: var(--muted); }
+  tbody td:nth-child(2) { width: 26%; }
 
-  .how { margin: 0; padding-left: 1.4em; display: grid; gap: 16px; max-width: 68ch; }
-  .how li::marker { font-family: var(--font-display); font-weight: 700; color: var(--blue); }
+  .how { margin: 0; padding-left: 1.4em; display: grid; gap: 16px; max-width: 70ch; color: var(--muted); }
+  .how strong { color: #FFFFFF; }
+  .how li::marker { font-family: var(--font-display); font-weight: 700; color: var(--blue-2); }
 
-  .more-title { margin-bottom: 32px; }
-  .quotes { display: grid; gap: 24px; }
-  @media (min-width: 900px) { .quotes { grid-template-columns: 1fr 1fr; gap: 40px; } }
-  figure { margin: 0; padding: 32px; background: var(--white); display: grid; gap: 20px; align-content: space-between; }
-  blockquote { margin: 0; font-size: var(--step-1); line-height: 1.55; }
+  .quotes { display: grid; gap: 20px; }
+  @media (min-width: 900px) { .quotes { grid-template-columns: 1fr 1fr; } }
+  figure { margin: 0; padding: 32px; display: grid; gap: 20px; align-content: space-between; }
+  blockquote { margin: 0; font-size: var(--step-1); line-height: 1.6; }
   blockquote p::before { content: '“'; } blockquote p::after { content: '”'; }
   figcaption { display: grid; gap: 2px; font-size: var(--step--1); }
-  figcaption span { color: var(--slate); }
+  figcaption span { color: var(--muted); }
 </style>

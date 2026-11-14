@@ -1,20 +1,26 @@
 ---
 import Base from '../layouts/Base.astro';
+import FlowLines from '../components/FlowLines.astro';
 ---
 <Base title="Page not found" description="This page does not exist on the Soma Concepts website.">
-  <section class="section">
+  <section class="section nf-wrap">
+    <FlowLines variant="wave" />
+    <div class="orb breathe glow" aria-hidden="true"></div>
     <div class="wrap nf">
-      <img src="/brand/soma-mark.svg" alt="" width="120" height="120" />
+      <p class="code" aria-hidden="true">404</p>
       <h1>This page doesn't exist</h1>
       <p class="lead">The link may be old or mistyped. Start from the home page, or tell us what you were looking for.</p>
       <div class="btn-row">
         <a class="btn btn--primary" href="/">Go to the home page</a>
-        <a class="btn btn--outline" href="/contact/">Contact us</a>
+        <a class="btn btn--ghost" href="/contact/">Contact us</a>
       </div>
     </div>
   </section>
 </Base>
 
 <style>
-  .nf { display: grid; gap: 24px; justify-items: start; min-height: 50vh; align-content: center; }
+  .nf-wrap { overflow: hidden; }
+  .glow { left: 50%; top: 40%; width: 560px; height: 560px; margin: -280px 0 0 -280px; background: radial-gradient(closest-side, rgba(22, 96, 214, 0.35), rgba(5, 15, 34, 0)); }
+  .nf { display: grid; gap: 20px; justify-items: start; min-height: 50vh; align-content: center; }
+  .code { font-family: var(--font-display); font-weight: 700; font-size: clamp(5rem, 14vw, 9rem); line-height: 0.9; color: transparent; -webkit-text-stroke: 2px var(--blue-2); }
 </style>

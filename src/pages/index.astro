@@ -1,81 +1,143 @@
 ---
+import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
-import HeroMark from '../components/HeroMark.astro';
 import Icon from '../components/Icon.astro';
 import CtaBand from '../components/CtaBand.astro';
+import FlowLines from '../components/FlowLines.astro';
+import Phone from '../components/Phone.astro';
+import ProjectCard from '../components/ProjectCard.astro';
 import { company, services, process, testimonials } from '../data/site';
+import { projects, clientNames } from '../data/projects';
+import victor from '../assets/team/victor-uzorchikwa.jpg';
+import samuel from '../assets/team/samuel-ikediashi.jpg';
+import gideon from '../assets/team/gideon-onuh.jpg';
+import nonimedia from '../assets/work/nonimedia.jpg';
+import crixux from '../assets/work/crixux.jpg';
+import faithnow from '../assets/work/faithnow.jpg';
+import airgoPhone from '../assets/work/airgo-phone.jpg';
+import crixuxPhone from '../assets/work/crixux-phone.jpg';
+
+const featured = ['airgo', 'nonimedia', 'soluxe', 'crixux', 'megavolt', 'inspiringteens']
+  .map((id) => projects.find((p) => p.id === id)!)
+  .filter(Boolean);
+const ownProducts = 3; // Solak, Smart Writer and FaithNow
 ---
 <Base description="Soma Concepts builds and runs mobile apps, websites, business automation, brand strategy and ads for growing businesses in Nigeria. Based in Abuja.">
 
-  <!-- Hero: the one bold moment. The mark's bands lock together on load. -->
   <section class="hero">
+    <FlowLines variant="hero" />
+    <span class="spark twinkle" style="left: 47%; top: 62%;" aria-hidden="true"></span>
+    <span class="spark twinkle-2" style="left: 6%; top: 14%;" aria-hidden="true"></span>
+    <span class="spark twinkle-3" style="left: 94%; top: 86%;" aria-hidden="true"></span>
+
     <div class="wrap hero-grid">
       <div class="hero-copy">
-        <h1>We build and run the digital side of your business.</h1>
-        <p class="lead">Apps, websites, automation and marketing for growing businesses in Nigeria. Made to work on day one, and still working years later.</p>
-        <div class="btn-row">
-          <a class="btn btn--primary" href="/contact/">Start a project</a>
-          <a class="btn btn--outline" href="/work/">See our work</a>
+        <h1 class="rise">Software that keeps your business <span class="ring">moving.<svg viewBox="0 0 300 110" preserveAspectRatio="none" aria-hidden="true"><path d="M150 8 C 260 4, 298 38, 290 62 C 280 96, 160 106, 70 100 C 12 96, -4 70, 10 46 C 26 18, 110 6, 190 10" fill="none" stroke="#2BB3F0" stroke-width="3" stroke-linecap="round" vector-effect="non-scaling-stroke" /></svg></span></h1>
+        <p class="lead rise-2">Apps, websites, automation and marketing for growing Nigerian businesses. We build it, launch it, and keep it running.</p>
+        <div class="hero-actions rise-3">
+          <a class="btn btn--primary" href="/contact/">Start a project <span class="arrow" aria-hidden="true">→</span></a>
+          <div class="team-chip">
+            <div class="faces">
+              <Image src={victor} alt="Victor Uzorchikwa" width={80} height={80} quality={80} />
+              <Image src={samuel} alt="Samuel Ikediashi" width={80} height={80} quality={80} />
+              <Image src={gideon} alt="Gideon Onuh" width={80} height={80} quality={80} />
+            </div>
+            <span>Built by a team<br />in {company.city}</span>
+          </div>
         </div>
-        <p class="proof">Based in {company.city}. {company.clientsServed} clients served since {company.founded}.</p>
       </div>
-      <div class="hero-art cut-tl">
-        <HeroMark />
-        <svg class="hero-corner" viewBox="0 0 120 120" aria-hidden="true"><polygon points="120,0 120,120 0,120" fill="#1660D6" /></svg>
+
+      <div class="stack" aria-label="Some of our live work">
+        <div class="orb breathe stack-orb" aria-hidden="true"></div>
+        <div class="screen s1 float-3"><div class="tilt"><Image src={faithnow} alt="FaithNow learning platform" width={760} quality={76} loading="eager" /></div></div>
+        <div class="screen s2 float-2"><div class="tilt"><Image src={crixux} alt="CRIXUX INTERBIZ app demo" width={760} quality={76} loading="eager" /></div></div>
+        <div class="screen s3 float"><div class="tilt"><Image src={nonimedia} alt="Nonimedia Production Concept website" width={760} quality={80} loading="eager" /></div></div>
       </div>
     </div>
   </section>
 
-  <!-- Services -->
-  <section class="section" aria-labelledby="services-heading">
+  <section class="proof" aria-label="Soma in numbers">
     <div class="wrap">
-      <div class="section-head">
-        <h2 id="services-heading">What we do</h2>
+      <dl class="stats glass">
+        <div><dt>Clients served</dt><dd>{company.clientsServed}</dd></div>
+        <div><dt>Services, one team</dt><dd>{services.length}</dd></div>
+        <div><dt>Products of our own</dt><dd>{ownProducts}</dd></div>
+        <div><dt>Founded in {company.city}</dt><dd>{company.founded}</dd></div>
+      </dl>
+      <ul class="clients" aria-label="Clients we have built for">
+        {clientNames.map((n) => <li>{n}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="work-heading">
+    <div class="wrap">
+      <div class="work-head">
+        <div class="section-head">
+          <p class="eyebrow">Our work</p>
+          <h2 id="work-heading">Live products, not mockups.</h2>
+          <p class="lead">Every screen here is running today for a real business. Open any of them and try it.</p>
+        </div>
+        <a class="btn btn--ghost" href="/work/">See all work <span class="arrow" aria-hidden="true">→</span></a>
+      </div>
+      <div class="work-grid">
+        {featured.map((p) => <ProjectCard project={p} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--raised" aria-labelledby="services-heading">
+    <div class="wrap">
+      <div class="section-head section-head--center">
+        <p class="eyebrow">What we do</p>
+        <h2 id="services-heading">What we build for you</h2>
         <p class="lead">Five services, one team. Use one, or let us handle the whole journey from first screen to first customer.</p>
       </div>
       <ul class="services">
         {services.map((s) => (
           <li>
-            <Icon name={s.icon} size={36} />
-            <div>
-              <h3><a href={`/services/#${s.id}`}>{s.name}</a></h3>
-              <p class="muted">{s.summary}</p>
-            </div>
+            <span class="icon-tile"><Icon name={s.icon} size={26} /></span>
+            <h3><a href={`/services/#${s.id}`}>{s.name}</a></h3>
+            <p>{s.summary}</p>
           </li>
         ))}
       </ul>
     </div>
   </section>
 
-  <!-- Featured case study -->
-  <section class="section section--navy feature" aria-labelledby="airgo-heading">
-    <div class="wrap feature-grid">
-      <div class="feature-copy">
-        <p class="kicker">Case study</p>
-        <h2 id="airgo-heading">Airgo: one platform for stays, car hire, rides and deliveries</h2>
-        <p class="lead">A Nigerian travel and logistics company wanted to take its business online. We designed and built the whole platform, and we still run it.</p>
-        <a class="btn btn--primary" href="/work/">Read the Airgo case study</a>
+  <section class="section after" aria-labelledby="after-heading">
+    <FlowLines variant="down" />
+    <div class="wrap after-grid">
+      <div class="after-copy">
+        <p class="eyebrow">After launch</p>
+        <h2 id="after-heading">We don't hand over and disappear.</h2>
+        <p class="lead">We host, fix and improve what we build, the same way we run our own products every day. One team knows your system from the first screen to the latest update.</p>
+        <ul class="nodes">
+          <li><strong>You approve every screen</strong> before we write code.</li>
+          <li><strong>We test on real phones</strong> and show progress as we go.</li>
+          <li><strong>We stay on</strong> for hosting, fixes and new features.</li>
+        </ul>
+        <div class="btn-row"><a class="btn btn--primary" href="/contact/">Start a project <span class="arrow" aria-hidden="true">→</span></a></div>
       </div>
-      <dl class="facts">
-        <div><dt>3</dt><dd>Android apps: customers, hotel partners, drivers</dd></div>
-        <div><dt>1</dt><dd>Customer website that matches the app</dd></div>
-        <div><dt>Escrow</dt><dd>Payments held until the stay or car hire is delivered</dd></div>
-        <div><dt>PIN</dt><dd>Every partner payout approved by staff before it leaves</dd></div>
-      </dl>
+      <div class="phones">
+        <div class="orb breathe phones-orb" aria-hidden="true"></div>
+        <div class="p1 float-2"><Phone src={crixuxPhone} alt="CRIXUX app on a phone" tilt={-8} width={300} /></div>
+        <div class="p2 float"><Phone src={airgoPhone} alt="Airgo app on a phone" tilt={6} glow width={300} /></div>
+      </div>
     </div>
   </section>
 
-  <!-- Process: a real sequence, so it is numbered -->
-  <section class="section" aria-labelledby="process-heading">
+  <section class="section section--raised" aria-labelledby="process-heading">
     <div class="wrap">
       <div class="section-head">
-        <h2 id="process-heading">How a project runs</h2>
+        <p class="eyebrow">How a project runs</p>
+        <h2 id="process-heading">Clear steps, agreed dates.</h2>
         <p class="lead">Typical times for a website or a first app. Larger platforms take longer, and we agree the dates with you up front.</p>
       </div>
       <ol class="steps">
         {process.map((p, i) => (
-          <li>
-            <span class="step-num" aria-hidden="true">{i + 1}</span>
+          <li class="glass">
+            <span class="step-num" aria-hidden="true">0{i + 1}</span>
             <h3>{p.name}</h3>
             <p class="time">{p.time}</p>
             <p class="muted">{p.text}</p>
@@ -85,37 +147,16 @@ import { company, services, process, testimonials } from '../data/site';
     </div>
   </section>
 
-  <!-- Why us -->
-  <section class="section section--mist" aria-labelledby="why-heading">
-    <div class="wrap why-grid">
-      <div class="section-head">
-        <h2 id="why-heading">Why clients stay with us</h2>
-        <p class="lead">Most agencies hand over a project and move on. We are set up to stay.</p>
-      </div>
-      <div class="why">
-        <div>
-          <h3>We run software, not only build it</h3>
-          <p class="muted">We run our own products, so hosting, updates and real users are everyday work for us. That is what keeps your app working after launch.</p>
-        </div>
-        <div>
-          <h3>One partner from build to growth</h3>
-          <p class="muted">Your app, website, automation and ads come from one team, so nothing gets lost between a developer, a designer and a marketer.</p>
-        </div>
-        <div>
-          <h3>We train our own engineers</h3>
-          <p class="muted">Our Tech Talk academy in Abuja and Kaduna gives us a steady pipeline of skilled people, so your project is never short of hands.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Testimonials -->
   <section class="section" aria-labelledby="clients-heading">
     <div class="wrap">
-      <h2 id="clients-heading" class="clients-title">What clients say</h2>
+      <div class="section-head">
+        <p class="eyebrow">Clients</p>
+        <h2 id="clients-heading">What clients say</h2>
+      </div>
       <div class="quotes">
         {testimonials.map((t) => (
-          <figure>
+          <figure class="glass">
+            <svg class="qmark" width="36" height="28" viewBox="0 0 36 28" aria-hidden="true"><path d="M0 28V16C0 7 5 1.5 14 0l1.5 4C10 5.6 7.6 9 7.4 13H14v15H0Zm20 0V16C20 7 25 1.5 34 0l1.5 4C30 5.6 27.6 9 27.4 13H34v15H20Z" fill="#2BB3F0" /></svg>
             <blockquote><p>{t.quote}</p></blockquote>
             <figcaption><strong>{t.who}</strong><span>{t.role}</span></figcaption>
           </figure>
@@ -129,59 +170,76 @@ import { company, services, process, testimonials } from '../data/site';
 
 <style>
   /* Hero */
-  .hero { padding-block: 40px 64px; }
-  @media (min-width: 900px) { .hero { padding-block: 72px 96px; } }
-  .hero-grid { display: grid; gap: 40px; align-items: center; }
-  @media (min-width: 900px) { .hero-grid { grid-template-columns: 1.15fr 1fr; gap: 64px; } }
-  .hero-copy { display: grid; gap: 24px; }
-  .hero h1 { max-width: 14ch; }
-  .proof { color: var(--slate); font-size: var(--step--1); display: flex; align-items: center; gap: 10px; }
-  .proof::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--cyan); flex: none; }
-  .hero-art { --cut: 64px; position: relative; background: var(--navy); aspect-ratio: 1 / 1; display: grid; place-items: center; padding: 18%; max-width: 520px; width: 100%; justify-self: center; }
-  .hero-corner { position: absolute; right: 0; bottom: 0; width: 22%; height: auto; }
+  .hero { position: relative; overflow: hidden; padding-block: 56px 32px; }
+  @media (min-width: 1000px) { .hero { padding-block: 96px 104px; } }
+  .hero-grid { display: grid; gap: 48px; align-items: center; }
+  @media (min-width: 1000px) { .hero-grid { grid-template-columns: 1fr 1.05fr; gap: 56px; } }
+  .hero-copy { display: grid; gap: 26px; position: relative; z-index: 2; }
+  .hero h1 { max-width: 13ch; }
+  .ring { position: relative; display: inline-block; padding: 0 10px; color: var(--cyan); }
+  .ring svg { position: absolute; left: -6px; top: -8px; width: calc(100% + 12px); height: calc(100% + 16px); overflow: visible; }
+  .hero-actions { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+  .team-chip { display: flex; align-items: center; gap: 12px; font-size: 14px; line-height: 1.35; color: var(--muted); }
+  .faces { display: flex; }
+  .faces :global(img) { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; object-position: 50% 20%; border: 2px solid var(--bg); }
+  .faces :global(img + img) { margin-left: -10px; }
+
+  .stack { position: relative; aspect-ratio: 1 / 0.86; width: 100%; max-width: 620px; justify-self: center; }
+  .stack-orb { right: -6%; top: 0; width: 68%; aspect-ratio: 1; background: radial-gradient(circle at 40% 35%, #4F8FF5, #1660D6 55%, #0B3A86 100%); box-shadow: 0 0 120px 30px rgba(22, 96, 214, 0.45); }
+  .screen { position: absolute; width: 78%; }
+  .tilt { transform: perspective(1200px) rotateY(-14deg) rotateZ(4deg); border-radius: 16px; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.2); box-shadow: 0 30px 70px rgba(0, 0, 0, 0.55); }
+  .tilt :global(img) { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; object-position: top left; }
+  .s1 { left: 0; top: 0; opacity: 0.7; }
+  .s2 { left: 8%; top: 22%; opacity: 0.9; }
+  .s3 { left: 16%; top: 44%; }
+  .s3 .tilt { border-color: rgba(43, 179, 240, 0.6); box-shadow: 0 40px 90px rgba(0, 0, 0, 0.65), 0 0 50px rgba(43, 179, 240, 0.25); }
+
+  /* Proof */
+  .proof { position: relative; padding-block: 32px 24px; }
+  .stats { margin: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 8px; padding: 28px 16px; }
+  @media (min-width: 800px) { .stats { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+  .stats div { display: flex; flex-direction: column-reverse; align-items: center; gap: 4px; text-align: center; }
+  .stats dd { margin: 0; font-family: var(--font-display); font-weight: 700; font-size: 44px; line-height: 1; }
+  .stats dt { font-size: 14px; color: var(--muted); }
+  .clients { list-style: none; margin: 0; padding: 40px 0 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 14px 44px; font-family: var(--font-display); font-weight: 600; font-size: 20px; color: var(--dim); }
+
+  /* Work */
+  .work-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; flex-wrap: wrap; margin-bottom: 40px; }
+  .work-head .section-head { margin-bottom: 0; }
+  .work-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 20px; }
 
   /* Services */
-  .services { list-style: none; margin: 0; padding: 0; display: grid; border-top: 1px solid var(--hairline); }
-  @media (min-width: 800px) { .services { grid-template-columns: 1fr 1fr; column-gap: 64px; } }
-  .services li { display: grid; grid-template-columns: 36px 1fr; gap: 20px; padding-block: 28px; border-bottom: 1px solid var(--hairline); }
-  .services h3 { margin-bottom: 6px; }
-  .services h3 a { color: var(--ink); text-decoration: none; }
-  .services h3 a:hover { color: var(--blue); text-decoration: underline; }
+  .services { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr)); gap: 32px 28px; }
+  .services li { display: grid; gap: 12px; align-content: start; }
+  .icon-tile { width: 52px; height: 52px; border-radius: 12px; display: grid; place-items: center; background: rgba(22, 96, 214, 0.25); border: 1px solid rgba(79, 143, 245, 0.5); box-shadow: 0 0 24px rgba(22, 96, 214, 0.25); }
+  .services h3 { font-size: 20px; }
+  .services h3 a { color: #FFFFFF; text-decoration: none; }
+  .services h3 a:hover { color: var(--cyan); }
+  .services p { font-size: 15px; line-height: 1.55; color: var(--muted); }
 
-  /* Feature */
-  .feature { position: relative; overflow: hidden; }
-  .feature-grid { display: grid; gap: 48px; align-items: center; }
-  @media (min-width: 900px) { .feature-grid { grid-template-columns: 1.2fr 1fr; gap: 80px; } }
-  .feature-copy { display: grid; gap: 20px; justify-items: start; }
-  .kicker { color: var(--cyan); font-weight: 600; }
-  .facts { margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: #24426E; }
-  .facts div { background: var(--navy); padding: 24px 20px 24px 0; }
-  .facts div:nth-child(even) { padding-left: 20px; }
-  .facts dt { font-family: var(--font-display); font-weight: 700; font-size: var(--step-3); color: var(--white); line-height: 1.1; margin-bottom: 8px; }
-  .facts dd { margin: 0; color: var(--on-dark-muted); font-size: var(--step--1); }
+  /* After launch */
+  .after { overflow: hidden; }
+  .after-grid { display: grid; gap: 56px; align-items: center; }
+  @media (min-width: 1000px) { .after-grid { grid-template-columns: 1fr 1fr; } }
+  .after-copy { display: grid; gap: 20px; justify-items: start; position: relative; z-index: 1; }
+  .phones { position: relative; min-height: 460px; width: 100%; max-width: 520px; justify-self: center; }
+  @media (min-width: 600px) { .phones { min-height: 540px; } }
+  .phones-orb { left: 50%; top: 50%; width: 380px; height: 380px; margin: -190px 0 0 -190px; background: radial-gradient(closest-side, rgba(22, 96, 214, 0.75), rgba(22, 96, 214, 0.15) 70%, rgba(5, 15, 34, 0)); }
+  .p1 { position: absolute; left: 10%; top: 40px; width: 40%; }
+  .p2 { position: absolute; right: 8%; top: 0; width: 42%; }
 
   /* Steps */
-  .steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 32px; }
-  @media (min-width: 700px) { .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-  @media (min-width: 1100px) { .steps { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 40px; } }
-  .steps li { display: grid; gap: 8px; align-content: start; border-top: 2px solid var(--navy); padding-top: 20px; }
-  .step-num { font-family: var(--font-display); font-weight: 700; font-size: var(--step-3); color: var(--blue); line-height: 1; }
-  .time { font-size: var(--step--1); font-weight: 600; color: var(--navy); }
-
-  /* Why */
-  .why-grid .section-head { margin-bottom: 40px; }
-  .why { display: grid; gap: 32px; }
-  @media (min-width: 900px) { .why { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 48px; } }
-  .why h3 { margin-bottom: 10px; }
+  .steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); }
+  .steps li { display: grid; gap: 8px; align-content: start; padding: 28px 24px; }
+  .step-num { font-family: var(--font-display); font-weight: 700; font-size: 40px; line-height: 1; color: var(--blue-2); }
+  .time { font-size: var(--step--1); font-weight: 600; color: var(--cyan); }
+  .steps .muted { font-size: 15px; }
 
   /* Quotes */
-  .clients-title { margin-bottom: 40px; }
-  .quotes { display: grid; gap: 24px; }
-  @media (min-width: 900px) { .quotes { grid-template-columns: 1fr 1fr; gap: 40px; } }
-  figure { margin: 0; padding: 32px; background: var(--mist); display: grid; gap: 20px; align-content: space-between; }
-  figure:first-child { --cut: 32px; clip-path: polygon(var(--cut) 0, 100% 0, 100% 100%, 0 100%, 0 var(--cut)); }
-  blockquote { margin: 0; font-size: var(--step-1); line-height: 1.55; }
-  blockquote p::before { content: '“'; } blockquote p::after { content: '”'; }
-  figcaption { display: grid; gap: 2px; font-size: var(--step--1); }
-  figcaption span { color: var(--slate); }
+  .quotes { display: grid; gap: 20px; }
+  @media (min-width: 900px) { .quotes { grid-template-columns: 1fr 1fr; } }
+  figure { margin: 0; padding: 32px; display: grid; gap: 20px; align-content: start; }
+  blockquote { margin: 0; font-size: var(--step-1); line-height: 1.6; }
+  figcaption { display: grid; gap: 2px; font-size: var(--step--1); margin-top: auto; }
+  figcaption span { color: var(--muted); }
 </style>

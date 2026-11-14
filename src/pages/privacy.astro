@@ -1,0 +1,71 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHead from '../components/PageHead.astro';
+import { company, whatsappLink } from '../data/site';
+const updated = '14 November 2026';
+---
+<Base title="Privacy policy" description="How Soma Concepts handles your information on this website and when you message us on WhatsApp.">
+  <PageHead eyebrow="Privacy" title="Privacy policy" lead={`How ${company.name} handles your information. Last updated ${updated}.`} />
+
+  <section class="section">
+    <div class="wrap">
+      <article class="policy">
+        <h2>Who we are</h2>
+        <p>{company.legalName} ("Soma Concepts", "we") is a {company.legalLine.toLowerCase()}, based in {company.city}, {company.country}. We are responsible for the personal information described here. You can reach us at <a href={`mailto:${company.email}`}>{company.email}</a> or on {company.phoneDisplay}.</p>
+
+        <h2>On this website</h2>
+        <ul class="nodes">
+          <li>We don't use cookies, analytics or advertising trackers on this site.</li>
+          <li>The brief form on the contact page doesn't send anything to us by itself. It opens WhatsApp or your email app with your message filled in, and nothing is shared until you press send there.</li>
+          <li>Our hosting provider keeps short-lived technical logs, such as IP addresses and browser types, to keep the site running and secure.</li>
+        </ul>
+
+        <h2>When you message us on WhatsApp</h2>
+        <p>Messages to {company.phoneDisplay} are first answered by our WhatsApp assistant, an AI system that replies on our behalf, and our team can read and reply to every conversation. When you message us, we receive and store:</p>
+        <ul class="nodes">
+          <li>your WhatsApp name and phone number;</li>
+          <li>the messages you send and our replies;</li>
+          <li>any project details you choose to share, such as your name, business, what you need, timeline, budget range and a good time for a call.</li>
+        </ul>
+        <p>The assistant only reads text. Voice notes, photos and files are not processed by it; a team member may open them in the WhatsApp Business app.</p>
+
+        <h2>Why we use it</h2>
+        <ul class="nodes">
+          <li>To answer your questions and reply to your enquiry.</li>
+          <li>To prepare a proposal and, if you become a client, to deliver and support your project.</li>
+          <li>To follow up about the enquiry you started.</li>
+        </ul>
+        <p>We use your information because you asked us to respond, to take steps towards a contract with you, or for our legitimate interest in running and improving our service. We don't sell your information, and we don't add you to marketing broadcasts without your agreement.</p>
+
+        <h2>Who processes it for us</h2>
+        <p>We use trusted providers to run these services, and they handle your information only to provide them to us:</p>
+        <ul class="nodes">
+          <li><strong>Meta (WhatsApp Business Platform)</strong> delivers messages between you and us.</li>
+          <li><strong>Anthropic (Claude)</strong> generates the assistant's replies from the conversation.</li>
+          <li><strong>Our hosting and database providers</strong> store the website, conversations and project briefs.</li>
+        </ul>
+        <p>Some of these providers process data outside Nigeria. We choose providers with appropriate safeguards for that transfer.</p>
+
+        <h2>How long we keep it</h2>
+        <p>We keep conversations and briefs for as long as we need them to respond to you and, if you become a client, to work with you. Enquiries that don't go further are deleted no later than 24 months after our last conversation, unless the law requires us to keep them longer.</p>
+
+        <h2>Your rights</h2>
+        <p>Under the Nigeria Data Protection Act 2023, you can ask us to show you the information we hold about you, correct it, delete it, or stop using it, and you can withdraw your consent at any time. Message us on <a href={whatsappLink('Hello Soma Concepts, I have a privacy request.')}>WhatsApp</a> or email <a href={`mailto:${company.email}`}>{company.email}</a> and we'll respond as soon as we can, within the time the law allows. If you're not satisfied with our answer, you can complain to the Nigeria Data Protection Commission.</p>
+
+        <h2>Young people</h2>
+        <p>Our services are for businesses and adults. If you are under 18, please ask a parent or guardian to contact us for you.</p>
+
+        <h2>Changes</h2>
+        <p>We'll update this page if the way we handle information changes, and change the date at the top.</p>
+      </article>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .policy { max-width: 72ch; display: grid; gap: 16px; }
+  .policy h2 { font-size: var(--step-3); margin-top: 32px; }
+  .policy h2:first-child { margin-top: 0; }
+  .policy p { color: var(--muted); }
+  .policy a { color: var(--cyan); }
+</style>

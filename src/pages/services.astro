@@ -1,44 +1,51 @@
 ---
 import Base from '../layouts/Base.astro';
 import Icon from '../components/Icon.astro';
+import PageHead from '../components/PageHead.astro';
 import CtaBand from '../components/CtaBand.astro';
 import { services, process } from '../data/site';
 ---
 <Base title="Services" description="Mobile apps, websites and web apps, business automation, brand strategy and ads management for growing businesses in Nigeria.">
-  <section class="page-head">
-    <div class="wrap">
-      <h1>Services</h1>
-      <p class="lead">Everything a growing business needs to work online, from one team. Pick one service, or let us handle it end to end.</p>
-      <nav class="jump" aria-label="Services on this page">
-        {services.map((s) => <a href={`#${s.id}`}>{s.name}</a>)}
-      </nav>
+  <PageHead eyebrow="Services" title="Everything your business needs to work online." lead="Five services from one team. Pick one, or let us handle it end to end.">
+    <nav class="jump rise-3" aria-label="Services on this page">
+      {services.map((s) => <a href={`#${s.id}`}>{s.name}</a>)}
+    </nav>
+  </PageHead>
+
+  <section class="section" aria-label="Our services">
+    <div class="wrap list">
+      {services.map((s, i) => (
+        <article id={s.id} class="service glass" aria-labelledby={`${s.id}-h`}>
+          <div class="service-intro">
+            <div class="top">
+              <span class="icon-tile"><Icon name={s.icon} size={28} /></span>
+              <span class="num" aria-hidden="true">0{i + 1}</span>
+            </div>
+            <h2 id={`${s.id}-h`}>{s.name}</h2>
+            <p class="lead">{s.summary}</p>
+            <p class="for"><strong>Good fit for:</strong> {s.forWho}</p>
+          </div>
+          <div class="service-detail">
+            <h3>What's included</h3>
+            <ul class="nodes">{s.includes.map((x) => <li>{x}</li>)}</ul>
+            <a class="btn btn--ghost" href={`/contact/?service=${s.id}`}>Ask about {s.name.toLowerCase()} <span class="arrow" aria-hidden="true">→</span></a>
+          </div>
+        </article>
+      ))}
     </div>
   </section>
 
-  {services.map((s, i) => (
-    <section id={s.id} class={`section service ${i % 2 ? 'section--mist' : ''}`} aria-labelledby={`${s.id}-h`}>
-      <div class="wrap service-grid">
-        <div class="service-intro">
-          <Icon name={s.icon} size={48} />
-          <h2 id={`${s.id}-h`}>{s.name}</h2>
-          <p class="lead">{s.summary}</p>
-          <p class="for"><strong>Good fit for:</strong> {s.forWho}</p>
-        </div>
-        <div>
-          <h3>What's included</h3>
-          <ul class="nodes">{s.includes.map((x) => <li>{x}</li>)}</ul>
-          <a class="btn btn--outline" href={`/contact/?service=${s.id}`}>Ask about {s.name.toLowerCase()}</a>
-        </div>
-      </div>
-    </section>
-  ))}
-
-  <section class="section section--navy" aria-labelledby="after-h">
+  <section class="section section--raised" aria-labelledby="after-h">
     <div class="wrap after">
-      <h2 id="after-h">After launch, we stay</h2>
-      <p class="lead">We can host, update and maintain what we build, with one point of contact who knows your system.</p>
-      <ol class="mini-steps">
-        {process.map((p) => <li><strong>{p.name}</strong><span>{p.time}</span></li>)}
+      <div class="section-head">
+        <p class="eyebrow">After launch</p>
+        <h2 id="after-h">After launch, we stay.</h2>
+        <p class="lead">We host, update and maintain what we build, with one point of contact who knows your system.</p>
+      </div>
+      <ol class="steps">
+        {process.map((p, i) => (
+          <li class="glass"><span class="step-num" aria-hidden="true">0{i + 1}</span><strong>{p.name}</strong><span class="time">{p.time}</span></li>
+        ))}
       </ol>
     </div>
   </section>
@@ -47,25 +54,27 @@ import { services, process } from '../data/site';
 </Base>
 
 <style>
-  .page-head { padding-block: 56px 48px; border-bottom: 1px solid var(--hairline); }
-  .page-head .wrap { display: grid; gap: 20px; }
-  .jump { display: flex; flex-wrap: wrap; gap: 8px 12px; margin-top: 8px; }
-  .jump a { padding: 8px 14px; border: 1px solid var(--hairline); border-radius: var(--radius-sm); color: var(--ink); text-decoration: none; font-size: var(--step--1); font-weight: 500; }
-  .jump a:hover { border-color: var(--blue); color: var(--blue); }
+  .jump { display: flex; flex-wrap: wrap; gap: 8px 10px; margin-top: 8px; }
+  .jump a { padding: 8px 16px; border: 1px solid var(--line-2); border-radius: 999px; color: var(--muted); text-decoration: none; font-size: var(--step--1); font-weight: 500; background: var(--panel); }
+  .jump a:hover { border-color: var(--cyan); color: #FFFFFF; }
 
-  .service { scroll-margin-top: 80px; }
-  .service-grid { display: grid; gap: 40px; }
-  @media (min-width: 900px) { .service-grid { grid-template-columns: 1.2fr 1fr; gap: 80px; } }
-  .service-intro { display: grid; gap: 18px; align-content: start; }
-  .for { max-width: 56ch; }
-  .service-grid > div:last-child { display: grid; gap: 20px; align-content: start; justify-items: start; }
+  .list { display: grid; gap: 20px; }
+  .service { scroll-margin-top: 96px; display: grid; gap: 32px; padding: 32px 24px; }
+  @media (min-width: 900px) { .service { grid-template-columns: 1.2fr 1fr; gap: 64px; padding: 48px; } }
+  .service:target { border-color: var(--cyan); }
+  .service-intro { display: grid; gap: 16px; align-content: start; }
+  .top { display: flex; justify-content: space-between; align-items: center; }
+  .icon-tile { width: 56px; height: 56px; border-radius: 12px; display: grid; place-items: center; background: rgba(22, 96, 214, 0.25); border: 1px solid rgba(79, 143, 245, 0.5); box-shadow: 0 0 24px rgba(22, 96, 214, 0.25); }
+  .num { font-family: var(--font-display); font-weight: 700; font-size: 40px; color: rgba(255, 255, 255, 0.12); line-height: 1; }
+  .service h2 { font-size: var(--step-3); }
+  .for { color: var(--muted); max-width: 56ch; }
+  .for strong { color: #FFFFFF; }
+  .service-detail { display: grid; gap: 18px; align-content: start; justify-items: start; }
+  .service-detail h3 { font-size: var(--step-1); }
 
-  .after { display: grid; gap: 20px; }
-  .mini-steps { list-style: none; padding: 0; margin: 24px 0 0; display: grid; gap: 1px; background: #24426E; grid-template-columns: 1fr; }
-  @media (min-width: 700px) { .mini-steps { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
-  .mini-steps li { background: var(--navy); padding: 18px 20px 18px 0; display: grid; gap: 4px; counter-increment: step; }
-  @media (min-width: 700px) { .mini-steps li + li { padding-left: 20px; } }
-  .mini-steps strong { color: var(--white); font-family: var(--font-display); font-size: var(--step-2); font-weight: 600; }
-  .mini-steps strong::before { content: counter(step) '. '; color: var(--blue-on-dark); }
-  .mini-steps span { color: var(--on-dark-muted); font-size: var(--step--1); }
+  .steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr)); }
+  .steps li { display: grid; gap: 6px; padding: 24px; }
+  .step-num { font-family: var(--font-display); font-weight: 700; font-size: 36px; line-height: 1; color: var(--blue-2); }
+  .steps strong { font-family: var(--font-display); font-size: var(--step-2); font-weight: 600; }
+  .time { color: var(--cyan); font-size: var(--step--1); font-weight: 600; }
 </style>

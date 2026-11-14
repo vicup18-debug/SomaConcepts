@@ -1,0 +1,46 @@
+---
+import { Image } from 'astro:assets';
+import type { Project } from '../data/projects';
+interface Props { project: Project }
+const { project: p } = Astro.props;
+const href = p.link ?? p.url;
+const external = !p.link && !!p.url;
+---
+<article class="card">
+  <div class:list={['media', { 'media--phone': !p.screen }]}>
+    {p.screen ? (
+      <Image src={p.screen} alt={`${p.name}: ${p.type.toLowerCase()} built by Soma Concepts`} width={720} quality={78} loading="lazy" />
+    ) : p.phone && (
+      <div class="mini-phone"><div class="mini-screen"><Image src={p.phone} alt={`${p.name} app on a phone`} width={360} quality={80} loading="lazy" /></div></div>
+    )}
+    <span class="tag">{p.kind}</span>
+  </div>
+  <div class="body">
+    <h3>{href ? <a href={href} target={external ? '_blank' : undefined} rel={external ? 'noopener' : undefined}>{p.name}</a> : p.name}</h3>
+    <p class="type">{p.type}</p>
+    <p class="blurb">{p.blurb}</p>
+    {href && <span class="more" aria-hidden="true">{p.link ? 'Read the case study' : 'Visit the live site'} <span class="arrow">{external ? '↗' : '→'}</span></span>}
+  </div>
+</article>
+
+<style>
+  .card { position: relative; display: flex; flex-direction: column; border-radius: 20px; overflow: hidden; background: var(--panel); border: 1px solid var(--line); transition: border-color 200ms ease, transform 200ms ease, box-shadow 200ms ease; }
+  .card:hover { border-color: rgba(79, 143, 245, 0.6); transform: translateY(-3px); box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35), 0 0 40px rgba(22, 96, 214, 0.18); }
+  @media (prefers-reduced-motion: reduce) { .card:hover { transform: none; } }
+  .media { position: relative; height: 240px; overflow: hidden; background: #0B2545; }
+  .media > :global(img) { width: 100%; height: 100%; object-fit: cover; object-position: top left; transition: transform 600ms ease; }
+  .card:hover .media > :global(img) { transform: scale(1.03); }
+  .media--phone { display: flex; justify-content: center; align-items: flex-end; background: radial-gradient(closest-side, rgba(22, 96, 214, 0.6), rgba(6, 21, 46, 0)) center 70% / 120% 120% no-repeat, #0B2545; }
+  .mini-phone { width: 46%; margin-bottom: -70px; border-radius: 26px; padding: 6px; background: #0A1424; border: 1px solid rgba(255, 255, 255, 0.22); }
+  .mini-screen { overflow: hidden; border-radius: 20px; aspect-ratio: 9 / 16; }
+  .mini-screen :global(img) { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+  .tag { position: absolute; left: 14px; top: 14px; padding: 4px 10px; border-radius: 999px; background: rgba(5, 15, 34, 0.78); border: 1px solid var(--line-2); font-size: 12px; font-weight: 600; color: #FFFFFF; -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
+  .body { padding: 20px 22px 24px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
+  h3 { font-size: 22px; }
+  h3 a { color: #FFFFFF; text-decoration: none; }
+  h3 a::after { content: ''; position: absolute; inset: 0; }
+  .type { font-size: 13px; font-weight: 600; color: var(--cyan); }
+  .blurb { font-size: 15px; line-height: 1.55; color: var(--muted); }
+  .more { margin-top: auto; padding-top: 12px; font-size: 14px; font-weight: 600; color: #FFFFFF; }
+  .card:focus-within { border-color: var(--cyan); }
+</style>

@@ -4,9 +4,11 @@ import Icon from '../components/Icon.astro';
 import { company, services, whatsappLink } from '../data/site';
 ---
 <Base title="Contact" description="Talk to Soma Concepts about your app, website, automation, brand or ads. Call or WhatsApp 0802 308 1571, or send us a message.">
-  <section class="section">
+  <section class="section contact">
+    <div class="orb breathe glow" aria-hidden="true"></div>
     <div class="wrap grid">
       <div class="intro">
+        <p class="eyebrow">Contact</p>
         <h1>Start a project</h1>
         <p class="lead">Tell us what you want to build. We reply with next steps and an honest view of cost and time.</p>
 
@@ -30,7 +32,7 @@ import { company, services, whatsappLink } from '../data/site';
         </ul>
       </div>
 
-      <form class="brief cut-tl" id="brief" action={`mailto:${company.email}`} method="post" enctype="text/plain">
+      <form class="brief glass" id="brief" action={`mailto:${company.email}`} method="post" enctype="text/plain">
         <h2>Send us a short brief</h2>
         <p class="muted small">Your brief opens in WhatsApp or your email app, filled in and ready to send.</p>
 
@@ -52,7 +54,7 @@ import { company, services, whatsappLink } from '../data/site';
 
         <div class="actions">
           <button class="btn btn--primary" type="submit">Send on WhatsApp</button>
-          <button class="btn btn--outline" type="submit" data-channel="email">Send by email</button>
+          <button class="btn btn--ghost" type="submit" data-channel="email">Send by email</button>
         </div>
         <p class="error" id="brief-error" role="alert" hidden>Add your name and a short message, then send again.</p>
       </form>
@@ -86,28 +88,33 @@ import { company, services, whatsappLink } from '../data/site';
 </script>
 
 <style>
+  .contact { overflow: hidden; }
+  .glow { right: -200px; top: -200px; width: 640px; height: 640px; background: radial-gradient(closest-side, rgba(22, 96, 214, 0.4), rgba(5, 15, 34, 0)); }
   .grid { display: grid; gap: 48px; }
-  @media (min-width: 960px) { .grid { grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; } }
-  .intro { display: grid; gap: 24px; }
-  .ways { list-style: none; margin: 16px 0 0; padding: 0; display: grid; border-top: 1px solid var(--hairline); }
-  .ways li { display: grid; grid-template-columns: 28px 1fr; gap: 18px; padding-block: 20px; border-bottom: 1px solid var(--hairline); align-items: start; }
-  .ways h2 { font-family: var(--font-body); font-size: var(--step--1); font-weight: 600; color: var(--slate); margin-bottom: 2px; }
+  @media (min-width: 960px) { .grid { grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; } }
+  .intro { display: grid; gap: 20px; }
+  .ways { list-style: none; margin: 16px 0 0; padding: 0; display: grid; border-top: 1px solid var(--line); }
+  .ways li { display: grid; grid-template-columns: 44px 1fr; gap: 16px; padding-block: 18px; border-bottom: 1px solid var(--line); align-items: center; }
+  .ways li > :global(svg) { width: 44px; height: 44px; padding: 9px; border-radius: 10px; background: rgba(22, 96, 214, 0.25); border: 1px solid rgba(79, 143, 245, 0.5); }
+  .ways h2 { font-family: var(--font-body); font-size: var(--step--1); font-weight: 600; color: var(--dim); margin-bottom: 2px; letter-spacing: 0; }
   .ways a, .ways p { font-size: var(--step-1); font-weight: 500; }
-  .ways a { color: var(--ink); text-decoration-color: var(--hairline); }
-  .ways a:hover { color: var(--blue); }
+  .ways a { color: #FFFFFF; text-decoration: none; }
+  .ways a:hover { color: var(--cyan); }
 
-  .brief { --cut: 40px; background: var(--mist); padding: 40px 32px; display: grid; gap: 8px; }
-  @media (min-width: 600px) { .brief { padding: 48px; } }
+  .brief { padding: 32px 24px; display: grid; gap: 8px; position: relative; }
+  @media (min-width: 600px) { .brief { padding: 44px; } }
   .brief h2 { font-size: var(--step-3); }
   .small { font-size: var(--step--1); margin-bottom: 16px; }
   label { font-weight: 600; font-size: var(--step--1); margin-top: 12px; }
   input, select, textarea {
-    font: inherit; color: var(--ink); background: var(--white);
-    border: 1px solid #B9C5D6; border-radius: var(--radius-sm);
+    font: inherit; color: #FFFFFF; background: rgba(5, 15, 34, 0.6);
+    border: 1px solid var(--line-2); border-radius: var(--radius);
     padding: 12px 14px; min-height: 48px; width: 100%;
   }
-  input:focus, select:focus, textarea:focus { outline: 3px solid var(--cyan); outline-offset: 1px; border-color: var(--navy); }
+  select option { background: #081A36; color: #FFFFFF; }
+  input::placeholder, textarea::placeholder { color: var(--dim); }
+  input:focus, select:focus, textarea:focus { outline: 3px solid var(--cyan); outline-offset: 1px; border-color: var(--cyan); }
   textarea { resize: vertical; }
   .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
-  .error { color: #B42318; font-weight: 600; margin-top: 8px; }
+  .error { color: #FF8A80; font-weight: 600; margin-top: 8px; }
 </style>

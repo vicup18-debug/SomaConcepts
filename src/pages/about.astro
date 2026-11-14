@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
 import Icon from '../components/Icon.astro';
+import PageHead from '../components/PageHead.astro';
 import CtaBand from '../components/CtaBand.astro';
 import { company } from '../data/site';
 import victor from '../assets/team/victor-uzorchikwa.jpg';
@@ -10,6 +11,7 @@ import gideon from '../assets/team/gideon-onuh.jpg';
 import ebonom from '../assets/team/ebonom-agam.jpg';
 import solak from '../assets/products/solak.png';
 import smartWriter from '../assets/products/smart-writer.png';
+import faithnow from '../assets/work/faithnow.jpg';
 
 const team = [
   { name: 'Victor Uzorchikwa', role: 'Co-founder and CEO', img: victor },
@@ -26,35 +28,33 @@ const promises = [
 ];
 ---
 <Base title="About" description="Soma Concepts is an Abuja-based technology company that builds and runs the digital side of growing businesses. Meet the team, our products and the Tech Talk academy.">
-  <section class="page-head">
-    <div class="wrap head-grid">
-      <div class="head-copy">
-        <h1>A technology company from Abuja</h1>
-        <p class="lead">{company.name} started in {company.founded} to give growing Nigerian businesses one dependable partner for their apps, websites, automation and marketing. We have served {company.clientsServed} clients so far, from real estate to travel and logistics.</p>
-      </div>
-      <img class="head-mark" src="/brand/soma-mark.svg" alt="" width="200" height="200" />
-    </div>
-  </section>
+  <PageHead eyebrow="About" title="A technology company from Abuja." lead={`${company.name} started in ${company.founded} to give growing Nigerian businesses one dependable partner for their apps, websites, automation and marketing. We have served ${company.clientsServed} clients so far, from real estate to travel, energy and events.`} />
 
   <section class="section" aria-labelledby="mark-h">
-    <div class="wrap two">
-      <h2 id="mark-h">What our mark means</h2>
+    <div class="wrap mark-grid">
+      <div class="mark-art">
+        <div class="orb breathe mark-orb" aria-hidden="true"></div>
+        <img src="/brand/soma-mark-reversed.svg" alt="" width="240" height="240" />
+      </div>
       <div class="prose">
-        <p>Four bands locked into one square. Each band is a part of a business: its apps, its website, its operations and its marketing. The blue corners lock them together, the way we connect them for our clients. The square is the promise: built to last.</p>
+        <p class="eyebrow">Our mark</p>
+        <h2 id="mark-h">Four parts, locked into one.</h2>
+        <p class="lead">Four bands locked into one square. Each band is a part of a business: its apps, its website, its operations and its marketing. The blue corners lock them together, the way we connect them for our clients. The square is the promise: built to last.</p>
       </div>
     </div>
   </section>
 
-  <section class="section section--mist" aria-labelledby="team-h">
+  <section class="section section--raised" aria-labelledby="team-h">
     <div class="wrap">
       <div class="section-head">
+        <p class="eyebrow">The team</p>
         <h2 id="team-h">The people behind Soma</h2>
         <p class="lead">A compact leadership team, backed by developers, designers, video editors and content creators.</p>
       </div>
       <ul class="team">
         {team.map((p) => (
           <li>
-            <Image src={p.img} alt={`Portrait of ${p.name}`} width={480} height={560} quality={78} class="photo" />
+            <div class="photo-wrap"><Image src={p.img} alt={`Portrait of ${p.name}`} width={480} height={560} quality={78} class="photo" /></div>
             <h3>{p.name}</h3>
             <p class="muted">{p.role}</p>
           </li>
@@ -66,43 +66,52 @@ const promises = [
   <section class="section" aria-labelledby="products-h">
     <div class="wrap">
       <div class="section-head">
+        <p class="eyebrow">Our products</p>
         <h2 id="products-h">We build our own products too</h2>
         <p class="lead">Running our own software keeps us honest about what it takes to keep a product working, and that experience goes into every client build.</p>
       </div>
       <div class="products">
-        <article>
-          <Image src={solak} alt="Solak logo" width={240} class="product-logo" />
+        <article class="glass">
+          <div class="logo-tile"><Image src={solak} alt="Solak logo" width={240} class="product-logo" /></div>
           <h3>Solak</h3>
           <p class="muted">Verified attendance and class management for lecturers and students: live check-in, course materials, assignments and announcements in one place. Now in pilot at Kaduna Polytechnic.</p>
         </article>
-        <article>
-          <Image src={smartWriter} alt="Smart Writer logo" width={420} class="product-logo" />
+        <article class="glass">
+          <div class="logo-tile"><Image src={smartWriter} alt="Smart Writer logo" width={420} class="product-logo" /></div>
           <h3>Smart Writer</h3>
           <p class="muted">An AI assistant for academic writing, in development.</p>
+        </article>
+        <article class="glass">
+          <div class="shot"><Image src={faithnow} alt="FaithNow home page" width={640} quality={78} /></div>
+          <h3>FaithNow</h3>
+          <p class="muted">Structured faith learning, a community and a resource library, for a new generation.</p>
         </article>
       </div>
     </div>
   </section>
 
-  <section id="tech-talk" class="section section--navy" aria-labelledby="tt-h">
+  <section id="tech-talk" class="section section--raised" aria-labelledby="tt-h">
     <div class="wrap two">
       <div class="tt-title">
-        <Icon name="training" size={48} dark />
+        <span class="icon-tile"><Icon name="training" size={30} /></span>
         <h2 id="tt-h">Tech Talk academy</h2>
       </div>
       <div class="prose">
         <p class="lead">Our academy in Abuja and Kaduna teaches practical, in-demand tech skills to students and young professionals.</p>
-        <p>It also helps us find and train the people who build for our clients.</p>
-        <a class="btn btn--light" href={`/contact/?service=tech-talk`}>Ask about the next cohort</a>
+        <p class="muted">It also helps us find and train the people who build for our clients.</p>
+        <a class="btn btn--ghost" href="/contact/?service=tech-talk">Ask about the next cohort <span class="arrow" aria-hidden="true">→</span></a>
       </div>
     </div>
   </section>
 
   <section class="section" aria-labelledby="promise-h">
     <div class="wrap">
-      <h2 id="promise-h" class="promise-title">How we work with you</h2>
+      <div class="section-head">
+        <p class="eyebrow">Our promise</p>
+        <h2 id="promise-h">How we work with you</h2>
+      </div>
       <ul class="promises">
-        {promises.map((p) => <li><h3>{p.title}</h3><p class="muted">{p.text}</p></li>)}
+        {promises.map((p) => <li class="glass"><h3>{p.title}</h3><p class="muted">{p.text}</p></li>)}
       </ul>
     </div>
   </section>
@@ -111,34 +120,33 @@ const promises = [
 </Base>
 
 <style>
-  .page-head { padding-block: 56px; border-bottom: 1px solid var(--hairline); }
-  .head-grid { display: grid; gap: 32px; align-items: center; }
-  @media (min-width: 900px) { .head-grid { grid-template-columns: 1fr 220px; gap: 80px; } }
-  .head-copy { display: grid; gap: 20px; }
-  .head-mark { width: 140px; height: auto; }
-  @media (min-width: 900px) { .head-mark { width: 220px; } }
+  .mark-grid { display: grid; gap: 48px; align-items: center; }
+  @media (min-width: 900px) { .mark-grid { grid-template-columns: 1fr 1.4fr; gap: 80px; } }
+  .mark-art { position: relative; display: grid; place-items: center; min-height: 300px; }
+  .mark-art img { position: relative; width: 200px; height: auto; filter: drop-shadow(0 0 40px rgba(22, 96, 214, 0.55)); }
+  .mark-orb { left: 50%; top: 50%; width: 360px; height: 360px; margin: -180px 0 0 -180px; background: radial-gradient(closest-side, rgba(22, 96, 214, 0.55), rgba(5, 15, 34, 0)); }
+  .prose { display: grid; gap: 18px; max-width: 64ch; justify-items: start; }
+
+  .team { list-style: none; margin: 0; padding: 0; display: grid; gap: 32px 20px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  @media (min-width: 1000px) { .team { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+  .team li { display: grid; gap: 4px; align-content: start; }
+  .photo-wrap { border-radius: 18px; overflow: hidden; border: 1px solid var(--line); margin-bottom: 14px; background: var(--panel); }
+  .team :global(.photo) { width: 100%; aspect-ratio: 6 / 7; height: auto; object-fit: cover; object-position: 50% 15%; }
+  .team h3 { font-size: var(--step-1); }
+
+  .products { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); }
+  .products article { padding: 24px; display: grid; gap: 12px; align-content: start; }
+  .logo-tile { height: 160px; border-radius: 12px; background: #FFFFFF; display: grid; place-items: center; padding: 24px; margin-bottom: 8px; }
+  .logo-tile :global(.product-logo) { max-height: 72px; width: auto; object-fit: contain; }
+  .shot { height: 160px; border-radius: 12px; overflow: hidden; margin-bottom: 8px; }
+  .shot :global(img) { width: 100%; height: 100%; object-fit: cover; object-position: top left; }
 
   .two { display: grid; gap: 24px; }
   @media (min-width: 900px) { .two { grid-template-columns: 1fr 1.6fr; gap: 80px; } }
-  .prose { display: grid; gap: 18px; max-width: 64ch; justify-items: start; }
+  .tt-title { display: grid; gap: 20px; align-content: start; justify-items: start; }
+  .icon-tile { width: 60px; height: 60px; border-radius: 14px; display: grid; place-items: center; background: rgba(22, 96, 214, 0.25); border: 1px solid rgba(79, 143, 245, 0.5); }
 
-  .team { list-style: none; margin: 0; padding: 0; display: grid; gap: 32px 24px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  @media (min-width: 1000px) { .team { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
-  .team li { display: grid; gap: 4px; align-content: start; }
-  .team :global(.photo) { width: 100%; aspect-ratio: 6 / 7; height: auto; object-fit: cover; object-position: 50% 15%; margin-bottom: 12px; background: var(--hairline); }
-  .team li:first-child :global(.photo) { clip-path: polygon(40px 0, 100% 0, 100% 100%, 0 100%, 0 40px); }
-  .team h3 { font-size: var(--step-1); }
-
-  .products { display: grid; gap: 24px; }
-  @media (min-width: 800px) { .products { grid-template-columns: 1fr 1fr; gap: 40px; } }
-  .products article { border: 1px solid var(--hairline); padding: 32px; display: grid; gap: 12px; align-content: start; }
-  .products :global(.product-logo) { height: 72px; width: auto; object-fit: contain; object-position: left center; margin-bottom: 8px; }
-
-  .tt-title { display: grid; gap: 20px; align-content: start; }
-
-  .promise-title { margin-bottom: 32px; }
-  .promises { list-style: none; margin: 0; padding: 0; display: grid; gap: 32px; }
-  @media (min-width: 700px) { .promises { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-  @media (min-width: 1100px) { .promises { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
-  .promises li { border-top: 2px solid var(--navy); padding-top: 18px; display: grid; gap: 8px; align-content: start; }
+  .promises { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); }
+  .promises li { padding: 28px 24px; display: grid; gap: 8px; align-content: start; }
+  .promises h3 { font-size: var(--step-1); }
 </style>
