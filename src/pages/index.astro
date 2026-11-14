@@ -7,7 +7,8 @@ import FlowLines from '../components/FlowLines.astro';
 import Phone from '../components/Phone.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 import { company, services, process, testimonials } from '../data/site';
-import { projects, clientNames } from '../data/projects';
+import { projects } from '../data/projects';
+const clientList = projects.filter((p) => p.kind === 'Client');
 import victor from '../assets/team/victor-uzorchikwa.jpg';
 import samuel from '../assets/team/samuel-ikediashi.jpg';
 import gideon from '../assets/team/gideon-onuh.jpg';
@@ -64,9 +65,20 @@ const ownProducts = 3; // Solak, Smart Writer and FaithNow
         <div><dt>Products of our own</dt><dd>{ownProducts}</dd></div>
         <div><dt>Founded in {company.city}</dt><dd>{company.founded}</dd></div>
       </dl>
-      <ul class="clients" aria-label="Clients we have built for">
-        {clientNames.map((n) => <li>{n}</li>)}
-      </ul>
+      <div class="clients-wrap">
+        <p class="clients-label">Clients we've built for</p>
+        <ul class="clients" aria-label="Clients we have built for">
+          {clientList.map((c) => (
+            <li>
+              <a href={c.link ?? c.url} target={c.link ? undefined : '_blank'} rel={c.link ? undefined : 'noopener'}>
+                <span class="c-dot" aria-hidden="true"></span>
+                <span class="c-name">{c.name}</span>
+                <span class="c-type">{c.type}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   </section>
 
@@ -201,7 +213,19 @@ const ownProducts = 3; // Solak, Smart Writer and FaithNow
   .stats div { display: flex; flex-direction: column-reverse; align-items: center; gap: 4px; text-align: center; }
   .stats dd { margin: 0; font-family: var(--font-display); font-weight: 700; font-size: 44px; line-height: 1; }
   .stats dt { font-size: 14px; color: var(--muted); }
-  .clients { list-style: none; margin: 0; padding: 40px 0 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 14px 44px; font-family: var(--font-display); font-weight: 600; font-size: 20px; color: var(--dim); }
+  .clients-wrap { padding-top: 48px; }
+  .clients-label { text-align: center; font-size: 13px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--dim); margin-bottom: 20px; }
+  .clients { --cols: 2; --gap: 12px; list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: var(--gap); }
+  .clients li { flex: 0 0 calc((100% - (var(--cols) - 1) * var(--gap)) / var(--cols)); }
+  .clients a { position: relative; display: flex; flex-direction: column; gap: 4px; height: 100%; min-height: 104px; padding: 18px 20px; border-radius: 18px; background: rgba(255, 255, 255, 0.04); border: 1px solid var(--line); text-decoration: none; transition: border-color 200ms ease, background 200ms ease; }
+  .clients a:hover { border-color: rgba(43, 179, 240, 0.5); background: rgba(22, 96, 214, 0.12); }
+  .c-dot { flex: none; margin-bottom: auto; padding-bottom: 0; width: 8px; height: 8px; border-radius: 50%; background: var(--cyan); box-shadow: 0 0 10px rgba(43, 179, 240, 0.8); }
+  .c-name { font-family: var(--font-display); font-weight: 600; font-size: 17px; line-height: 1.25; letter-spacing: -0.01em; color: #FFFFFF; }
+  .c-type { font-size: 13px; color: var(--dim); }
+  .c-dot + .c-name { margin-top: 14px; }
+  @media (max-width: 699px) { .clients a { padding: 16px; } .c-name { font-size: 15.5px; } .c-type { font-size: 12.5px; } }
+  @media (min-width: 700px) { .clients { --cols: 3; --gap: 16px; } }
+  @media (min-width: 1000px) { .clients { --cols: 4; } .clients a { min-height: 112px; } }
 
   /* Work */
   .work-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; flex-wrap: wrap; margin-bottom: 40px; }
