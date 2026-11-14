@@ -11,7 +11,7 @@ const isCurrent = (href: string) => path === href.replace(/\/$/, '');
 <header class="site-header">
   <div class="wrap bar">
     <a href="/" class="logo" aria-label="Soma Concepts, home">
-      <img src="/brand/soma-logo-horizontal-reversed.svg" alt="Soma Concepts" width="109" height="40" />
+      <img src="/brand/soma-wordmark-reversed.svg" alt="Soma Concepts" width="136" height="28" />
     </a>
 
     <nav class="nav-desktop" aria-label="Main">
@@ -43,7 +43,8 @@ const isCurrent = (href: string) => path === href.replace(/\/$/, '');
 <style>
   .site-header { position: sticky; top: 0; z-index: 50; background: rgba(5, 15, 34, 0.82); border-bottom: 1px solid var(--line); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); }
   .bar { display: flex; align-items: center; justify-content: space-between; gap: 24px; min-height: 76px; }
-  .logo img { height: 40px; width: auto; }
+  .logo { display: inline-flex; padding: 6px 0; }
+  .logo img { height: 28px; width: auto; }
 
   ul { list-style: none; margin: 0; padding: 0; }
   .nav-desktop { display: none; align-items: center; gap: 36px; }
