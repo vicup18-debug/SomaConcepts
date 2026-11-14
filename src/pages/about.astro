@@ -34,12 +34,12 @@ const promises = [
     <div class="wrap mark-grid">
       <div class="mark-art">
         <div class="orb breathe mark-orb" aria-hidden="true"></div>
-        <img src="/brand/soma-mark-reversed.svg" alt="" width="240" height="240" />
+        <img src="/brand/soma-logo-reversed.svg" alt="" width="320" height="99" />
       </div>
       <div class="prose">
-        <p class="eyebrow">Our mark</p>
-        <h2 id="mark-h">Four parts, locked into one.</h2>
-        <p class="lead">Four bands locked into one square. Each band is a part of a business: its apps, its website, its operations and its marketing. The blue corners lock them together, the way we connect them for our clients. The square is the promise: built to last.</p>
+        <p class="eyebrow">Our logo</p>
+        <h2 id="mark-h">A name, and a full stop.</h2>
+        <p class="lead">Our logo is our name, set bold and lowercase, closed with a dot. The dot is the full stop on every job: done properly, finished, built to last. It is also the point where the parts of a business connect: its apps, its website, its operations and its marketing.</p>
       </div>
     </div>
   </section>
@@ -123,7 +123,7 @@ const promises = [
   .mark-grid { display: grid; gap: 48px; align-items: center; }
   @media (min-width: 900px) { .mark-grid { grid-template-columns: 1fr 1.4fr; gap: 80px; } }
   .mark-art { position: relative; display: grid; place-items: center; min-height: 300px; }
-  .mark-art img { position: relative; width: 200px; height: auto; filter: drop-shadow(0 0 40px rgba(22, 96, 214, 0.55)); }
+  .mark-art img { position: relative; width: min(300px, 80%); height: auto; }
   .mark-orb { left: 50%; top: 50%; width: 360px; height: 360px; margin: -180px 0 0 -180px; background: radial-gradient(closest-side, rgba(22, 96, 214, 0.55), rgba(5, 15, 34, 0)); }
   .prose { display: grid; gap: 18px; max-width: 64ch; justify-items: start; }
 
